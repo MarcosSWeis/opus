@@ -1,5 +1,5 @@
 # C5-20
-# MY STORE - Pagina de compra venta 
+# Pagina para administracion de condominio.
 Aquí presentamos el proyecto MY STORE, compras y ventas en linea desde donde sea que estés.
 
 Here we present the MY STORE project, online purchases and sales from wherever you are.
