@@ -67,7 +67,7 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Tower, Condos } = sequelize.models;
+const { User, Tower, Condos, Departments } = sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo
 User;
@@ -85,6 +85,7 @@ Tower.belongsTo(Condos, {
   as: "condominium",
   targetKey: "id",
 });
+
 
 module.exports = {
   ...sequelize.models,

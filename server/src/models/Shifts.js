@@ -1,38 +1,30 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("department", {
+  sequelize.define("shift", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
     },
-    floor: {
+    initial_hour: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    rooms: {
+    end_hour: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },   
+    bookings: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    toilets: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.FLOAT,
 
-    },
-    sale: {
-      type: DataTypes.FLOAT,
-    },
-    rent: {
-      type: DataTypes.FLOAT,
-    }
+
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
   );
 };
