@@ -11,6 +11,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    surName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,6 +24,14 @@ module.exports = (sequelize) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+
+    profile_image: {
+      type: DataTypes.STRING,
+    },
+    soft_deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   });
 };
