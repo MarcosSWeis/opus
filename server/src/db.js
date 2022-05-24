@@ -70,22 +70,96 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Tower, Condos, Departments, Comments, Social_space } = sequelize.models;
+const { User, Tower, Condos, Department, Comment, Social_space, Shift } =
+  sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo
-User;
 
 //a condominium has many towers
 Condos.hasMany(Tower, {
-  foreignKey: "condominium_id",
   as: "tower",
+  foreignKey: "condominium_id",
   //le indico que mi foreignKey de la tabla Towers esta enlazada a esta (Condos) a traves del id de Condos
   sourceKey: "id",
 });
+
 //a tower belongs to Condominium
 Tower.belongsTo(Condos, {
-  foreignKey: "condominium_id",
   as: "condominium",
+  foreignKey: "condominium_id",
+  targetKey: "id",
+});
+
+Tower.hasMany(Department, {
+  as: "departments",
+  foreignKey: "tower_id",
+  sourceKey: "id",
+});
+
+Department.belongsTo(Tower, {
+  as: "tower",
+  foreignKey: "tower_id",
+  targetKey: "id",
+});
+
+Department.hasMany(User, {
+  as: "user",
+  foreignKey: "departament_id",
+  sourceKey: "id",
+});
+
+User.belongsTo(Department, {
+  as: "departments",
+  foreignKey: "departament_id",
+  targetKey: "id",
+});
+
+//turnos
+User.hasMany(Shift, {
+  as: "shift",
+  foreignKey: "user_id",
+  sourceKey: "id",
+});
+
+Shift.belongsTo(User, {
+  as: "user",
+  foreignKey: "user_id",
+  targetKey: "id",
+});
+
+User.hasMany(Comment, {
+  as: "comment",
+  foreignKey: "user_id",
+  sourceKey: "id",
+});
+
+Comment.belongsTo(User, {
+  as: "user",
+  foreignKey: "user_id",
+  targetKey: "id",
+});
+
+Condos.hasMany(Social_space, {
+  as: "social_space",
+  foreignKey: "condominium_id",
+  sourceKey: "id",
+});
+
+Social_space.belongsTo(Condos, {
+  as: "condominium",
+  foreignKey: "condominium_id",
+  targetKey: "id",
+});
+
+Social_space.hasMany(Shift, {
+  as: "shift",
+  foreignKey: "social_space_id",
+  sourceKey: "id",
+});
+
+Shift.belongsTo(Social_space, {
+  as: "social_space",
+  foreignKey: "social_space_id",
   targetKey: "id",
 });
 
