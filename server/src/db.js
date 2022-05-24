@@ -1,8 +1,11 @@
-require("dotenv").config(/* { path: __dirname + "/.env" } */);
+require("dotenv").config({ path: __dirname + "/.env" });
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+// console.log(DB_USER);
+// console.log(DB_PASSWORD);
+// console.log(DB_NAME);
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
   {
@@ -85,7 +88,6 @@ Tower.belongsTo(Condos, {
   as: "condominium",
   targetKey: "id",
 });
-
 
 module.exports = {
   ...sequelize.models,
