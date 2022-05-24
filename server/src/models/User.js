@@ -2,16 +2,16 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("user", {
-    username: {
+    departament_id:{
+
+      type: DataTypes.INTEGER,
+    },
+  
+    firt_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    surName: {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -25,13 +25,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    dni:{
+      type:DataTypes.INTEGER
+    },
 
-    profile_image: {
-      type: DataTypes.STRING,
-    },
-    soft_deleted: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
+    isAdmin:{
+
+      type:DataTypes.BOOLEAN,
+    }
   });
 };
