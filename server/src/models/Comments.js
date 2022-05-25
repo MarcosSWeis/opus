@@ -12,10 +12,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-
-      file: {
-        type: DataTypes.STRING,
-      },
       file: {
         type: DataTypes.STRING,
       },
