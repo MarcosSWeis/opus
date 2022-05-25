@@ -16,14 +16,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    street_1: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    street_2: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     all_departments: {
       type: DataTypes.INTEGER,
       allowNull: false,
