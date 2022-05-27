@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
 
-    firt_name: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
