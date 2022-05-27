@@ -21,6 +21,8 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { loadCondo } = require("./src/loadData/CondoLoad.js");
 const { loadTowers } = require("./src/loadData/TowersLoad.js");
+const { loadUsers } = require("./src/loadData/UsersLoad.js");
+const { loadDepart } = require("./src/loadData/DepartLoad.js");
 
 const port = process.env.PORT || 5040;
 
@@ -29,6 +31,8 @@ conn.sync({force: true} ).then(() => {
   server.listen(port, async () => {
     await loadCondo();
     await loadTowers();
+    await loadDepart ();
+    await loadUsers();
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console
   });

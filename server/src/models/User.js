@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define("user", {
     departament_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
 
     firt_name: {
@@ -25,11 +26,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     dni: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
     },
-
+    image:{
+      type: DataTypes.TEXT,
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   });
 };
