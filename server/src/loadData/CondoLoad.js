@@ -1,13 +1,19 @@
-const { Condos } = require("./db.js");
+const { Condos } = require("../db");
 
-const loadCarousel = async () => {
+const condo = {
+  condominium_name:"No-contry",
+  street_1:"Av siempre viva",
+  street_2:"Cll 123",
+}
+
+const loadCondo = async () => {
   try {
-    await Condos.Create({condominium_name:"No-contry"});
+    await Condos.create(condo);
   } catch (error) {
-    return error;
+    console.log (error);
   }
 };
 
 module.exports = {
-  loadCarousel,
+  loadCondo,
 }
