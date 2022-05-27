@@ -1,6 +1,6 @@
 const { User } = require("../db");
 const bcrypt = require("bcryptjs");
-const { create, update } = require("../services/user.services");
+/*const { create, update } = require("../services/user.services");*/
 
 /**
  * It creates a new user with the email, dni, first_name, last_name and password from the request body,
@@ -9,8 +9,22 @@ const { create, update } = require("../services/user.services");
  * @param res - The response object.
  * @param next - The next middleware function in the stack.
  */
+
 async function createUser(req, res, next) {
+  //   async  function departamento(req.TowerName, req.floor ,  req.numDeApartamento){
+  //    const towerId =  await Tower.findOne({
+  //        where : {
+  //         tower_name: req.TowerName,
+  //     },
+  //     attributes :["id"]
+  // }) ;
+  //     const departamentId = await Departments.findOne({
+
+  //         });
+
+  //     }
   User.create({
+    //departament_id :
     email: req.body.email,
     dni: req.body.dni,
     first_name: req.body.first_name,
