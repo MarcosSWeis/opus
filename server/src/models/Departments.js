@@ -8,6 +8,12 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       allowNull: false,
     },
+    tower_id:{
+      type: DataTypes.INTEGER,
+    },
+    Number:{
+      type: DataTypes.INTEGER,
+    },
     floor: {
       type: DataTypes.INTEGER,
       allowNull: false,
