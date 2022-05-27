@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + "/.env" });
+require("dotenv").config(/*{ path: __dirname + "/.env" }*/);
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
@@ -70,8 +70,16 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Tower, Condos, Department, Comment, Social_space, Shift } =
-  sequelize.models;
+const {
+  User,
+  Tower,
+  Condos,
+  Department,
+  Comment,
+  Social_space,
+  Shift,
+  Response,
+} = sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo
 
@@ -161,6 +169,30 @@ Shift.belongsTo(Social_space, {
   as: "social_space",
   foreignKey: "social_space_id",
   targetKey: "id",
+});
+
+User.hasMany(Response, {
+  as: "response",
+  foreignKey: "user_id",
+  sourceKey: "id",
+});
+
+Response.belongsTo(User, {
+  as: "user",
+  foreignKey: "user_id",
+  targetKey: "id",
+});
+
+Comment.belongsToMany(Response, {
+  foreignKey: "comment_id",
+  targetKey: "id",
+  through: "comments_responses",
+});
+
+Response.belongsToMany(Comment, {
+  foreignKey: "response_id",
+  targetKey: "id",
+  through: "comments_responses",
 });
 
 module.exports = {

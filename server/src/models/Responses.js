@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "comment",
+    "response",
     {
       user_id: {
         type: DataTypes.INTEGER,
@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+
       file: {
         type: DataTypes.STRING,
       },
