@@ -1,8 +1,6 @@
 const { User } = require("../db");
 const bcrypt = require("bcryptjs");
-/* const { create, update } = require("../services/user.services"); */
-
-
+const { create, update } = require("../services/user.services");
 
 /**
  * It creates a new user with the email, dni, first_name, last_name and password from the request body,
@@ -12,21 +10,16 @@ const bcrypt = require("bcryptjs");
  * @param next - The next middleware function in the stack.
  */
 async function createUser(req, res, next) {
- 
-User.create({
-email:req.body.email,
-dni:req.body.dni,
-firt_name:req.body.firt_name,
-last_name:req.body.last_name,
-password:bcrypt.hashSync(req.body.password, 10) })
+  User.create({
+    email: req.body.email,
+    dni: req.body.dni,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    password: bcrypt.hashSync(req.body.password, 10),
+  })
     .then((user) => res.json(user))
     .catch(next);
 }
-
-
-
-
-
 
 /**
  * I'm trying to update the user's data and the roles that the user has.
@@ -36,31 +29,26 @@ password:bcrypt.hashSync(req.body.password, 10) })
  * @param next - The next middleware function in the stack.
  */
 async function updateUser(req, res, next) {
-    try {
-        let data = await User.findByPk(req.params.id);
-        
-        console.log("data", data);
-        data.update(req.body);
-    
-     /*    const toAdmin = await Role.findAll({
+  try {
+    let data = await User.findByPk(req.params.id);
+
+    console.log("data", data);
+    data.update(req.body);
+
+    /*    const toAdmin = await Role.findAll({
           where: {
             name: {
               [Op.or]: req.body.roles,
             },
           },
         }); */
-       /*  console.log("toAdmin", toAdmin);
+    /*  console.log("toAdmin", toAdmin);
         data.setRoles(toAdmin); */
-        res.status(202).send({ data, message: "Usuario Actualizado Exitosamente" });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-
-
-
-
+    res.status(202).send({ data, message: "Usuario Actualizado Exitosamente" });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 /**
  * It's an async function that returns a promise that resolves to an array of users.
@@ -87,9 +75,6 @@ async function getUsers(req, res, next) {
   }
 }
 
-
-
-
 /**
  * It's an async function that takes in a request, response, and next function as parameters. It then
  * tries to find a user by id and returns a 200 status code with the data and a message if the user is
@@ -114,11 +99,6 @@ async function getUserById(req, res, next) {
     res.status(500).json(err);
   }
 }
-
-
-
-
-
 
 /**
  * It deletes a user from the database.
@@ -146,16 +126,10 @@ async function deleteUser(req, res, next) {
   }
 }
 
-
-
-
-
 module.exports = {
   createUser,
   updateUser,
   deleteUser,
   getUserById,
   getUsers,
-
- 
 };

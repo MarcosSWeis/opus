@@ -1,5 +1,4 @@
-const  {User} =require('../db');
-
+const { User } = require("../db");
 
 /**
  * It checks if the email or dni already exists in the database, if it does, it sends a message to the
@@ -27,8 +26,6 @@ const checkDuplicateEmailOrDni = (req, res, next) => {
   });
 };
 
-
-
 /* const verifyDuplicatedInUpdate =(id, params) => {
 
     return new Promise((resolve, reject) => {
@@ -52,11 +49,6 @@ const checkDuplicateEmailOrDni = (req, res, next) => {
     
 } */
 
-
-module.exports= {
-    checkDuplicateEmailOrDni,
-   
-
-}
-
-
+module.exports = {
+  checkDuplicateEmailOrDni,
+};
