@@ -27,11 +27,11 @@ const { loadDepart } = require("./src/loadData/DepartLoad.js");
 const port = process.env.PORT || 5040;
 
 // Syncing all the models at once.
-conn.sync({force: true} ).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(port, async () => {
     await loadCondo();
     await loadTowers();
-    await loadDepart ();
+    await loadDepart();
     await loadUsers();
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console

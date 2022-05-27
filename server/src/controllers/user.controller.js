@@ -1,4 +1,4 @@
-const { User } = require("../db");
+const { User, Tower, Department } = require("../db");
 const bcrypt = require("bcryptjs");
 /*const { create, update } = require("../services/user.services");*/
 
@@ -11,20 +11,35 @@ const bcrypt = require("bcryptjs");
  */
 
 async function createUser(req, res, next) {
-  //   async  function departamento(req.TowerName, req.floor ,  req.numDeApartamento){
-  //    const towerId =  await Tower.findOne({
-  //        where : {
-  //         tower_name: req.TowerName,
-  //     },
-  //     attributes :["id"]
-  // }) ;
-  //     const departamentId = await Departments.findOne({
+  async function departamento(TowerName, floor, numDeApartamento) {
+    const towerId = await Tower.findOne({
+      where: {
+        tower_name: TowerName,
+      },
+      attributes: ["id"],
+      raw: true,
+    });
 
-  //         });
+    console.log(towerId, "hola");
+    const departamentId = await Department.findOne({
+      where: {
+        floor: floor,
+        tower_id: towerId.id,
+        Number: numDeApartamento,
+      },
+      attributes: ["id"],
+    });
+    return departamentId.id;
+  }
 
-  //     }
+  const apartamentID = await departamento(
+    req.body.TowerName,
+    req.body.floor,
+    req.body.numDeApartamento
+  );
+
   User.create({
-    //departament_id :
+    departament_id: apartamentID,
     email: req.body.email,
     dni: req.body.dni,
     first_name: req.body.first_name,
