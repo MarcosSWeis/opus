@@ -2,13 +2,6 @@ const { User, Tower, Department } = require("../db");
 const bcrypt = require("bcryptjs");
 /*const { create, update } = require("../services/user.services");*/
 
-/**
- * It creates a new user with the email, dni, first_name, last_name and password from the request body,
- * and then returns the created user as a JSON object.
- * @param req - The request object.
- * @param res - The response object.
- * @param next - The next middleware function in the stack.
- */
 
 async function createUser(req, res, next) {
   async function departamento(TowerName, floor, numDeApartamento) {
@@ -50,13 +43,6 @@ async function createUser(req, res, next) {
     .catch(next);
 }
 
-/**
- * I'm trying to update the user's data and the roles that the user has.
- * </code>
- * @param req - the request object
- * @param res - the response object
- * @param next - The next middleware function in the stack.
- */
 async function updateUser(req, res, next) {
   try {
     let data = await User.findByPk(req.params.id);
@@ -79,12 +65,7 @@ async function updateUser(req, res, next) {
   }
 }
 
-/**
- * It's an async function that returns a promise that resolves to an array of users.
- * @param req - The request object.
- * @param res - The response object.
- * @param next - A function that you call to pass control to the next middleware function.
- */
+
 
 async function getUsers(req, res, next) {
   try {
@@ -104,16 +85,6 @@ async function getUsers(req, res, next) {
   }
 }
 
-/**
- * It's an async function that takes in a request, response, and next function as parameters. It then
- * tries to find a user by id and returns a 200 status code with the data and a message if the user is
- * found, or a 400 status code with a message if the user is not found. If there is an error, it
- * returns a 500 status code with the error.
- * @param req - The request object.
- * @param res - The response object.
- * @param next - The next middleware function in the stack.
- * @returns The data is being returned.
- */
 async function getUserById(req, res, next) {
   try {
     let { id } = req.params;
@@ -129,12 +100,6 @@ async function getUserById(req, res, next) {
   }
 }
 
-/**
- * It deletes a user from the database.
- * @param req - The request object.
- * @param res - The response object.
- * @param next - The next middleware function in the stack.
- */
 
 async function deleteUser(req, res, next) {
   try {
