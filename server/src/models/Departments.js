@@ -35,6 +35,9 @@ module.exports = (sequelize) => {
     },
     rent: {
       type: DataTypes.FLOAT,
+    },
+    image:{
+      type: DataTypes.ARRAY(DataTypes.TEXT),
     }
   },
   {
