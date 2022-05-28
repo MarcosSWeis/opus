@@ -5,6 +5,12 @@ module.exports = (sequelize) => {
     space: {
       type: DataTypes.STRING,
     },
+    images:{
+        type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
+    description:{
+      type: DataTypes.TEXT,
+    },
     condominium_id: {
       type: DataTypes.INTEGER,
     },
