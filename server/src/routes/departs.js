@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {Department, User} = require ("../db")
+const {Department, User, Tower} = require ("../db")
 
 const router = Router();
 
@@ -21,6 +21,25 @@ router.get ("/onsale", async (req, res) => {
   }
 });
 
+router.get ("/all",async (req, res)=>{
+  try {
+    const departAll = await Department.findAll({
+      include:[{model: User, as: "user", attributes: ["first_name", "last_name", "email", "cel"],},
+      {model: Tower, as:"tower" , attributes: ["tower_name","elevators"]}],
+    });
+    res.json (departAll)
+
+  }catch (err){
+    res.status(500).json({
+      message: "Error al obtener los departamentos",
+      err,
+    });
+  }
+})
+
+router.get ("/filter", async (req, res)=>{
+  
+})
 
 
 
