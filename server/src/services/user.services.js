@@ -1,59 +1,68 @@
 const bcrypt = require("bcryptjs");
 const { User } = require("../db");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
-async function create(params) {
-  if (await User.findOne({ where: { email: params.email } })) {
-    throw 'Email" ' + params.email + ' "  se Encuentra Registrado';
-  } else if (await User.findOne({ where: { dni: params.dni } })) {
-    throw 'Dni  "' + params.dni + ' " se encuentra registrado';
-  }
-  const user = new User(params);
+async function validateResetToken({ token }) {
+ 
+ 
+ 
+  const user = await User.findOne({
+    where: {
+      resetToken: token,
+      resetTokenExpires: { [Op.gt]: Date.now() },
+    },
+  });
 
-  user.password = await hash(params.password);
+  if (!user) throw "Invalid token";
 
+  return user;
+}
+
+async function forgotPassword({ email }) {
+  const user = await User.findOne({
+    where: { email },
+  });
+  if (!user) return;
+
+  user.resetToken = randomTokenString();
+  uaser.resetTokenExpires = new Date(date.now() + 24 * 60 * 60 * 1000);
   await user.save();
-  return basicDetails(user);
+
+  await sendPasswordResetEmail(user, origin);
 }
 
-async function getById(id) {
-  const account = await getAccount(id);
-  return basicDetails(account);
+function randomTokenString() {
+  return crypto.randomBytes(40).toString("hex");
 }
 
-async function update(id, params) {
-  const account = await getAccount(id);
+async function sendPasswordResetEmail(user, origin) {
+  let message;
 
-  // validate (if email was changed)
-  if (
-    params.email &&
-    account.email !== params.email &&
-    (await db.Account.findOne({ where: { email: params.email } }))
-  ) {
-    throw 'Email "' + params.email + '" Esta en uso ';
+  if (origin) {
+    const resetUrl = `${origin}/reset-password?tken=${user.resetToken}`;
+    message = `<p>Porfavor ve al siguiente link y cambia tu password el link es valido por  1 day:</p>
+<p><a href="${resetUrl}">${resetUrl}</a></p>`;
+  } else {
+    message = `<p>Porfavor use el siguiente token para cambiar su password   <code>/user/reset-password</code> api route:</p>
+<p><code>${user.resetToken}</code></p>`;
   }
 
-  // hash password if it was entered
-  if (params.password) {
-    params.password = await hash(params.password);
-  }
-
-  // copy params to account and save
-  Object.assign(account, params);
-  account.updated = Date.now();
-  await account.save();
-
-  return basicDetails(account);
+  await sendEmail({
+    to: user.email,
+    subject: "Lupo- Reset Password",
+    html: `<h4>Reset Password Email</h4>
+           ${message}`,
+  });
 }
 
-async function getAccount(id) {
-  const account = await User.findByPk(id);
-  if (!account) throw "Account not found";
-  return account;
-}
+async function resetPassword({ tokem, password }) {
+  const user = await validateResetToken({ token });
 
-function basicDetails(user) {
-  const { id, firt_name, last_name, email,dni, role, created, updated } = user;
-  return { id, firt_name, last_name, email,dni, role, created, updated };
+  user.password = await hash(password);
+  uase.password = Date.now();
+  user.resetToken = null;
+  await user.save();
 }
 
 const hash = (password) => {
@@ -61,6 +70,7 @@ const hash = (password) => {
 };
 
 module.exports = {
-  create,
-  update,
+  resetPassword,
+  forgotPassword,
+  validateResetToken,
 };
