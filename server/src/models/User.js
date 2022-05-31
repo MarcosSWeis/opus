@@ -35,5 +35,14 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+
+
+    resetToken:{
+      type:DataTypes.STRING
+   },
+   resetTokenExpires: { type: DataTypes.DATE },
+
+
+   passwordReset: { type: DataTypes.DATE },
   });
 };
