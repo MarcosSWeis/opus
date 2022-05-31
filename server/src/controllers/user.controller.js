@@ -1,6 +1,8 @@
-const { User, Tower, Department } = require("../db");
+const { User, Tower, Department, Roles } = require("../db");
 const bcrypt = require("bcryptjs");
-/*const { create, update } = require("../services/user.services");*/
+
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 /**
  * It creates a new user with the email, dni, first_name, last_name and password from the request body,
@@ -46,8 +48,30 @@ async function createUser(req, res, next) {
     last_name: req.body.last_name,
     password: bcrypt.hashSync(req.body.password, 10),
   })
-    .then((user) => res.json(user))
-    .catch(next);
+    .then((user) => {
+      if (req.body.roles) {
+        Roles.findAll({
+          where: {
+            name: {
+              [Op.or]: req.body.roles,
+            },
+          },
+        }).then((roles) => {
+          user.setRoles(roles).then(() => {
+            res
+              .status(200)
+              .send({ message: "Usuario Creado Satisfactoriamente" });
+          });
+        });
+      } else {
+        user.setRoles([1]).then(() => {
+          res.send({ message: "Usuario Creado Satisfactoriamente" });
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "err.message" });
+    });
 }
 
 /**
@@ -61,18 +85,14 @@ async function updateUser(req, res, next) {
   try {
     let data = await User.findByPk(req.params.id);
 
+   /*  if(Number(req.params.id) !== req.user.id && req.user.role) */
+    if (req.body.password) {
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
+    }
     console.log("data", data);
+
     data.update(req.body);
 
-    /*    const toAdmin = await Role.findAll({
-          where: {
-            name: {
-              [Op.or]: req.body.roles,
-            },
-          },
-        }); */
-    /*  console.log("toAdmin", toAdmin);
-        data.setRoles(toAdmin); */
     res.status(202).send({ data, message: "Usuario Actualizado Exitosamente" });
   } catch (error) {
     console.log(error);
