@@ -310,3 +310,137 @@ body{
     color: #ffffff;
     box-shadow: inset 250px 0 0 0 #F83C4A;
 }
+
+/* Parte contactos */
+.contactos{
+    position: relative;
+    height: 500px;
+    display: flex;
+    position: relative;
+    top: 70px;
+  }
+  
+  .imagen{
+    width: 100%;
+    height: 130%;
+    left: 0px;
+    top: 5%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    background-color:rgba(0,0,0,0.6);
+  }
+  
+  .containerContacto{
+    top: 276px;
+    background: transparent;
+    width: 500px;
+    margin: auto;
+    height: 180px;
+    position: relative;
+    left: 370px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    flex-wrap: nowrap;
+  }
+  
+  .containerContacto2 {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    margin-left: 5%;
+  }
+  
+  .form-contact {
+    width: 110%;
+    font-family: "Arial", Times, serif;
+  }
+  
+  .form-contact-input {
+    width: 49%;
+    color: #292929;
+    font-size: 18px;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    text-indent: 20px;
+  }
+  
+  .form-contact-textarea {
+    width: 100%;
+    color: #292929;
+    font-size: 18px;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 200px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    text-indent: 20px;
+    padding-top: 16px;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: "Arial", Times, serif;
+    margin-left: 0px;
+  }
+  
+  .form-contact-button {
+    width: 20%;
+    font-size: 18px;
+    border-radius: 10px;
+    color: #fff;
+    height: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background: #F83C4A;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #500707;
+    border-right: 1px solid #500707;
+    transition: 1s;
+    margin-left: 80%;
+  }
+  
+  .form-contact-button:hover {
+    opacity: 1;
+  }
+  
+  .tituloContacto{
+    position: absolute;
+    width: 715px;
+    height: 75px;
+    left: 27px;
+    top: 38px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 75px;
+    color: #FFFFFF;
+    z-index: 9;
+  }
+  
+  .barra{
+    position: absolute;
+      width: 615px;
+      height: 17px;
+      left: 22px;
+      top: 97px;
+      background: #F83C4A;
+  }
+  
+.aContacto{
+    text-decoration: none;
+    color: #FFFFFF;
+  }
