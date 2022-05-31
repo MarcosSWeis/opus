@@ -8,7 +8,7 @@ body{
     font-size: 16px;
     font-weight: 400;
     color: #666666;
-    background: #eaeff4;
+    background: #FFFFFF;
 }
 
 .wrapper{
@@ -58,6 +58,89 @@ body{
 
 }
 
+.seccionNosotros{
+    background-color: black;
+    color:white;
+    Font-style: SemiBold;
+    Font-size: 24px;
+    Line-height: 43px;
+    Line-height: 100%; 
+    align-content: center;
+    padding: 50px;
+    text-align:center;
+    width: 100%;
+    height: 100%;
+} 
+
+#about{
+    padding-top:  80px;
+    padding-bottom:  80px
+
+}
+
+.about-image{
+    float: left;
+    width: 50%;
+    padding: 40px;
+
+}
+
+.about-image  img{
+    width: 100%;
+}
+
+.about-text{
+    float: right;
+    width: 50%;
+    padding: 150px 50px; 
+
+}
+
+#description{
+    padding-top: 120px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+#description h2{
+    padding-bottom: 25px;
+}
+
+#description img{
+    width: 250px;
+    height: 250px;
+}
+
+.descrption-row{
+    padding-top: 25px;
+}
+
+.description-box{
+    float: left;
+    width: 25%;
+    padding: 25px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+}
+
+.shadowCard{
+    box-shadow:20px 20px 20px 10px grey ;
+    padding-top: 20px;
+}
+
+.falsobtn{
+    background-color: red;
+    color: white;
+    padding: 5px; 
+    margin: auto;
+    width: 50%;
+    align-items: center;
+    border-radius: 5px;
+}
 
 @media(max-width: 575px){
     .login .contenedor{
@@ -73,6 +156,39 @@ body{
     .login .col-right{
         padding: 30px;
     }
+
+}
+
+@media(max-width:768px){
+
+.about {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.about-image {
+    float: none;
+    width: 100%;
+    padding: 10px;
+}
+
+.about-text {
+    float: none;
+    width: 100%;
+    padding: 20px 10px;
+}
+
+
+.description {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.description-box {
+    float: none;
+    width: 100%;
+    padding: 5px;
+}
 
 }
 
