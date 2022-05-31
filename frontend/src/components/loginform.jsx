@@ -19,7 +19,7 @@ const LoginForm = () => {
                     <form action="">
                         <p>
                             <label>Username/Email address<span>*</span></label>
-                            <input type="text" placeholder="Username or Email"  maxlength="20" required />
+                            <input type="text" placeholder="Username or Email"  maxlength="40" required />
                         </p>
                         <p>
                             <label>Password<span>*</span></label>

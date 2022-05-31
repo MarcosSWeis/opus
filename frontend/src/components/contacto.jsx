@@ -4,7 +4,7 @@ import iconoTel from "../imgContacto/iconodetelefono.svg"
 import iconoCarta from "../imgContacto/iconodecarta.svg"
 import iconoInstagram from "../imgContacto/iconodeinstagram.svg"
 import fondo from "../imgContacto/imagendos.png"
-import "../App.css" 
+
 
 
 export default function contacto() {
