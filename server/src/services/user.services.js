@@ -23,7 +23,7 @@ async function forgotPassword({ email }) {
   if (!user) return;
 
   user.resetToken = randomTokenString();
-  uaser.resetTokenExpires = new Date(date.now() + 24 * 60 * 60 * 1000);
+  user.resetTokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
   await user.save();
 
   await sendPasswordResetEmail(user, origin);
@@ -53,11 +53,11 @@ async function sendPasswordResetEmail(user, origin) {
   });
 }
 
-async function resetPassword({ tokem, password }) {
+async function resetPassword({ token, password }) {
   const user = await validateResetToken({ token });
 
   user.password = await hash(password);
-  uase.password = Date.now();
+  user.password = Date.now();
   user.resetToken = null;
   await user.save();
 }

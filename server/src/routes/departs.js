@@ -47,13 +47,14 @@ router.get("/filter", async (req, res) => {
   const filters = {
     onsale: true,
   };
-  req.body.toilets ? (filters.toilets = req.body.toilets) : null;
-  req.body.rooms ? (filters.rooms = req.body.rooms) : null;
-  req.body.floor ? (filters.floor = req.body.floor) : null;
-  //req.body.price tiene que ser un array
-  req.body.price ? (filters.price = { [Op.between]: req.body.price }) : null;
-  //req.body.size  tiene que ser un array
-  req.body.size ? (filters.size = { [Op.between]: req.body.size }) : null;
+  console.log(req.query);
+  req.query.toilets ? (filters.toilets = req.query.toilets) : null;
+  req.query.rooms ? (filters.rooms = req.query.rooms) : null;
+  req.query.floor ? (filters.floor = req.query.floor) : null;
+  //req.query.price tiene que ser un array
+  req.query.price ? (filters.price = { [Op.between]: req.query.price }) : null;
+  //req.query.size  tiene que ser un array
+  req.query.size ? (filters.size = { [Op.between]: req.query.size }) : null;
   try {
     const departOnsale = await Department.findAll({
       where: filters,
