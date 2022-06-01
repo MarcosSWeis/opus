@@ -4,9 +4,6 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
 async function validateResetToken({ token }) {
- 
- 
- 
   const user = await User.findOne({
     where: {
       resetToken: token,
