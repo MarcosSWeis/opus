@@ -1,0 +1,77 @@
+const { Router } = require("express");
+const { Op } = require("sequelize");
+const { Department, User, Tower } = require("../db");
+
+const router = Router();
+
+/* router.get ("/onsale", async (req, res) => {
+  try {
+    const departOnsale = await Department.findAll({
+      where: {
+        onsale: true,
+      },  
+      include: {model: User, as:"user" , attributes: ["first_name", "last_name", "email", "cel"]},
+    });
+
+    res.json (departOnsale)
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al obtener los departamentos",
+      error,
+    });
+  }
+}); */
+
+router.get("/all", async (req, res) => {
+  try {
+    const departAll = await Department.findAll({
+      include: [
+        {
+          model: User,
+          as: "user",
+          attributes: ["first_name", "last_name", "email", "cel"],
+        },
+        { model: Tower, as: "tower", attributes: ["tower_name", "elevators"] },
+      ],
+    });
+    res.json(departAll);
+  } catch (err) {
+    res.status(500).json({
+      message: "Error al obtener los departamentos",
+      err,
+    });
+  }
+});
+
+router.get("/filter", async (req, res) => {
+  const filters = {
+    onsale: true,
+  };
+  console.log(req.query);
+  req.query.toilets ? (filters.toilets = req.query.toilets) : null;
+  req.query.rooms ? (filters.rooms = req.query.rooms) : null;
+  req.query.floor ? (filters.floor = req.query.floor) : null;
+  //req.query.price tiene que ser un array
+  req.query.price ? (filters.price = { [Op.between]: req.query.price }) : null;
+  //req.query.size  tiene que ser un array
+  req.query.size ? (filters.size = { [Op.between]: req.query.size }) : null;
+  try {
+    const departOnsale = await Department.findAll({
+      where: filters,
+      include: {
+        model: User,
+        as: "user",
+        attributes: ["first_name", "last_name", "email", "cel"],
+      },
+    });
+
+    res.json(departOnsale);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al obtener los departamentos",
+      error,
+    });
+  }
+});
+
+module.exports = router;

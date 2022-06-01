@@ -8,6 +8,14 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       allowNull: false,
     },
+    tower_id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    Number:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     floor: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -24,11 +32,19 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
 
     },
-    sale: {
-      type: DataTypes.FLOAT,
+    onsale: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
-    rent: {
+    measure:{
       type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    description:{
+      type: DataTypes.TEXT,
+    },
+    image:{
+      type: DataTypes.ARRAY(DataTypes.TEXT),
     }
   },
   {

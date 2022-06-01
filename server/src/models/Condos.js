@@ -12,5 +12,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    street_1: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    street_2: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image:{
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+    }
   });
 };
