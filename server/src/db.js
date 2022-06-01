@@ -79,7 +79,7 @@ const {
   Social_space,
   Shift,
   Response,
-  Roles
+  Roles,
 } = sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo
@@ -196,16 +196,16 @@ Response.belongsToMany(Comment, {
   through: "comments_responses",
 });
 
-Roles.belongsToMany(User, {
-  through: "user_Roles", 
-  forenKey: "role_id", 
-  otherKey: "userId"}); 
-User.belongsToMany(Roles, {
-  through: "user_Roles", 
-  forenKey: "user_id", 
-  otherKey: "roleId"});
+// Roles.belongsToMany(User, {
+//   through: "user_Roles",
+//   forenKey: "role_id",
+//   otherKey: "userId"});
+// User.belongsToMany(Roles, {
+//   through: "user_Roles",
+//   forenKey: "user_id",
+//   otherKey: "roleId"});
 
-  ROLES = ["user", "admin"];
+//ROLES = ["user", "admin"];
 
 module.exports = {
   ...sequelize.models,

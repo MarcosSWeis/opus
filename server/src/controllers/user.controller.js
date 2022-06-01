@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
-
 async function createUser(req, res, next) {
   async function departamento(TowerName, floor, numDeApartamento) {
     const towerId = await Tower.findOne({
@@ -39,31 +38,35 @@ async function createUser(req, res, next) {
     dni: req.body.dni,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
+    cel: req.body.cel,
     password: bcrypt.hashSync(req.body.password, 10),
   })
     .then((user) => {
-      if (req.body.roles) {
-        Roles.findAll({
-          where: {
-            name: {
-              [Op.or]: req.body.roles,
-            },
-          },
-        }).then((roles) => {
-          user.setRoles(roles).then(() => {
-            res
-              .status(200)
-              .send({ message: "Usuario Creado Satisfactoriamente" });
-          });
-        });
-      } else {
-        user.setRoles([1]).then(() => {
-          res.send({ message: "Usuario Creado Satisfactoriamente" });
-        });
-      }
+      res.status(200).json(user);
     })
+    // .then((user) => {
+    //   if (req.body.roles) {
+    //     Roles.findAll({
+    //       where: {
+    //         name: {
+    //           [Op.or]: req.body.roles,
+    //         },
+    //       },
+    //     }).then((roles) => {
+    //       user.setRoles(roles).then(() => {
+    //         res
+    //           .status(200)
+    //           .send({ message: "Usuario Creado Satisfactoriamente" });
+    //       });
+    //     });
+    //   } else {
+    //     user.setRoles([1]).then(() => {
+    //       res.send({ message: "Usuario Creado Satisfactoriamente" });
+    //     });
+    //   }
+    // })
     .catch((err) => {
-      res.status(500).send({ message: "err.message" });
+      res.status(500).send({ message: err });
     });
 }
 
@@ -71,7 +74,7 @@ async function updateUser(req, res, next) {
   try {
     let data = await User.findByPk(req.params.id);
 
-   /*  if(Number(req.params.id) !== req.user.id && req.user.role) */
+    /*  if(Number(req.params.id) !== req.user.id && req.user.role) */
     if (req.body.password) {
       req.body.password = bcrypt.hashSync(req.body.password, 10);
     }
@@ -84,8 +87,6 @@ async function updateUser(req, res, next) {
     console.log(error);
   }
 }
-
-
 
 async function getUsers(req, res, next) {
   try {
@@ -119,7 +120,6 @@ async function getUserById(req, res, next) {
     res.status(500).json(err);
   }
 }
-
 
 async function deleteUser(req, res, next) {
   try {
