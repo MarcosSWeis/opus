@@ -1,8 +1,8 @@
 import React from "react";
 import Logo from "../img/logo 1.png";
-import Logoig from "../img/logoig.png";
-import Logomail from "../img/logomail.png";
-import Logoubi from "../img/logoubi.png";
+import Logoig from "../img/logoig.svg";
+import Logomail from "../img/logogmail.svg";
+import Logoubi from "../img/logoubi.svg"
 
 export default function carrusel() {
     return(
@@ -21,15 +21,16 @@ export default function carrusel() {
                 <div class="nav-footer col-12 col-lg">
                     <a href="">Nosotros</a>
                     <div>
-                    <a href="">Nosotros</a>
+                    <a href="">Departamentos</a>
                     </div>
                     
-                    <a href="">Nosotros</a>
+                    <a href="">Contacto</a>
                 </div>
                 <div class="col-12 col-lg">
-                    <a href="">Telegram</a>
+                    <img src="" alt="" />
                 </div>
-                <div class="footer-adress col-12 col-lg">
+               
+                <div class="text-start footer-adress col-12 col-lg">
                    <p>Calle: Yrigoyen Hipólito 3972
 
 Ciudad: Buenos Aires
@@ -43,10 +44,13 @@ Código de llamada del país: +54
 País: Argentina</p>
                 </div>
                 <div class="col-12 col-lg">
-                    <a href="">Terms and Conditions</a>
+                    <img src="" alt="" />
                 </div>
-                <div class="col-12 col-lg">
-                    <img src={} alt="" />
+              
+                <div class="logos col-12 col-lg">
+                    <img src={Logoubi} alt="" />
+                    <img src={Logomail} alt="" />
+                    <img src={Logoig} alt="" />
                 </div>
             </div>
         </div>

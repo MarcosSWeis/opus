@@ -1,12 +1,13 @@
 import React  from "react";
-
+import Logo from "../imgNavBar/logoH.svg"
+import Usuario from "../imgNavBar/usuario.svg"
 
 const Navbar  = () => {
     return ( 
         <>
                     <nav class="navbar navbar-expand-lg bg-light">
                                     <div class="container-fluid">
-                                                <a class="navbar-brand"> <img src="" alt="Logo de la empresa" /></a>
+                                                <a class="navbar-brand" href="#"> <img src={Logo} alt="Logo de la empresa" /></a>
                                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                                 <span class="navbar-toggler-icon"></span>
                                                 </button>
@@ -19,11 +20,11 @@ const Navbar  = () => {
                                                                 <a class="nav-link mx-5" href="#">Departamentos</a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                <a class="nav-link active mx-5" aria-current="page">Contacto</a>
+                                                                <a class="nav-link active mx-5" aria-current="page" href="#">Contacto</a>
                                                                 </li>
                                                     </ul>
                                                         <div>
-                                                                <button class="btn btn-outline-danger botonLogin   mx-5"   type="submit"><img src="" alt=" Imagen del login" /></button>
+                                                                <button class="btn btn-outline-danger botonLogin   mx-5"   type="submit"><img src={Usuario} alt=" Imagen del login" /></button>
                                                             </div>
                                             </div>
                                     </div>

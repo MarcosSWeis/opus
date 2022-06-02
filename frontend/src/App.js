@@ -1,10 +1,10 @@
+import React from 'react';
 import './App.css';
-import carrusel from '../../my-app/src/componentes/carrusel';
-
+ 
 function App() {
   return (
     <>
-    <carrusel/>
+   
     
     </>
       );

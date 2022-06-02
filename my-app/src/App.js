@@ -3,6 +3,7 @@ import './App.css';
 import Carrusel from './componentes/carrusel';
 import Body from './componentes/body';
 import Footer from './componentes/footer';
+import Navbar from './componentes/navbar';
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
 
     
     <div>
-    
+    <Navbar/>
     <Carrusel/>
     <Body/>
     <Footer/>
