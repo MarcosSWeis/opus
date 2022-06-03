@@ -1,11 +1,24 @@
 import React from "react";
 import Home1 from"../../img/1.png";
 import Home2 from "../../img/2.jpg";
+import { Carousel } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getImageCarrusel } from "../../redux/actions";
+import "./carrusel.css";
 
-export default function carrusel() {
+export default function Carrusel() {
+  const carousel = useSelector (state => state.imgCarrusel);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getImageCarrusel());
+  }, []);
+  console.log (carousel)
+    
+
     return(
-      <>
-
+/*       <>
 <main className="main" id="main">
         <div id="carousel" className="carousel slide carousel-fade" data-bs-ride="carousel" data-pause="false">
             <div className="carousel-inner">
@@ -32,10 +45,33 @@ export default function carrusel() {
                 </div>
             </div>
         </div>
-    </main>
+</main>
       
-      </>
-  
-       
+      </> */
+
+
+      <div>
+      <Carousel>
+        {carousel.length > 0 &&
+          carousel.map((e) => (
+            e.images.map ((img,index)=>(
+              <Carousel.Item key={index}>
+              <img
+                className="d-block w-100"
+                width="100%"
+                height="auto"
+                src={img}
+                alt="First slide"
+              />
+              <Carousel.Caption>
+                <h3>{e.title}</h3>
+                <p>{e.description}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            ))
+
+          ))}
+      </Carousel>
+    </div>   
     )
 }

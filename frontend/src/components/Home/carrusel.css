@@ -1,0 +1,38 @@
+.carousel-caption h3 {
+  /* color: #F83C4A; */
+  padding-left: 10px;
+  font-weight: 800;
+  font-size:60px;
+  font-family:"Work Sans";
+  margin: 0;
+  background: linear-gradient(to bottom, white 55%, #F83C4A 0%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.carousel{
+  padding: 0;
+}
+.carousel-caption p {
+  padding-left: 10px;
+  font-size:2vw;
+  font-weight:lighter;
+  font-style: italic;
+
+}
+
+.carousel-caption {
+  position: absolute;
+  right:0;
+  top: 0rem;
+  left:0px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align:left;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-item {
+  max-height: 100vh !important;
+}
