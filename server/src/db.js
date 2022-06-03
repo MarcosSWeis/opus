@@ -80,6 +80,7 @@ const {
   Shift,
   Response,
   Roles,
+  Carrousel,
 } = sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo
