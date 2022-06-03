@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getApartament } from "../redux/actions";
 import Skeleton from "react-loading-skeleton";
 import Filter from "./Filter";
-import Paginate from "./Paginate";
+import Paginate from "./Paginate/Paginate";
 import TemplateShowDepartaments from "./TemplateShowDepartaments";
 import $ from "jquery";
 
