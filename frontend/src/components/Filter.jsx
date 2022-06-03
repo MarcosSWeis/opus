@@ -17,10 +17,13 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
         >
           <div class={`input-group mb-3 ${stylesFilter.w_12}`}>
             <div class={`${stylesFilter.m_auto}`}>
-              <label htmlFor="rooms" className="m-auto text-dark">
+              <label htmlFor="rooms"
+              style={{fontWeight:'bold'}}
+              className="m-auto text-dark">
                 Habitaciones
               </label>
               <select
+              style={{fontWeight:'bold'}}
                 class="form-select m-auto"
                 id="rooms"
                 name="rooms"
@@ -33,12 +36,17 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
               </select>
             </div>
           </div>
-          <div class={`input-group mb-3 ${stylesFilter.w_12}`}>
+          <div 
+          style={{fontWeight:'bold'}}
+          class={`input-group mb-3 ${stylesFilter.w_12}`}>
             <div class={`${stylesFilter.m_auto}`}>
-              <label htmlFor="toilets" className="m-auto text-dark">
+              <label htmlFor="toilets" 
+            
+              className="m-auto text-dark">
                 Baños
               </label>
               <select
+                style={{fontWeight:'bold'}}
                 class="form-select m-auto"
                 id="toilets"
                 name="toilets"
@@ -51,12 +59,15 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
               </select>
             </div>
           </div>
-          <div class={`input-group mb-3 ${stylesFilter.w_12}`}>
+          <div 
+            style={{fontWeight:'bold'}}
+          class={`input-group mb-3 ${stylesFilter.w_12}`}>
             <div class={`${stylesFilter.m_auto}`}>
               <label htmlFor="floor" className="m-auto text-dark">
                 Piso
               </label>
               <select
+                style={{fontWeight:'bold'}}
                 class="form-select m-auto"
                 id="floor"
                 name="floor"
@@ -72,11 +83,16 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
           <div
             class={`input-group mb-3  ${stylesFilter.containerInputPrice} ${stylesFilter.w_25}`}
           >
-            <label htmlFor="Size" className="m-auto text-dark">
+            <label htmlFor="Size" 
+              style={{fontWeight:'bold'}}
+              className="m-auto text-dark">
               Precio
             </label>
-            <div className="d-flex justify-content-around">
+            <div 
+             
+            className="d-flex justify-content-around">
               <input
+               style={{fontWeight:'bold'}}
                 type="number"
                 class="form-control "
                 id="initialPrice"
@@ -87,6 +103,7 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
               />
 
               <input
+               style={{fontWeight:'bold'}}
                 type="number"
                 class="form-control mx-1"
                 id="endPrice"
@@ -101,11 +118,13 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
           <div
             class={`input-group mb-3  ${stylesFilter.containerInputPrice} ${stylesFilter.w_25}`}
           >
-            <label htmlFor="iniciaSize" className="m-auto text-dark">
+            <label htmlFor="iniciaSize"
+             style={{fontWeight:'bold'}} className="m-auto text-dark">
               m <sup>2</sup>
             </label>
             <div className="d-flex justify-content-around">
               <input
+               style={{fontWeight:'bold'}}
                 type="number"
                 class="form-control "
                 id="initialSize"
@@ -115,6 +134,7 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
               />
 
               <input
+               style={{fontWeight:'bold'}}
                 type="number"
                 class="form-control mx-1"
                 id="endPrice"
