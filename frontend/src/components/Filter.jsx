@@ -12,7 +12,7 @@ export default function Filter({ handlerSubmit, handlerChange, setPage }) {
         <form
           action=""
           id="formFilter"
-          className={`w-75 m-auto justify-content-around ${stylesFilter.d_flex} ${stylesFilter.d_block} `}
+          className={`${stylesFilter.w_80} m-auto justify-content-around ${stylesFilter.d_flex} ${stylesFilter.d_block}`}
           onSubmit={handlerSubmit}
         >
           <div class={`input-group mb-3 ${stylesFilter.w_12}`}>
