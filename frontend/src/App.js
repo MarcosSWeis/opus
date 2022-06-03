@@ -1,3 +1,7 @@
+
+import React from 'react';
+import './styles/contacto.css' 
+import Body from './components/body'
 import logo from "./logo.svg";
 import "./App.css";
 import "./styles/contacto.css";
@@ -7,6 +11,8 @@ import Nosotros from "./components/nosotros";
 import Contacto from "./components/contacto";
 import Departaments from "./components/departaments/departaments";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+
+
 
 function App() {
   return (
@@ -19,10 +25,23 @@ function App() {
           <Route path="/about" element={<Nosotros />} />
           <Route path="/depataments" element={<Departaments />} />
 
+
+      <Carrusel/>
+      <Body/>
+      <Footer/>
+       <LoginForm/> 
+      <Nosotros/>
+      <Footer/>
+
+      <Contacto/>
+     
+
+   
+
           <Route path="/contact" element={<Contacto />} />
         </Routes>
       </div>
-    </BrowserRouter>
+
   );
 }
 
