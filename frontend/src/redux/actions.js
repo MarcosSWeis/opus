@@ -18,7 +18,7 @@ export const getImageCarruselHome = () => {
 
 export const getApartament = (payload) => {
   try {
-    // console.log(payload);
+    console.log(payload, "redux");
     return async function (dispatch) {
       const departa = await axios.get("http://localhost:5040/departs/filter", {
         params: payload,
