@@ -1,6 +1,6 @@
 import React from "react";
-import Home1 from"../img/1.png";
-import Home2 from "../img/2.jpg";
+import Home1 from"../../img/1.png";
+import Home2 from "../../img/2.jpg";
 
 export default function carrusel() {
     return(

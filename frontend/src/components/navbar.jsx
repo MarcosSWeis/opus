@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             {" "}
             <img src={Logo} alt="Logo de la empresa" />
           </a>
@@ -35,7 +35,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li class="nav-item">
-                <Link to={"/depataments"} class="nav-link mx-5">
+                <Link to={"/departments"} class="nav-link mx-5">
                   Departamentos
                 </Link>
               </li>

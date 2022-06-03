@@ -1,9 +1,9 @@
 import React from "react";
-import tenis from "../img/4.png";
-import card2 from "../img/card2.png";
-import card3 from "../img/card3.png";
-import rectangle from "../img/Rectangle 108.png";
-import Main from "../img/main-img.png";
+import tenis from "../../img/4.png";
+import card2 from "../../img/card2.png";
+import card3 from "../../img/card3.png";
+import rectangle from "../../img/Rectangle 108.png";
+import Main from "../../img/main-img.png";
 
 
 export default function carrusel() {
