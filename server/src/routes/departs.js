@@ -48,25 +48,55 @@ router.get("/filter", async (req, res) => {
     onsale: true,
   };
   console.log(req.query);
+  const limit = 10;
+  const page = req.query.page - 1;
+  console.log(page, "page");
+  const offset = page * limit;
   req.query.toilets ? (filters.toilets = req.query.toilets) : null;
   req.query.rooms ? (filters.rooms = req.query.rooms) : null;
   req.query.floor ? (filters.floor = req.query.floor) : null;
   //req.query.price tiene que ser un array
   req.query.price ? (filters.price = { [Op.between]: req.query.price }) : null;
   //req.query.size  tiene que ser un array
-  req.query.size ? (filters.size = { [Op.between]: req.query.size }) : null;
+  req.query.size ? (filters.measure = { [Op.between]: req.query.size }) : null;
   try {
-    const departOnsale = await Department.findAll({
+    const { count, rows } = await Department.findAndCountAll({
       where: filters,
       include: {
         model: User,
         as: "user",
         attributes: ["first_name", "last_name", "email", "cel"],
       },
+      offset: offset,
+      limit: limit,
+      distinct: true,
     });
+    let ok;
+    let status;
+    let statusText;
+    if (rows.length !== 0) {
+      ok = true;
+      status = 200;
+      statusText = "OK";
+    } else {
+      ok = false;
+      status = 404;
+      statusText = "No se encontro departamento con esas caracteristicas";
+    }
+    const response = {
+      meta: {
+        ok: ok,
+        status: status,
+        statusText: statusText,
+        total: count,
+        url: "http://localhost:5040/departs/filter",
+      },
+      data: rows,
+    };
 
-    res.json(departOnsale);
+    res.json(response);
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: "Error al obtener los departamentos",
       error,

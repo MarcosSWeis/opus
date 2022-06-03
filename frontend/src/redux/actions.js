@@ -24,7 +24,7 @@ export const getApartament = (payload) => {
 
 export const getImageCarrusel = (payload) => {
   try {
-    // console.log(payload);
+    console.log(payload, "redux");
     return async function (dispatch) {
       const image = await axios.get("http://localhost:5040/carrousel");
       dispatch({
