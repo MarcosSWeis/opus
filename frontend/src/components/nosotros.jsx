@@ -56,7 +56,7 @@ const Nosotros = () => {
                         </div>
 
                     </div>
-                    <div class="description-box">
+                    <div className="description-box">
 
                     <div className="shadowCard">
                         <img src={card4}alt="" className="mb-3"/>

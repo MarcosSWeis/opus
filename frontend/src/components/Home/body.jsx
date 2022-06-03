@@ -22,35 +22,35 @@ export default function carrusel() {
            </div>
 
          
-        <div class="container">
+        <div className="container">
 
           
             
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <img src={tenis} class="card-img-top" alt="Dwayne Johnson"/>
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <div class="badges mb-2">
+            <div className="row">
+                <div className="col-12 col-md-6 col-lg-4 mb-4">
+                    <div className="card">
+                        <img src={tenis} className="card-img-top" alt="Dwayne Johnson"/>
+                        <div className="card-body">
+                            <h5 className="card-title"></h5>
+                            <div className="badges mb-2">
                             </div>
-                            <p class="card-text">En nuestros espacios disfrutarás de un ambiente cálido y tranquilo</p>
+                            <p className="card-text">En nuestros espacios disfrutarás de un ambiente cálido y tranquilo</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <img src={card2} class="card-img-top" alt="Dwayne Johnson"/>
-                        <div class="card-body">
-                            <p class="card-text">Vive la experiencia de disfrutar con tus mascotas al aire libre.</p>
+                <div className="col-12 col-md-6 col-lg-4 mb-4">
+                    <div className="card">
+                        <img src={card2} className="card-img-top" alt="Dwayne Johnson"/>
+                        <div className="card-body">
+                            <p className="card-text">Vive la experiencia de disfrutar con tus mascotas al aire libre.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <img src={card3} class="card-img-top" alt="Dwayne Johnson"/>
-                        <div class="card-body">
-                            <p class="card-text">En nuestros espacios disfrutarás de un ambiente cálido y tranquilo</p>
+                <div className="col-12 col-md-6 col-lg-4 mb-4">
+                    <div className="card">
+                        <img src={card3} className="card-img-top" alt="Dwayne Johnson"/>
+                        <div className="card-body">
+                            <p className="card-text">En nuestros espacios disfrutarás de un ambiente cálido y tranquilo</p>
                         </div>
                     </div>
                 </div>
@@ -62,11 +62,11 @@ export default function carrusel() {
 
 <section className="description flex">
 
-<div class="main-pic text-start">
-  <img src={Main} class="rounded" alt="..."/>
+<div className="main-pic text-start">
+  <img src={Main} className="rounded" alt="..."/>
 </div>
 
-<p class="lead ">
+<p className="lead ">
     OPUS tiene el  desarrollo más exclusivo de Buenos Aires en Argentina, diseñado y ubicado al Sur la zona con mayor plusvalía en la Ciudad, cerca de Centros comerciales, escuelas, hospitales y a tan sólo 15 minutos del Aeropuerto Internacional de Buenos Aires.
 Con excelentes amenidades como Caseta de Seguridad con Pluma de Acceso, Áreas de usos múltiples con Alberca, Gimnasio, Amplias áreas verdes con Jardines y Juegos infantiles, el Hogar que tú y tu familia se merecen.
 
