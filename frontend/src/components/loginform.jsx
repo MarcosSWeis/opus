@@ -3,18 +3,18 @@ import React  from "react";
 const LoginForm = () => {
     return ( 
         <>
-                    <div class="wrapper login">
-        <div class="contenedor">
-            <div class="col-left">
-                <div class="login-text">
+                    <div className="wrapper login">
+        <div className="contenedor">
+            <div className="col-left">
+                <div className="login-text">
                     <h2>Bienvendos</h2>
                     <p>Crea tu Perfil<br/>O Ingresa con  tu Usuario</p>
-                    <a href="" class="boton">Sign Up</a>
+                    <a href="" className="boton">Sign Up</a>
                 </div>
             </div>
 
-            <div class="col-right">
-                <div class="login-form">
+            <div className="col-right">
+                <div className="login-form">
                     <h2>Login</h2>
                     <form action="">
                         <p>
