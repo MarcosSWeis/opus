@@ -1,14 +1,12 @@
 import React from "react";
-import Logo from "../../img/logo 1.png";
-import Logoig from "../../img/logoig.svg";
-import Logomail from "../../img/logogmail.svg";
-import Logoubi from "../../img/logoubi.svg"
+import Logo from "../img/logo 1.png";
+import Logoig from "../img/logoig.svg";
+import Logomail from "../img/logogmail.svg";
+import Logoubi from "../img/logoubi.svg"
 
 export default function carrusel() {
     return(
       <>
-
-
       <footer id="footer" className="pb-4 pt-4">
         <div className="container">
             <div className="row text-center">

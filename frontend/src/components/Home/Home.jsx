@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './footer'
+
 import Carrusel from './carrusel'
 import Body from './body'
    
@@ -9,8 +9,6 @@ function Home() {
     <div>
       <Carrusel />
       <Body />
-      <Footer/>
-
     </div>
   )
 }

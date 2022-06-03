@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApartament } from "../../redux/actions";
-import s from "./departaments.module.css";
+import s from "./departments.module.css";
 
-export default function Departaments() {
+export default function Departments() {
   const dispatch = useDispatch();
   //recupero la informacion del estado que lo modifico la accion
   const departFilter = useSelector((state) => {
@@ -25,7 +25,6 @@ export default function Departaments() {
     <div>
       <h1>Departamentos</h1>
       <div className={s.container}>
- 
           {departFilter.map((departament) => (
             <div  className= {s.card} key={departament.id}>             
               <img src={departament.image[0]}/>
@@ -40,9 +39,5 @@ export default function Departaments() {
           ))}    
       </div>
     </div>
-            
-
-
-
   );
 }
