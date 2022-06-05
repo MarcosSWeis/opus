@@ -37,6 +37,7 @@ conn.sync({ force: false }).then(() => {
     // await LoadSpace();
     // await loadCarrousel();
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
+    console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console
   });
 });
