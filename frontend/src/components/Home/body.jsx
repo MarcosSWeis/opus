@@ -52,39 +52,7 @@ export default function Body() {
                   </div>
                 ))}
             </OwlCarousel>
-            {/*             <div className="card">
-              <img src={tenis} className="card-img-top" alt="Dwayne Johnson" />
-              <div className="card-body">
-                <h5 className="card-title"></h5>
-                <div className="badges mb-2"></div>
-                <p className="card-text">
-                  En nuestros espacios disfrutarás de un ambiente cálido y
-                  tranquilo
-                </p>
-              </div>
-            </div>
-
-
-            <div className="card">
-              <img src={card2} className="card-img-top" alt="Dwayne Johnson" />
-              <div className="card-body">
-                <p className="card-text">
-                  Vive la experiencia de disfrutar con tus mascotas al aire
-                  libre.
-                </p>
-              </div>
-            </div>
-
-
-            <div className="card">
-              <img src={card3} className="card-img-top" alt="Dwayne Johnson" />
-              <div className="card-body">
-                <p className="card-text">
-                  En nuestros espacios disfrutarás de un ambiente cálido y
-                  tranquilo
-                </p>
-              </div>
-            </div> */}
+            
           </div>
         </div>
       </section>
