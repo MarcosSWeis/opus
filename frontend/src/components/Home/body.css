@@ -1,0 +1,24 @@
+.carousel-caption h2 {
+  color: black;
+  padding-left: 10px;
+  font-weight: 200;
+  font-size:30px;
+  font-family:"Work Sans";
+  margin: 0;
+
+}
+.carrusel-body img {
+  max-height: 100%  !important;
+  min-height: 360px !important;
+  border-radius:  5%;
+  
+}
+.card h2 {
+  color: black;
+
+}
+.card{
+  align-items: center;
+  border-radius: 5%;
+  overflow: hidden;
+}
