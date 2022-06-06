@@ -30,12 +30,13 @@ const port = process.env.PORT || 5040;
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen(port, async () => {
-    // await loadCondo();
-    // await loadTowers();
-    // await loadDepart();
-    // await loadUsers();
-    // await LoadSpace();
-    // await loadCarrousel();
+/*     await loadCondo();
+    await loadTowers();
+    await loadDepart();
+    await loadUsers();
+    await LoadSpace();
+    await loadCarrousel(); */
+    console.log("o|O_O|o robot Σωκράτης listening at 5040");
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console
   });
