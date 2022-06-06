@@ -31,8 +31,9 @@
   text-align:left;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
-
-.carousel-item {
-  max-height: 100vh !important;
+.carousel-item img{
+  max-height: 100vh   !important;
+  min-height: 100vh !important;
 }
