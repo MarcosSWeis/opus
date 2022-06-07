@@ -39,32 +39,31 @@ async function createUser(req, res, next) {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     cel: req.body.cel,
+ 
     password: bcrypt.hashSync(req.body.password, 10),
   })
-    .then((user) => {
-      res.status(200).json(user);
-    })
     // .then((user) => {
-    //   if (req.body.roles) {
-    //     Roles.findAll({
-    //       where: {
-    //         name: {
-    //           [Op.or]: req.body.roles,
-    //         },
-    //       },
-    //     }).then((roles) => {
-    //       user.setRoles(roles).then(() => {
-    //         res
-    //           .status(200)
-    //           .send({ message: "Usuario Creado Satisfactoriamente" });
-    //       });
-    //     });
-    //   } else {
-    //     user.setRoles([1]).then(() => {
-    //       res.send({ message: "Usuario Creado Satisfactoriamente" });
-    //     });
-    //   }
+    //   res.status(200).json(user);
     // })
+    .then((user) => {
+      if (req.body.roles) {
+        Roles.findAll({
+          where: {
+            name: {
+              [Op.or]: req.body.roles,
+            },
+          },
+        }).then(roles => {
+          user.setRoles(roles).then(() => {
+            res.status(200).json({ message: "Usuario Creado Satisfactoriamente", user });
+          });
+        });
+      } else {
+        user.setRoles([1]).then(() => {
+          res.json({ message: "Usuario Creado Satisfactoriamente", user });
+        });
+      }
+    })
     .catch((err) => {
       res.status(500).send({ message: err });
     });
@@ -92,7 +91,7 @@ async function getUsers(req, res, next) {
   try {
     console.log("entramos a usuarios");
     const users = await User.findAll({
-      attributes: ["id", "firt_name", "last_name", "email", "dni"],
+      attributes: ["id", "first_name", "last_name", "email", "dni"],
     });
 
     /* const users = query ? await User.find().sort({_id: -1}).limit(5) : await User.find();  */
