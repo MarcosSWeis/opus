@@ -25,6 +25,7 @@ const { loadUsers } = require("./src/loadData/UsersLoad.js");
 const { loadDepart } = require("./src/loadData/DepartLoad.js");
 const { LoadSpace } = require("./src/loadData/SpaceLoad.js");
 const { loadCarrousel } = require("./src/loadData/CarrouselLoad.js");
+const {defaultAdminAndRoles} = require('./src/loadData/RolesLoad.js');
 const port = process.env.PORT || 5040;
 
 // Syncing all the models at once.
@@ -39,6 +40,9 @@ conn.sync({ force: false }).then(() => {
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console
+
+    defaultAdminAndRoles();
+
   });
 });
 
