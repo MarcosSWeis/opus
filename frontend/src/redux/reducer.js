@@ -4,12 +4,18 @@ import {
   GET_BOOKINGS_FOR_THIS_DAY,
   GET_SOCIAL_SPACES,
 } from "./actions";
+import {
+  GET_APARTAMENTS_ONSALE,
+  GET_IMAGE_CARROUSEL,
+  GET_IMAGE_BODY,
+} from "./actions";
 
 export const initialState = {
   imgCarrusel: [],
   departFilter: [],
   bookingDate: {},
   socialsSpace: {},
+  imgBody: [],
 };
 
 export function rootReducer(state = initialState, action) {
@@ -33,6 +39,11 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         socialsSpace: action.payload,
+      };
+    case GET_IMAGE_BODY:
+      return {
+        ...state,
+        imgBody: action.payload,
       };
     default:
       return state;
