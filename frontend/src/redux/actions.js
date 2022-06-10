@@ -3,7 +3,6 @@ export const GET_APARTAMENTS_ONSALE = "GET_APARTAMENTS_ONSALE";
 export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
 export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
 export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
-export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
 export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
 
 export const getApartament = (payload) => {
