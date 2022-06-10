@@ -25,18 +25,23 @@ const { loadUsers } = require("./src/loadData/UsersLoad.js");
 const { loadDepart } = require("./src/loadData/DepartLoad.js");
 const { LoadSpace } = require("./src/loadData/SpaceLoad.js");
 const { loadCarrousel } = require("./src/loadData/CarrouselLoad.js");
+<<<<<<< HEAD
+const { loadBookings } = require("./src/loadData/Bookings.js");
+=======
 const {defaultAdminAndRoles} = require('./src/loadData/RolesLoad.js');
+>>>>>>> df203f4d2ab77808986c2c1530cc1eed264104bc
 const port = process.env.PORT || 5040;
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen(port, async () => {
-/*     await loadCondo();
-    await loadTowers();
-    await loadDepart();
-    await loadUsers();
-    await LoadSpace();
-    await loadCarrousel(); */
+    // await loadCondo();
+    // await loadTowers();
+    // await loadDepart();
+    // await loadUsers();
+    // await LoadSpace();
+    // await loadCarrousel();
+    // await loadBookings();
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console

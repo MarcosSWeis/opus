@@ -8,11 +8,15 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-        
-           <Link to='/'>
+          <Link to="/">
             <img src={Logo} alt="Logo de la empresa" />
+<<<<<<< HEAD
+          </Link>
+          <button
+=======
             </Link>
 {/*           <button
+>>>>>>> df203f4d2ab77808986c2c1530cc1eed264104bc
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"

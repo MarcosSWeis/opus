@@ -1,9 +1,10 @@
 import axios from "axios";
 export const GET_APARTAMENTS_ONSALE = "GET_APARTAMENTS_ONSALE";
-export const GET_IMAGE_CARROUSEL= "GET_IMAGE_CARROUSEL";
-export const  GET_IMAGE_BODY = 'GET_IMAGE_BODY';
-
-
+export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
+export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
+export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
+export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
+export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
 
 export const getApartament = (payload) => {
   try {
@@ -22,7 +23,6 @@ export const getApartament = (payload) => {
   }
 };
 
-
 export const getImageCarrusel = (payload) => {
   try {
     return async function (dispatch) {
@@ -35,7 +35,7 @@ export const getImageCarrusel = (payload) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const getImageBody = (payload) => {
   try {
@@ -49,6 +49,35 @@ export const getImageBody = (payload) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-
+export const getBookingForThisDay = (payload) => {
+  try {
+    return async function (dispatch) {
+      const bookingsDate = await axios.get("http://localhost:5040/bookings", {
+        params: payload,
+      });
+      dispatch({
+        type: GET_BOOKINGS_FOR_THIS_DAY,
+        payload: bookingsDate.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const getSocialSpaces = (payload) => {
+  try {
+    return async function (dispatch) {
+      const socialSpace = await axios.get(
+        "http://localhost:5040/bookings/social_space"
+      );
+      dispatch({
+        type: GET_SOCIAL_SPACES,
+        payload: socialSpace.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
