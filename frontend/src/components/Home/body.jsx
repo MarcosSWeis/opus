@@ -52,7 +52,6 @@ export default function Body() {
                   </div>
                 ))}
             </OwlCarousel>
-            
           </div>
         </div>
       </section>

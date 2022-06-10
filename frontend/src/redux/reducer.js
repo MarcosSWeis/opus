@@ -3,10 +3,6 @@ import {
   GET_IMAGE_CARROUSEL,
   GET_BOOKINGS_FOR_THIS_DAY,
   GET_SOCIAL_SPACES,
-} from "./actions";
-import {
-  GET_APARTAMENTS_ONSALE,
-  GET_IMAGE_CARROUSEL,
   GET_IMAGE_BODY,
 } from "./actions";
 
