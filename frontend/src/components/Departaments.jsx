@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApartament } from "../redux/actions";

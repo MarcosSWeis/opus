@@ -1,3 +1,4 @@
+import React from "react";
 export default function Paginate({ setPage, page, totalRowsBd, formFilter }) {
   const limit = 10;
   const selectNumberPage = [1, 2, 2];

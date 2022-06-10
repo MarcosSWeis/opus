@@ -1,4 +1,5 @@
 import stylesShowDepartament from "./showDepartaments.module.css";
+import React from "react";
 export default function TemplateShowDepartaments({
   price,
   images,
