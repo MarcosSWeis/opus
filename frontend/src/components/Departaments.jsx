@@ -7,6 +7,7 @@ import Paginate from "./Paginate/Paginate";
 import TemplateShowDepartaments from "./TemplateShowDepartaments";
 import $ from "jquery";
 import { getObjectParam } from "../helpers/getQueryParams";
+import { Link } from "react-router-dom";
 
 const initialFilter = {
   toilets: null,
@@ -68,20 +69,22 @@ export default function Departaments() {
         handlerChange={handlerChange}
         setPage={setPage}
       />
+
       {responseFilter.data && responseFilter.data.length !== 0 ? (
         responseFilter.data.map((depto) => (
-          <TemplateShowDepartaments
-            key={depto.id}
-            price={depto.price}
-            images={depto.image}
-            description={depto.description}
-            measure={depto.measure}
-          />
+          <Link to={`/departments/${depto.id}`}>
+            <TemplateShowDepartaments
+              key={depto.id}
+              price={depto.price}
+              images={depto.image}
+              description={depto.description}
+              measure={depto.measure}
+            />
+          </Link>
         ))
       ) : (
         <Skeleton />
       )}
-
       <Paginate
         setPage={setPage}
         formFilter={formFilter}

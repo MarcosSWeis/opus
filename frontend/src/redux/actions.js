@@ -4,6 +4,7 @@ export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
 export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
 export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
 export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
+export const GET_DEPARTAMENT_ID = "GET_DEPARTAMENT_ID";
 
 export const getApartament = (payload) => {
   try {
@@ -59,6 +60,24 @@ export const getBookingForThisDay = (payload) => {
       dispatch({
         type: GET_BOOKINGS_FOR_THIS_DAY,
         payload: bookingsDate.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const getDepartamentId = (payload) => {
+  try {
+    return async function (dispatch) {
+      const departament = await axios.get(
+        "http://localhost:5040/departs/detail_departament",
+        {
+          params: payload,
+        }
+      );
+      dispatch({
+        type: GET_DEPARTAMENT_ID,
+        payload: departament.data,
       });
     };
   } catch (err) {

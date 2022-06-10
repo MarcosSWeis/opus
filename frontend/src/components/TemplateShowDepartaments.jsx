@@ -1,16 +1,18 @@
+import { Link, useLocation } from "react-router-dom";
 import stylesShowDepartament from "./showDepartaments.module.css";
 export default function TemplateShowDepartaments({
   price,
   images,
   description,
   measure,
+  id,
 }) {
   let limitDescription = description;
   if (description.length > 200) {
     limitDescription = limitDescription.substring(0, 200);
   }
   return (
-    <section className="mt-4">
+    <section className="mt-4 text-decoration-none text-dark">
       <div
         className={`w-75 p-2 mb-3 m-auto ${stylesShowDepartament.col_3} ${stylesShowDepartament.d_flex} ${stylesShowDepartament.container_departaments} ${stylesShowDepartament.minHeightCard}`}
       >
