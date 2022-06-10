@@ -1,9 +1,18 @@
 import axios from "axios";
+import authServices from "../services/auth.services";
+
+//actions
 export const GET_APARTAMENTS_ONSALE = "GET_APARTAMENTS_ONSALE";
-export const GET_IMAGE_CARROUSEL= "GET_IMAGE_CARROUSEL";
-export const  GET_IMAGE_BODY = 'GET_IMAGE_BODY';
+export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
+export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
 
-
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
+export const SET_MESSAGE = "SET_MESSGE";
+export const CLEAR_MESSGE = "CLEAR_MESSGE";
 
 export const getApartament = (payload) => {
   try {
@@ -22,7 +31,6 @@ export const getApartament = (payload) => {
   }
 };
 
-
 export const getImageCarrusel = (payload) => {
   try {
     return async function (dispatch) {
@@ -35,7 +43,7 @@ export const getImageCarrusel = (payload) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const getImageBody = (payload) => {
   try {
@@ -49,6 +57,53 @@ export const getImageBody = (payload) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
+//
 
+export const setMessage = (message) => ({
+  type: SET_MESSAGE,
+  payload: message,
+});
+
+export const clearMessage = () => ({
+  type: CLEAR_MESSGE,
+});
+
+export const login = (email, password) => (dispatch) => {
+  return authServices.login(email, password).then(
+    (data) => {
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: { user: data },
+      });
+
+      return Promise.resolve();
+    },
+    (error) => {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject(error);
+    }
+  );
+};
+
+export const logout = () => (dispatch) => {
+  authServices.logout();
+  dispatch({
+    type: LOGOUT,
+  });
+};
