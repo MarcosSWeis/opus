@@ -29,4 +29,15 @@ router.get ("/body" , async (req, res)=>{
   }
 })
 
+router.put ("/", async (req, res) => {
+  try{
+    await Carrousel.update(data, {
+      returning: true,
+    });
+    res.status(200).send("updated");
+  }catch (err){
+    res.status(500).json(err);
+  }
+})
+
 module.exports = router;
