@@ -1,9 +1,7 @@
 import React from "react";
 import { CgProfile } from "react-icons/cg";
-import { Link, Outlet } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, Outlet,useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Avatar } from "antd";
 import "./Dashboard.css";
 import { logout } from "../../redux/actions";
 import { useDispatch } from "react-redux"; 
@@ -51,8 +49,9 @@ export default function BoardAdmin() {
             <div className="col">
               <button
                 className="butond">
-            
-                Dashboard
+            <Link to='user' style={{ color: "white" , textDecoration:'none'}}>
+               Panel
+                </Link>
               </button>
             </div>
 
@@ -72,6 +71,12 @@ export default function BoardAdmin() {
           <Outlet />
         </div>
       </div>
+
+
+
+
+
+
     </>
   );
 }
