@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions";
 import { useForm } from "react-hook-form";
+import './Login.css'
 
 
 
@@ -102,7 +103,8 @@ const LoginForm = (props) => {
                 <p>
                   <input type="submit" value="Sign In"  disabled={loading} />
                   {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
+                    <div className="contl">
+                <span className=" loader"></span> </div>
               )}
            {/*    <span>Login</span> */}
                 </p>
