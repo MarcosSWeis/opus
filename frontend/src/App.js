@@ -14,6 +14,7 @@ import Profile from "./components/Profile/Profile";
 import BoardUser from "./components/BoardUser/BoardUser";
 import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
 import Protected from "./components/Protected/Protected";
+import NoMatch from "./components/NoMatch/NoMatch";
 import {useSelector} from 'react-redux';
 
 
@@ -21,7 +22,7 @@ function App() {
 
 
 const {user:currentUser} = useSelector((state) => state);
-  /* const { isLoggedIn } = useSelector((state) => state); */
+ 
 
 
   return (
@@ -33,16 +34,19 @@ const {user:currentUser} = useSelector((state) => state);
           <Route path="/login" element={ <>  <Navbar/><LoginForm />  <Footer />  </>} />
           <Route path="/about" element={  <>  <Navbar/>  <Nosotros />  <Footer />  </>   } />
           <Route path="/departments" element={<>  <Navbar/>   <Departaments />  <Footer />  </>} />
-          <Route path="/contact" element={  <>  <Navbar/><Contacto />  <Footer />  </>} />
+          <Route path="/contact" element={  <>  <Navbar/><Contacto />  <Footer /> </>} />
+          <Route path="*" element={ <>  <Navbar/><NoMatch /> <Footer /> </>} />
+
+          <Route path="dashboard" element={ <Protected isLoggedIn={currentUser.isLoggedIn}> <BoardAdmin/> </Protected> }>
+          <Route path="profile"element={<Profile/>}/>
+          <Route path="user" element={<BoardUser />} />
+          <Route path="*" element={<NoMatch />} />
+   
+   </Route>
+       
         </Routes>
       
-<Routes>
 
-  <Route path="dashboard" element={ <Protected isLoggedIn={currentUser.isLoggedIn}> <BoardAdmin/> </Protected> }>
-  <Route path="profile"element={<Profile/>}/>
-   <Route path="user" element={<BoardUser />} />
-   </Route>
- </Routes>
       </div>
     </BrowserRouter>
   );
