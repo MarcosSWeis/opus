@@ -13,13 +13,15 @@ import Departaments from "./components/Departaments";
 import Profile from "./components/Profile/Profile";
 import BoardUser from "./components/BoardUser/BoardUser";
 import BoardAdmin from "./components/BoardAdmin/BoardAdmin";
-
+import Protected from "./components/Protected/Protected";
+import {useSelector} from 'react-redux';
 
 
 function App() {
 
-/* const {isLoggedIn} = useSelector((state)=> state)
-const routing= useRoutes(routes(isLoggedIn));  //routes(isLoggedIn)  */
+
+const {user:currentUser} = useSelector((state) => state);
+  /* const { isLoggedIn } = useSelector((state) => state); */
 
 
   return (
@@ -32,22 +34,15 @@ const routing= useRoutes(routes(isLoggedIn));  //routes(isLoggedIn)  */
           <Route path="/about" element={  <>  <Navbar/>  <Nosotros />  <Footer />  </>   } />
           <Route path="/departments" element={<>  <Navbar/>   <Departaments />  <Footer />  </>} />
           <Route path="/contact" element={  <>  <Navbar/><Contacto />  <Footer />  </>} />
-        
-  
         </Routes>
       
 <Routes>
 
-
-        <Route path="dashboard" element={<BoardAdmin/>}>
-        <Route
-          path="profile"
-          element={<Profile/>}
-        />
-        <Route path="user" element={<BoardUser />} />
-      </Route>
-      </Routes>
-      
+  <Route path="dashboard" element={ <Protected isLoggedIn={currentUser.isLoggedIn}> <BoardAdmin/> </Protected> }>
+  <Route path="profile"element={<Profile/>}/>
+   <Route path="user" element={<BoardUser />} />
+   </Route>
+ </Routes>
       </div>
     </BrowserRouter>
   );
