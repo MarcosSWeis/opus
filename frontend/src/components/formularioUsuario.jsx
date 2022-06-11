@@ -1,22 +1,25 @@
 import React from "react";
+import usuario_nuevo from "../imagenesUsuarios/avatar_nuevoUsuario.svg"
+import agregar_usuario from "../imagenesUsuarios/icono_de_más.svg"
 
 const FormulalioUsuario = () => {
     return (  
         
                 <div className="formularioSize container">
 
-                    <h2  className="titleDiv">NUEVO USUARIO</h2>
+                        <div className="title_usuario"><h2  className="titleDiv">NUEVO USUARIO</h2></div>    
+
+                        <div><h3> Todos los campos son obligatorios</h3></div>                
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2 mb-2 ">
-                            <button class="btn  btn-danger" type="button">imagen ajustes</button>
-                            <button class="btn btn-danger" type="button">login-up</button>
+                            <button class="btn  btn-dark acciones2" type="button"><img src={usuario_nuevo} /></button>
+                            <button class="btn btn-secondary mx-3" type="button"><img src={agregar_usuario} /></button>
                     </div>
                     
-                    <div class="d-grid gap-2 d-md-flex justify-md-start mb-3 mt-3">
+                    {/* <div class="d-grid gap-2 d-md-flex justify-md-start mb-3 mt-3">
                                 <button class="btn btn-danger" type="button">Button</button>
                                 <button class="btn btn-danger" type="button">Button</button>
-                    </div>
-                    <div><h3> Todos los campos son obligatorios</h3></div>
+                    </div> */}
                 <form action="" className="formulario">
 
                 <div class="form-floating put">

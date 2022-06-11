@@ -9,7 +9,10 @@ import excel from "../imagenesUsuarios/Excel_download.svg"
 import ver from "../imagenesUsuarios/icono_ojo.svg"
 import editar from "../imagenesUsuarios/icono_lapiz.svg"
 import eliminar from "../imagenesUsuarios/icono_tacho.svg"
+import { Link } from "react-router-dom";
 const Usuario = ( ) =>{
+
+
         return (  
         <>
 
@@ -21,7 +24,7 @@ const Usuario = ( ) =>{
 
                 <div class="d-grid gap-2 d-md-flex justify-md-start mb-3">
                                 <button class="btn btn-danger" type="button"><img src={usuarioIcono} /> USUARIO</button>
-                                <button class="btn btn-danger" type="button"><img src={agregar}/><div><h5>Nuevo</h5></div></button>
+                                <button class="btn btn-danger" type="button"><img src={agregar}/><div><h5>Nuevo</h5></div> </button>
                 </div>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2">
