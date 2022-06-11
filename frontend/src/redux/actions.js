@@ -5,6 +5,8 @@ export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
 export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
 export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
 export const PUT_IMAGES_CARROUSEL= "PUT_IMAGES_CARROUSEL";
+export const GET_DEPARTAMENT_ID = "GET_DEPARTAMENT_ID";
+export const GET_HABITANTSFLOOR = "GET_HABITANTSFLOOR";
 
 export const getApartament = (payload) => {
   try {
@@ -66,6 +68,24 @@ export const getBookingForThisDay = (payload) => {
     console.log(err);
   }
 };
+export const getDepartamentId = (payload) => {
+  try {
+    return async function (dispatch) {
+      const departament = await axios.get(
+        "http://localhost:5040/departs/detail_departament",
+        {
+          params: payload,
+        }
+      );
+      dispatch({
+        type: GET_DEPARTAMENT_ID,
+        payload: departament.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
 export const getSocialSpaces = (payload) => {
   try {
     return async function (dispatch) {
@@ -92,3 +112,18 @@ export const putImagesCarrousel = (payload) => {
     console.log(err);
   }
 }
+export const getHabitantsPerFloor = (payload) => {
+  try {
+    return async function (dispatch) {
+      const habitantsFloor = await axios.get(
+        "http://localhost:5040/users/dashboard_habitants"
+      );
+      dispatch({
+        type: GET_HABITANTSFLOOR,
+        payload: habitantsFloor.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};

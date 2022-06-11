@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Op } = require("sequelize");
+const departaments = require("../controllers/departaments-controllers");
 const { Department, User, Tower } = require("../db");
-
 const router = Router();
 
 /* router.get ("/onsale", async (req, res) => {
@@ -21,6 +21,7 @@ const router = Router();
     });
   }
 }); */
+router.get("/detail_departament", departaments.departementDetail);
 
 router.get("/all", async (req, res) => {
   try {

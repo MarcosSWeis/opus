@@ -4,6 +4,8 @@ import {
   GET_BOOKINGS_FOR_THIS_DAY,
   GET_SOCIAL_SPACES,
   GET_IMAGE_BODY,
+  GET_DEPARTAMENT_ID,
+  GET_HABITANTSFLOOR,
 } from "./actions";
 
 export const initialState = {
@@ -12,6 +14,8 @@ export const initialState = {
   bookingDate: {},
   socialsSpace: {},
   imgBody: [],
+  departamentDetail: null,
+  habitantsFloor: [],
 };
 
 export function rootReducer(state = initialState, action) {
@@ -41,6 +45,17 @@ export function rootReducer(state = initialState, action) {
         ...state,
         imgBody: action.payload,
       };
+    case GET_DEPARTAMENT_ID:
+      return {
+        ...state,
+        departamentDetail: action.payload,
+      };
+    case GET_HABITANTSFLOOR:
+      return {
+        ...state,
+        habitantsFloor: action.payload,
+      };
+
     default:
       return state;
   }

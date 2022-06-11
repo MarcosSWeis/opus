@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../imgNavBar/logoH.svg";
 import Usuario from "../imgNavBar/usuario.svg";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -60,6 +60,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        <Outlet />
       </nav>
     </>
   );
