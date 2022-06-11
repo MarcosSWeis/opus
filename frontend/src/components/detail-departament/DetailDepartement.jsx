@@ -58,60 +58,63 @@ export default function DetailDepartament() {
 
       <section className="body-detalles p-3">
         <div className="button-text">
-          <button type="button" class="precio btn btn-danger mt-2 mb-2">
-            Departamento · {detailDepartament.measure} m² USD{" "}
-            {detailDepartament.price}
-          </button>
+          {detailDepartament && (
+            <button type="button" class="precio btn btn-danger mt-2 mb-2">
+              Departamento · {detailDepartament.measure} m² USD{" "}
+              {detailDepartament.price}
+            </button>
+          )}
+          <form action="">
+            <div class="card1">
+              <div class="card-body">
+                <div class="row g-3">
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="First name"
+                      aria-label="First name"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Last name"
+                      aria-label="Last name"
+                    />
+                  </div>
+                </div>
 
-          <div class="card1">
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Email address
+                  </label>
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
-                    placeholder="First name"
-                    aria-label="First name"
+                    id="exampleFormControlInput1"
+                    placeholder="name@example.com"
                   />
                 </div>
-                <div class="col">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Last name"
-                    aria-label="Last name"
-                  />
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">
+                    Deja tu mensaje
+                  </label>
+                  <textarea
+                    class="textarea form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                  ></textarea>
                 </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">
-                  Deja tu mensaje
-                </label>
-                <textarea
-                  class="textarea form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                ></textarea>
-              </div>
-              <div className="button-text">
-                <button type="button" class="precio btn btn-danger">
-                  Contactar
-                </button>
+                <div className="button-text">
+                  <button type="button" class="precio btn btn-danger">
+                    Contactar
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
 
         {detailDepartament && (

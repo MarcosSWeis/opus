@@ -72,15 +72,14 @@ export default function Departaments() {
 
       {responseFilter.data && responseFilter.data.length !== 0 ? (
         responseFilter.data.map((depto) => (
-          <Link to={`/departments/${depto.id}`}>
-            <TemplateShowDepartaments
-              key={depto.id}
-              price={depto.price}
-              images={depto.image}
-              description={depto.description}
-              measure={depto.measure}
-            />
-          </Link>
+          <TemplateShowDepartaments
+            key={depto.id}
+            price={depto.price}
+            images={depto.image}
+            description={depto.description}
+            measure={depto.measure}
+            id={depto.id}
+          />
         ))
       ) : (
         <Skeleton />

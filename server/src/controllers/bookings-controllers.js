@@ -19,7 +19,7 @@ module.exports = {
         where: {
           [Op.and]: [
             sequelize.where(conn.cast(conn.col("createdAt"), "varchar"), {
-              [Op.like]: "%" + query.bookingDate + "%",
+              [Op.like]: [`%${query.bookingDate}%`], //con los corches deberia andar
             }),
             sequelize.where(
               sequelize.col("social_space_id"),

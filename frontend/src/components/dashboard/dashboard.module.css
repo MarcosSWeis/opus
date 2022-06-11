@@ -1,0 +1,14 @@
+.secctionDesciption {
+  background: #1e1e1e;
+  border-radius: 10px;
+  color: white;
+
+  margin-right: 1rem;
+}
+
+.textOpus {
+  max-width: 1200px;
+}
+.max_width_chart {
+  max-width: 1200px;
+}

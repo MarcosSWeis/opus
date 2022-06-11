@@ -4,7 +4,6 @@ module.exports = {
   departementDetail: async (req, res) => {
     try {
       const { query } = req;
-      console.log(query, 1212122121);
       const departament = await Department.findOne({
         where: {
           id: query.id,

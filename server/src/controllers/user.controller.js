@@ -1,4 +1,4 @@
-const { User, Tower, Department, Roles } = require("../db");
+const { User, Tower, Department, Roles, conn } = require("../db");
 const bcrypt = require("bcryptjs");
 
 const Sequelize = require("sequelize");
@@ -39,7 +39,7 @@ async function createUser(req, res, next) {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     cel: req.body.cel,
- 
+
     password: bcrypt.hashSync(req.body.password, 10),
   })
     // .then((user) => {
@@ -53,9 +53,11 @@ async function createUser(req, res, next) {
               [Op.or]: req.body.roles,
             },
           },
-        }).then(roles => {
+        }).then((roles) => {
           user.setRoles(roles).then(() => {
-            res.status(200).json({ message: "Usuario Creado Satisfactoriamente", user });
+            res
+              .status(200)
+              .json({ message: "Usuario Creado Satisfactoriamente", user });
           });
         });
       } else {
@@ -139,10 +141,27 @@ async function deleteUser(req, res, next) {
   }
 }
 
+async function getDashboard(req, res) {
+  try {
+    const [result, metadata] =
+      await conn.query(`select d.floor, count(u.id) as habitantsFloor  from users u
+    inner join departments d 
+    on d.id = u.departament_id 
+    where  d.id = u.departament_id 
+    group by d.floor
+    order by d.floor;`);
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("error del server");
+  }
+}
+
 module.exports = {
   createUser,
   updateUser,
   deleteUser,
   getUserById,
   getUsers,
+  getDashboard,
 };

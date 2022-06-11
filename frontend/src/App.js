@@ -12,6 +12,7 @@ import Home from "./components/Home/Home";
 import Departaments from "./components/Departaments";
 import Bookings from "./components/reservas/Bookings";
 import DetailDepartament from "./components/detail-departament/DetailDepartement";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <div>
         <Navbar />
         <Link to={"/reservas"} />
+        <Link to={"/dashboard"} />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,6 +30,7 @@ function App() {
           <Route path="/departments/:id" element={<DetailDepartament />} />
           <Route path="/contact" element={<Contacto />} />
           <Route path="/reservas" element={<Bookings />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<h1>404 NOT FOUND</h1>} />
         </Routes>
         <Footer />
