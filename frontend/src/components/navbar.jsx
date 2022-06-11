@@ -3,14 +3,12 @@ import Logo from "../imgNavBar/logoH.svg";
 import Usuario from "../imgNavBar/usuario.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {history} from '../helpers/history'
+
 import { clearMessage } from "../redux/actions";
 import { logout } from "../redux/actions";
 
 const Navbar = () => {
 
-const[showAdminBoard, setAdminBoard] = useState(false);
-const [showUserBoard, setUserBoard] = useState(false);
 const {user:currentUser} = useSelector((state) => state);
 const dispatch = useDispatch();
 
@@ -32,10 +30,10 @@ const logOut = () => {
 
  */
 
-/* const logOut = () => {
+const logOut = () => {
   dispatch(logout())
 
-} */
+}
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -80,56 +78,18 @@ const logOut = () => {
                   Contacto
                 </Link>
               </li>
-{/* {showAdminBoard &&(
-              <li className="nav-item">
-                <Link
-                  to={"/admin"}
-                  className="nav-link active mx-5"
-                  aria-current="page"
-                >
-                  Admin
-                </Link>
-              </li>
-              )}
-              {showUserBoard &&(
-              <li className="nav-item">
-                <Link
-                  to={"/admin"}
-                  className="nav-link active mx-5"
-                  aria-current="page"
-                >
-                  User
-                </Link>
-              </li>
-              )} */}
-              {/* {currentUser ? (
-            <div className="navbar-nav ml-auto">
 
-              <li className="nav-item">
-                <a href="/login"className="nav-link active mx-5" onClick={logOut}>
+              </ul>
+   {currentUser.isLoggedIn ? <div>
+              < button className="btn btn-outline-danger botonLogin   mx-5" >
+              <a href="/"  onClick={logOut}>
                   LogOut
                 </a>
-              </li>
-            </div>
-          ): (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link active mx-5"
-                  aria-current="page">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link active mx-5"
-                  aria-current="page">
-                  Sign Up
-                </Link>
-              </li>
-            </div>
-          )} */}
-            </ul>
+              </ button>
+              </div>
+        
             
-            <div>
+            :<div>
               <Link to={"/login"}>
                 <button
                   className="btn btn-outline-danger botonLogin   mx-5"
@@ -138,7 +98,7 @@ const logOut = () => {
                   <img src={Usuario} alt=" Imagen del login" />
                 </button>
               </Link>
-            </div>
+            </div>}
           </div>
         </div>
       </nav>
