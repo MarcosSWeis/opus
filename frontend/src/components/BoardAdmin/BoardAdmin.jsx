@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 import { Avatar } from "antd";
 import "./Dashboard.css";
 import { logout } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"; 
 import logo from './imageBoard/logohorizontal.svg';
+import usuario from './imageBoard/usuario.svg';
 
 
 
@@ -15,9 +16,9 @@ export default function BoardAdmin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user: currentUser } = useSelector((state) => state);
-  if (!currentUser) {
-    navigate("/login");
-  }
+
+
+ 
   const logOut = () => {
     dispatch(logout());
   };
@@ -39,9 +40,9 @@ export default function BoardAdmin() {
 
 
               <div className="conti">
-                <img className="imaged" src={currentUser.image} alt="" />
+              { currentUser.image?<img className="imaged" src={currentUser.image} alt="" />: <img src={usuario} alt="" />} 
               </div>
-              {/*   {currentUser.image ? <Avatar src={currentUser.image} /> : <CgProfile />} */}
+              
               <div className="contp">
                 <p className="pd">{currentUser.firtsname} {currentUser.lastname} </p>
               </div>
@@ -60,7 +61,7 @@ export default function BoardAdmin() {
                 Perfil
               </Link>
             </p>
-            <p className="pd">Mantenimiento</p>
+            <p className="pd"><Link to ='user'style={{ color: "white" , textDecoration:'none'}}> Mantenimiento </Link></p>
             <p className="pd">Pagos</p>
             <a href="/" className="pd" onClick={logOut}>
               Salir
