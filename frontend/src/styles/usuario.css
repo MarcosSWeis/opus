@@ -32,19 +32,27 @@
 }
 
 .formularioSize{
-margin: auto;
+ margin: auto; 
 background: #1E1E1E;
 margin-top: 30px;
 border-radius: 20px;
 /* width: 788px;
 height: 676px;
-left: 326px;
-top: 50px;
 bottom: 50px;
-background: #1E1E1E;
 border-radius: 10px;
 padding: 20px;
-margin-top: 25px; */
-
+*/
 }
 
+.buscar{
+    width: 15%
+}
+
+.selectPa{
+    margin-bottom: 50px;
+}
+
+.acciones{
+    width: 30px;
+    height: 20px;
+}

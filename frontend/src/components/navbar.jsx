@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
         
-           <Link to='/'>
+            <Link to='/'>
             <img src={Logo} alt="Logo de la empresa" />
             </Link>
 {/*           <button

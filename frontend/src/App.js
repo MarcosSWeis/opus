@@ -16,9 +16,10 @@ import FormulalioUsuario from "./components/formularioUsuario";
 
 function App() {
   return (
-    <FormulalioUsuario/>
+    <div>  
 
-//<Usuario/> 
+    <Usuario/> </div>
+  
     // <BrowserRouter>
     //   <div>
     //     <Navbar />
