@@ -4,6 +4,7 @@ export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
 export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
 export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
 export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
+export const PUT_IMAGES_CARROUSEL= "PUT_IMAGES_CARROUSEL";
 
 export const getApartament = (payload) => {
   try {
@@ -80,3 +81,14 @@ export const getSocialSpaces = (payload) => {
     console.log(err);
   }
 };
+
+export const putImagesCarrousel = (payload) => {
+  try {
+    return async function (dispatch) {
+      const image = await axios.put("http://localhost:5040/carrousel", {images:payload});
+      console.log (image.data[1])
+    };
+  } catch (err) {
+    console.log(err);
+  }
+}

@@ -11,6 +11,7 @@ import "./styles/contacto.css";
 import Home from "./components/Home/Home";
 import Departaments from "./components/Departaments";
 import Bookings from "./components/reservas/Bookings";
+import Mantenimiento from "./components/mantenimiento/Mantenimiento";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/contact" element={<Contacto />} />
 
           <Route path="/reservas" element={<Bookings />} />
+          <Route path="mantenimiento" element={<Mantenimiento />} />
         </Routes>
         <Footer />
       </div>

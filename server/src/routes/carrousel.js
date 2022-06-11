@@ -31,11 +31,16 @@ router.get ("/body" , async (req, res)=>{
 
 router.put ("/", async (req, res) => {
   try{
-    await Carrousel.update(data, {
+    const data= req.body
+    const update= await Carrousel.update(data,{
+      where: {
+        id: 1
+      },
       returning: true,
     });
-    res.status(200).send("updated");
+    res.status(200).send(update);
   }catch (err){
+    console.log (err)
     res.status(500).json(err);
   }
 })
