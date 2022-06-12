@@ -7,6 +7,9 @@ export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
 export const PUT_IMAGES_CARROUSEL= "PUT_IMAGES_CARROUSEL";
 export const GET_DEPARTAMENT_ID = "GET_DEPARTAMENT_ID";
 export const GET_HABITANTSFLOOR = "GET_HABITANTSFLOOR";
+export const PUT_IMAGES_CARROUSEL_BODY = "PUT_IMAGES_CARROUSEL_BODY";
+export const GET_SOCIAL = "GET_SOCIAL";
+export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 
 export const getApartament = (payload) => {
   try {
@@ -127,3 +130,34 @@ export const getHabitantsPerFloor = (payload) => {
     console.log(err);
   }
 };
+
+export const putImagesCarrouselBody = (payload) => {
+  try {
+    return async function (dispatch) {
+      const image = await axios.put("http://localhost:5040/carrousel/body", payload);
+      console.log (image.data[1])
+    };
+  } catch (err) {
+    console.log(err);
+  }
+}  
+
+export function getSocial() {
+  return async function (dispatch) {
+    const social = await axios.get(`http://localhost:5040/redes`);
+    dispatch({
+      type: GET_SOCIAL,
+      payload: social.data[0],
+    });
+  };
+}
+
+export function updateSocial(data) {
+  return async function (dispatch) {
+    const social = await axios.put(`http://localhost:5040/redes`, data);
+    dispatch({
+      type: UPDATE_SOCIAL,
+      payload: data,
+    });
+  };
+}

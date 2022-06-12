@@ -62,6 +62,7 @@
 }
 .img1{
   opacity: 70%;
+  width: 70% !important;
   
 }
 
@@ -77,4 +78,13 @@
   flex-direction: column;
   align-items: center;
 
+}
+
+.agregar{
+  background-color: #F83C4A !important;
+}
+.butdisabled{
+  background-color: gray !important ;
+  opacity: 50%;
+  cursor:default !important;
 }

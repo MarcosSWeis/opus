@@ -81,6 +81,7 @@ const {
   Response,
   Roles,
   Carrousel,
+  Social_network,
 } = sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo

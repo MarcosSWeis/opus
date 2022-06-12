@@ -31,7 +31,7 @@ function App() {
           <Route path="/departments/:id" element={<DetailDepartament />} />
           <Route path="/contact" element={<Contacto />} />
           <Route path="/reservas" element={<Bookings />} />
-          <Route path="mantenimiento" element={<Mantenimiento />} />
+          <Route path="/mantenimiento" element={<Mantenimiento />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<h1>404 NOT FOUND</h1>} />
         </Routes>

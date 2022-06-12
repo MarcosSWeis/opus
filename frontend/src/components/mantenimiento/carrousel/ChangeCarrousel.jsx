@@ -5,6 +5,7 @@ import s from "./changeCarrousel.module.css";
 import logo from "../../../imgNavBar/logoH.svg";
 import loadingImg from "../../../img/loading.gif";
 import axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
 export default function ChangeCarrousel() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,9 +29,9 @@ export default function ChangeCarrousel() {
     if (images.length > 2) {
       carrousel = carrousel.filter((img, ix) => ix !== parseInt(idx));
       setImages(carrousel);
-      dispatch (putImagesCarrousel(carrousel))
+      dispatch(putImagesCarrousel(carrousel));
     } else {
-      alert("Debes tener minimo dos imagenes");
+      toast.error("Debes tener almenos 2 imagenes");
     }
   };
   const upload = async (img) => {
@@ -38,14 +39,14 @@ export default function ChangeCarrousel() {
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "No-Conuntry-Opus");
-    setLoading (true);
+    setLoading(true);
     const res = await axios.post(
       "https://api.cloudinary.com/v1_1/jair1020/image/upload",
       data
     );
-    setLoading (false);   
     const file = res.data;
     setInput(file.secure_url);
+    setLoading(false);
     console.log(res);
   };
   const uploadImage = (e) => {
@@ -62,16 +63,16 @@ export default function ChangeCarrousel() {
   const dragOver = (e) => {
     e.preventDefault();
   };
-  const OnChangeAgregar= async () =>{
+  const OnChangeAgregar = async () => {
     if (input.length > 0) {
-    let newImage= [...images, input]
-    setImages (newImage)
-    dispatch (putImagesCarrousel (images))
-    setInput ("")
-    }else alert ("Debes ingresar una imagen")
-  }
+      let newImage = [...images, input];
+      setImages(newImage);
+      dispatch(putImagesCarrousel(images));
+      setInput("");
+    } else alert("Debes ingresar una imagen");
+  };
   return (
-    <div className={s.container} >
+    <div className={s.container}>
       <div className={s.contImages}>
         {images?.map((e, index) => (
           <>
@@ -83,15 +84,15 @@ export default function ChangeCarrousel() {
         ))}
       </div>
       <div onDragOver={dragOver} className={s.profilepicture}>
-        <div className= {s.cont} >
-          {!input? (
-            <img className={!loading?s.img1:s.img2} src={!loading?logo:loadingImg} onDrop={(e) => onDrop(e)}></img>
-          ) : (
+        <div className={s.cont}>
+          {!input ? (
             <img
-              className={s.img2}
-              src={input}
+              className={!loading ? s.img1 : s.img2}
+              src={!loading ? logo : loadingImg}
               onDrop={(e) => onDrop(e)}
             ></img>
+          ) : (
+            <img className={s.img2} src={input} onDrop={(e) => onDrop(e)}></img>
           )}
           <label className={s.label} for="img">
             Elige o arrastra una imagen
@@ -105,7 +106,14 @@ export default function ChangeCarrousel() {
           {/* <img src={profile_picture}/> */}
         </div>
       </div>
-      <button onClick={OnChangeAgregar} >Agregar</button>
+      <button
+        className={input.length ? s.agregar : s.butdisabled}
+        disabled={!input.length}
+        onClick={OnChangeAgregar}
+      >
+        Agregar
+      </button>
+      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 }

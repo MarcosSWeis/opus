@@ -1,7 +1,4 @@
 import React from "react";
-import tenis from "../../img/4.png";
-import card2 from "../../img/card2.png";
-import card3 from "../../img/card3.png";
 import rectangle from "../../img/Rectangle 108.png";
 import Main from "../../img/main-img.png";
 import { getImageBody } from "../../redux/actions";
@@ -42,7 +39,7 @@ export default function Body() {
                             <img
                               src={img}
                               className="d-block w-100"
-                              alt="First slide"
+                              alt={index}
                             />
                           </Carousel.Item>
                         ))}
