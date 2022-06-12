@@ -29,7 +29,7 @@ export default function BoardAdmin() {
 
 
             <div className="col">
-        <div className='conti'>
+        <div className='contl'>
         <img src={logo} alt="logo" />
         </div>
 
@@ -45,7 +45,7 @@ export default function BoardAdmin() {
                 <p className="pd">{currentUser.firtsname} {currentUser.lastname} </p>
               </div>
             </div>
-            <hr />
+            <hr style={{height:'10px',width:'100%', backgroundColor:'white', borderTop:'1px solid', opacity:'inherit' }} />
             <div className="col">
               <button
                 className="butond">
