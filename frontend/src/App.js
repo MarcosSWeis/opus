@@ -18,9 +18,9 @@ function App() {
   return (
                     <div>  
 
-                          {/* <FormulalioUsuario/>  */}
+                          <FormulalioUsuario/>  
 
-                                  <Usuario/>  
+                                  {/* <Usuario/>   */}
   
                       </div>
   

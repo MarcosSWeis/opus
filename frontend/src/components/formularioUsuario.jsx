@@ -1,8 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import usuario_nuevo from "../imagenesUsuarios/avatar_nuevoUsuario.svg"
 import agregar_usuario from "../imagenesUsuarios/icono_de_más.svg"
 
-const FormulalioUsuario = () => {
+const FormulalioUsuario = ( ) => {
+
+const [datosusuarios, setDatosusuarios]= useState ( { 
+    identificacion: ' ',
+    departamento: ' ',    
+    nombre: '',
+    apellido: '',
+    telefono:  ' ',
+    correo: ' ',
+    tipoDeUsuario: ' ',
+    DNI: ' ',
+    contraseña: ' ',
+
+})
+
+const handleInputChange= (event) => {
+    // console.log(event.target.value)
+    setDatosusuarios( {
+        ...datosusuarios,
+        [event.target.name]  : event.target.value
+    })
+}
+
+const enviarDatos = (event) => {
+    event.preventDefault ( );
+    console.log (datosusuarios.nombre + '  ' + datosusuarios.apellido)
+
+}
+
+
     return (  
         
                 <div className="formularioSize container">
@@ -15,55 +44,53 @@ const FormulalioUsuario = () => {
                             <button class="btn  btn-dark acciones2" type="button"><img src={usuario_nuevo} /></button>
                             <button class="btn btn-secondary mx-3" type="button"><img src={agregar_usuario} /></button>
                     </div>
-                    
-                    {/* <div class="d-grid gap-2 d-md-flex justify-md-start mb-3 mt-3">
-                                <button class="btn btn-danger" type="button">Button</button>
-                                <button class="btn btn-danger" type="button">Button</button>
-                    </div> */}
-                <form action="" className="formulario">
+
+                <form  className="formulario" onSubmit={enviarDatos}>
 
                 <div class="form-floating put">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"/>
+                        <input type="text" name="identificacion" class="form-control" id="floatingInput" placeholder="name@example.com" onChange={handleInputChange}/>
                         <label for="floatingInput">Identificacion</label>
                 </div>
                 <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="text" name="departamento" class="form-control" id="floatingPassword" placeholder="Password"onChange={handleInputChange}/>
                             <label for="floatingPassword">Departamento</label>
                 </div>
                 <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="text"  name= "nombre" class="form-control" id="floatingPassword" placeholder="Password" onChange={handleInputChange}/>
                             <label for="floatingPassword">Nombre</label>
                 </div>
                 <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="text" name="apellido" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}  />
                             <label for="floatingPassword">Apellido</label>
                 </div>
                 <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="text" name="telefono" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}/>
                             <label for="floatingPassword">Telefono</label>
                 </div>
                 <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="email"  name="correo" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}/>
                             <label for="floatingPassword">correo</label>
                 </div>
                 <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="text" name="tipoDeUsuario" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}/>
                             <label for="floatingPassword">Tipo de Usuario</label>
                 </div>
                 <div class="form-floating">
-                            <input type="email" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="text"  name="DNI" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}/>
                             <label for="floatingPassword">DNI</label>
                 </div>
                 <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}/>
                             <label for="floatingPassword">Contraseña</label>
                 </div>
 
-                </form>
                 <div class="d-grid gap-5 d-flex justify-content-center mt-3">
-                                <button class="btn btn-danger mb-4" type="button">Guardar</button>
+                                <button class="btn btn-danger mb-4" type="submit">Guardar</button>
                                 <button class="btn btn-light mb-4" type="button">Cerrar</button>
                     </div>
+
+                </form>
+                
                 
                 </div>
 
