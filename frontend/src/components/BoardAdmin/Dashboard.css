@@ -13,10 +13,10 @@ top: 0%;
 bottom: 0%;
    
   }
-  aside img {
+ /*  aside img {
     margin-bottom: 1.5rem;
     max-width: 100%;
-  }
+   */
   .butond {
    
     color:white;
@@ -55,25 +55,31 @@ bottom: 0%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    border-color: white;
+    margin-top:10px
    }
+
+   .contl{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+   }
+
+   
 
   
 
   .imaged{
    border-radius: 50%;
-   border-color: red;
-   height: 70px;
+   border-color:#F83C4A;
+   height: 90px;
+   border-width: 5px;
+   border-style: solid;
+
+   
   }
 
  
 
-    hr {
-      margin: 1rem 0;
-      color: white;
-      border: white;
-      border-top: 3px solid;
-      /* opacity: .25; */
-  }
   
