@@ -108,6 +108,7 @@ export const getSocialSpaces = (payload) => {
 export const putImagesCarrousel = (payload) => {
   try {
     return async function (dispatch) {
+      console.log (payload)
       const image = await axios.put("http://localhost:5040/carrousel", {images:payload});
       console.log (image.data[1])
     };

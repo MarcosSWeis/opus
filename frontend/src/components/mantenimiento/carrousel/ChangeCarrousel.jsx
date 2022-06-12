@@ -40,6 +40,7 @@ export default function ChangeCarrousel() {
     data.append("file", files[0]);
     data.append("upload_preset", "No-Conuntry-Opus");
     setLoading(true);
+    const toastId = toast.loading('Loading...');
     const res = await axios.post(
       "https://api.cloudinary.com/v1_1/jair1020/image/upload",
       data
@@ -47,7 +48,7 @@ export default function ChangeCarrousel() {
     const file = res.data;
     setInput(file.secure_url);
     setLoading(false);
-    console.log(res);
+    toast.dismiss(toastId);
   };
   const uploadImage = (e) => {
     e.preventDefault();
@@ -67,7 +68,7 @@ export default function ChangeCarrousel() {
     if (input.length > 0) {
       let newImage = [...images, input];
       setImages(newImage);
-      dispatch(putImagesCarrousel(images));
+      dispatch(putImagesCarrousel(newImage));
       setInput("");
     } else alert("Debes ingresar una imagen");
   };
@@ -113,7 +114,7 @@ export default function ChangeCarrousel() {
       >
         Agregar
       </button>
-      <Toaster position="bottom-center" reverseOrder={false} />
+      <Toaster position="bottom-center" reverseOrder={false}/>
     </div>
   );
 }
