@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { getDepartamentId } from "../../redux/actions";
+import Filter from "../Filter";
 export default function DetailDepartament() {
   const { id } = useParams();
   console.log(id, "id");
@@ -16,6 +17,7 @@ export default function DetailDepartament() {
 
   return (
     <>
+      {/* <Filter /> */}
       <section className="img-depto">
         <main class="main" id="main">
           <div

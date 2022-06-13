@@ -12,3 +12,12 @@
 .max_width_chart {
   max-width: 1200px;
 }
+.d_flex_block {
+  display: flex;
+}
+
+@media (max-width: 533px) {
+  .min_width {
+    min-width: 533px;
+  }
+}

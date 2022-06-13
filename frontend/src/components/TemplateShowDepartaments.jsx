@@ -1,5 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
 import stylesShowDepartament from "./showDepartaments.module.css";
+import icono_area_verde from "../img/departament/icono_area_verde.svg";
+import icono_de_animales from "../img/departament/icono_de_animales.svg";
+import icono_de_calefacion from "../img/departament/icono_de_calefacion.svg";
+import icono_de_camara from "../img/departament/icono_de_camara.svg";
+import icono_de_persona from "../img/departament/icono_de_persona.svg";
+import icono_de_piscina from "../img/departament/icono_de_piscina.svg";
+import icono_de_tenis from "../img/departament/icono_de_tenis.svg";
+import icono_de_usuario from "../img/departament/icono_de_usuario.svg";
+import icono_de_ventana from "../img/departament/icono_de_ventana.svg";
+import icono_de_wifi from "../img/departament/icono_de_wifi.svg";
+
 export default function TemplateShowDepartaments({
   price,
   images,
@@ -37,16 +48,22 @@ export default function TemplateShowDepartaments({
               <h4>Lorem, ipsum dolor.</h4>
               <p>{limitDescription} ...</p>
             </div>
-            <div
-              className={`${stylesShowDepartament.col_2} p-3 ${stylesShowDepartament.bgcRoomServices}`}
-            >
-              <div className="d-flex justify-content-around">
-                <ion-icon name="wifi-outline"></ion-icon>
-                <ion-icon name="videocam-outline"></ion-icon>
-                <ion-icon name="person-outline"></ion-icon>
+            <div className={`${stylesShowDepartament.col_1} p-1 m-2`}>
+              <div className="d-flex justify-content-around pb-3">
+                <img src={icono_area_verde} alt="" className="text-dark" />
+                <img src={icono_de_animales} alt="" className="text-dark" />
+                <img src={icono_de_calefacion} alt="" className="text-dark" />
               </div>
-              <div></div>
-              <div></div>
+              <div className="d-flex justify-content-around pb-3 ">
+                <img src={icono_de_camara} alt="" className="text-dark" />
+                <img src={icono_de_persona} alt="" className="text-dark" />
+                <img src={icono_de_piscina} alt="" className="text-dark" />
+              </div>
+              <div className="d-flex justify-content-around">
+                <img src={icono_de_tenis} alt="" className="text-dark" />
+                <img src={icono_de_ventana} alt="" className="text-dark" />
+                <img src={icono_de_wifi} alt="" className="text-dark" />
+              </div>
             </div>
           </div>
         </Link>

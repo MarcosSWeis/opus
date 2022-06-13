@@ -7,7 +7,7 @@ import Paginate from "./Paginate/Paginate";
 import TemplateShowDepartaments from "./TemplateShowDepartaments";
 import $ from "jquery";
 import { getObjectParam } from "../helpers/getQueryParams";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const initialFilter = {
   toilets: null,
@@ -62,6 +62,7 @@ export default function Departaments() {
     getDataDb();
   }
   console.log(responseFilter);
+
   return (
     <div>
       <Filter
