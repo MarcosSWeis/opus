@@ -6,6 +6,8 @@ import {
   GET_IMAGE_BODY,
   GET_DEPARTAMENT_ID,
   GET_HABITANTSFLOOR,
+  GET_SOCIAL,
+  UPDATE_SOCIAL,
 } from "./actions";
 
 export const initialState = {
@@ -16,6 +18,7 @@ export const initialState = {
   imgBody: [],
   departamentDetail: null,
   habitantsFloor: [],
+  social: {},
 };
 
 export function rootReducer(state = initialState, action) {
@@ -54,6 +57,16 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         habitantsFloor: action.payload,
+      };
+    case GET_SOCIAL:
+      return {
+        ...state,
+        social: action.payload,
+      };
+    case UPDATE_SOCIAL:
+      return {
+        ...state,
+        social: action.payload,
       };
 
     default:

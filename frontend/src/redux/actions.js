@@ -4,8 +4,12 @@ export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
 export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
 export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
 export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
+export const PUT_IMAGES_CARROUSEL= "PUT_IMAGES_CARROUSEL";
 export const GET_DEPARTAMENT_ID = "GET_DEPARTAMENT_ID";
 export const GET_HABITANTSFLOOR = "GET_HABITANTSFLOOR";
+export const PUT_IMAGES_CARROUSEL_BODY = "PUT_IMAGES_CARROUSEL_BODY";
+export const GET_SOCIAL = "GET_SOCIAL";
+export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 
 export const getApartament = (payload) => {
   try {
@@ -100,6 +104,18 @@ export const getSocialSpaces = (payload) => {
     console.log(err);
   }
 };
+
+export const putImagesCarrousel = (payload) => {
+  try {
+    return async function (dispatch) {
+      console.log (payload)
+      const image = await axios.put("http://localhost:5040/carrousel", {images:payload});
+      console.log (image.data[1])
+    };
+  } catch (err) {
+    console.log(err);
+  }
+}
 export const getHabitantsPerFloor = (payload) => {
   try {
     return async function (dispatch) {
@@ -115,3 +131,34 @@ export const getHabitantsPerFloor = (payload) => {
     console.log(err);
   }
 };
+
+export const putImagesCarrouselBody = (payload) => {
+  try {
+    return async function (dispatch) {
+      const image = await axios.put("http://localhost:5040/carrousel/body", payload);
+      console.log (image.data[1])
+    };
+  } catch (err) {
+    console.log(err);
+  }
+}  
+
+export function getSocial() {
+  return async function (dispatch) {
+    const social = await axios.get(`http://localhost:5040/redes`);
+    dispatch({
+      type: GET_SOCIAL,
+      payload: social.data[0],
+    });
+  };
+}
+
+export function updateSocial(data) {
+  return async function (dispatch) {
+    const social = await axios.put(`http://localhost:5040/redes`, data);
+    dispatch({
+      type: UPDATE_SOCIAL,
+      payload: data,
+    });
+  };
+}

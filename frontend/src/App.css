@@ -21,6 +21,9 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+.email{
+  cursor: pointer;
+}
 
 .contenedor {
   position: relative;
