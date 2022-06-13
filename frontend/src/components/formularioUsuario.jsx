@@ -43,9 +43,7 @@ const enviarDatos = (event) => {
         
                 <div className="formularioSize container">
 
-                                    <div className="title_usuario"><h2  className="titleDiv">NUEVO USUARIO</h2></div>    
-
-                                {/*  modal que contiene el formulario ----------------------------------------------------------------------------------------------------------*/}
+                                    <div className="title_usuario"><h2  className="titleDiv">NUEVO USUARIO</h2></div>   
 
                                     <div><h3> Todos los campos son obligatorios</h3></div>                
 
@@ -54,20 +52,9 @@ const enviarDatos = (event) => {
                                         <button type="button" class="btn btn-secondary mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src={agregar_usuario} /></button>
                                 </div>
 
+                            <form  className="formulario" onSubmit={enviarDatos}>
 
-
-                                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog ">
-                                                        <div class="modal-content">
-                                                                <div class="modal-header ">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body ">
-
-                                                                <form  className="formulario" onSubmit={enviarDatos}/>
-
-                                                            <div class="form-floating my-3  formularioSize">
+                                                            <div class="form-floating my-3 ">
                                                                     <input type="text" name="identificacion" class="form-control" id="floatingInput" placeholder="name@example.com" onChange={handleInputChange}/>
                                                                     <label for="floatingInput">Identificacion</label>
                                                             </div>
@@ -103,18 +90,14 @@ const enviarDatos = (event) => {
                                                                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password"  onChange={handleInputChange}/>
                                                                         <label for="floatingPassword">Contraseña</label>
                                                             </div>
-                                                                </div>
-                                                                        <div class="modal-footer">
-                                                                                <div class="d-grid gap-5 d-flex justify-content-center mt-3">
+                                                            <div class="d-grid gap-5 d-flex justify-content-center mt-3">
                                                                                             <button class="btn btn-danger mb-4" type="submit">Guardar</button>
-                                                                                            <button class="btn btn-light mb-4" type="button">Cerrar</button>
-                                                                                </div>
-                                                                        </div> 
-                                            </div>
-                                </div>
-                        </div>
-                        {/*  fin del  modal del formulario-------------------------------------------------------------------------------- */}
+                                                                                        <button class="btn btn-light mb-4" type="button">Cerrar</button>
+                                                                </div>
+                                </form>
                 </div>
+
+                
 
 
     );
