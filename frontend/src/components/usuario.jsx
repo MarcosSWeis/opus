@@ -10,6 +10,7 @@ import ver from "../imagenesUsuarios/icono_ojo.svg"
 import editar from "../imagenesUsuarios/icono_lapiz.svg"
 import eliminar from "../imagenesUsuarios/icono_tacho.svg"
 import { Link } from "react-router-dom";
+import usuario from  "../styles/usuario.css"
 const Usuario = ( ) =>{
 
 
