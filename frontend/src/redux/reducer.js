@@ -1,9 +1,10 @@
-import { GET_APARTAMENTS_ONSALE, GET_IMAGE_CARROUSEL , GET_IMAGE_BODY } from "./actions";
+import { GET_APARTAMENTS_ONSALE, GET_IMAGE_CARROUSEL , GET_IMAGE_BODY,REGISTER_USER } from "./actions";
 
 export const initialState = {
   imgCarrusel: [],
   departFilter: [],
   imgBody: [],
+  register_user: null
 };
 
 export function rootReducer(state = initialState, action) {
@@ -13,6 +14,13 @@ export function rootReducer(state = initialState, action) {
         ...state,
         departFilter: action.payload,
       };
+      
+      case REGISTER_USER: 
+      return{
+...state,
+register_user: action.payload
+      };
+      
     case GET_IMAGE_CARROUSEL:  
       return {
         ...state,
