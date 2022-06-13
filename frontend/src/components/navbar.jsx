@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../imgNavBar/logoH.svg";
 import Usuario from "../imgNavBar/usuario.svg";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { clearMessage } from "../redux/actions";
+import { logout } from "../redux/actions";
 
 const Navbar = () => {
+
+const {user:currentUser} = useSelector((state) => state);
+const dispatch = useDispatch();
+
+/* useEffect(() => {
+  history.listen((location) => {
+    dispatch(clearMessage()); // clear message when changing location
+  });
+}, [dispatch]); */
+
+/* useEffect(() => {
+  if (currentUser) {
+    setAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+    setUserBoard(currentUser.roles.includes("ROLE_USER"));
+  }
+}, [currentUser]);
+const logOut = () => {
+  dispatch(logout());
+};
+
+ */
+
+const logOut = () => {
+  dispatch(logout())
+
+}
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -48,8 +78,18 @@ const Navbar = () => {
                   Contacto
                 </Link>
               </li>
-            </ul>
-            <div>
+
+              </ul>
+   {currentUser.isLoggedIn ? <div>
+              < button className="btn btn-outline-danger botonLogin   mx-5" >
+              <a href="/"  onClick={logOut}>
+                  LogOut
+                </a>
+              </ button>
+              </div>
+        
+            
+            :<div>
               <Link to={"/login"}>
                 <button
                   className="btn btn-outline-danger botonLogin   mx-5"
@@ -58,7 +98,7 @@ const Navbar = () => {
                   <img src={Usuario} alt=" Imagen del login" />
                 </button>
               </Link>
-            </div>
+            </div>}
           </div>
         </div>
       </nav>

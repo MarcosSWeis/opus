@@ -39,6 +39,7 @@ async function createUser(req, res, next) {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     cel: req.body.cel,
+    image:req.body.image,
     password: bcrypt.hashSync(req.body.password, 10),
   })
     .then((user) => {
