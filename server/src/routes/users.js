@@ -7,6 +7,8 @@ const {
   deleteUser,
   getUsers,
   getDashboard,
+  getUserByFloor,
+  searchFieldsUser,
 } = require("../controllers/user.controller");
 const { checkDuplicateEmailOrDni } = require("../middleware/verifyCreate");
 const { verifyToken, isAdmin, isUser } = require("../middleware/authJwt");
@@ -23,6 +25,10 @@ router.post(
 router.get("/get/:id", [verifyToken, isAdmin], getUserById);
 router.delete("/delete/:id", [verifyToken, isAdmin], deleteUser);
 router.post("/signin", signIn);
-router.get("/dashboard_habitants", getDashboard);
+router.get("/dashboard_habitants", [verifyToken, isAdmin], getDashboard);
+//devuelvo los usuarios de cada piso
+router.get("/users_by_floor", [verifyToken, isAdmin], getUserByFloor);
+//barra de busqueda dashboard/user
+router.get("/search", [verifyToken, isAdmin], searchFieldsUser);
 
 module.exports = router;

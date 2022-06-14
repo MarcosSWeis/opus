@@ -1,8 +1,9 @@
 const { User, Tower, Department, Roles, conn } = require("../db");
 const bcrypt = require("bcryptjs");
 
-const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+const sequelize = require("sequelize");
+const { where } = require("sequelize");
+const Op = sequelize.Op;
 
 async function createUser(req, res, next) {
   async function departamento(TowerName, floor, numDeApartamento) {
@@ -39,7 +40,7 @@ async function createUser(req, res, next) {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     cel: req.body.cel,
-    image:req.body.image,
+    image: req.body.image,
     password: bcrypt.hashSync(req.body.password, 10),
   })
     // .then((user) => {
@@ -157,6 +158,82 @@ async function getDashboard(req, res) {
   }
 }
 
+async function getUserByFloor(req, res) {
+  try {
+    const { query } = req; //la funcion tiene que recibir las querys (page,floor)
+    const limit = 10;
+    const page = query.page - 1;
+    const offset = page * limit;
+    const { count, rows } = await Department.findAndCountAll({
+      where: {
+        floor: query.floor,
+      },
+      include: {
+        model: User,
+        as: "user",
+      },
+      offset: offset,
+      limit: limit,
+      distinct: true, //para que no cuente los includes
+    });
+    const response = {
+      count,
+      rows,
+    };
+    res.status(200).json(response);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("error del server");
+  }
+}
+
+async function searchFieldsUser(req, res) {
+  try {
+    const { query } = req; //la funcion tiene que recibir las querys (page,search)
+    const limit = 10;
+    const page = query.page - 1;
+    const offset = page * limit;
+    let where = {
+      departament_id: { [Op.like]: `%${query.search}%` },
+      first_name: { [Op.like]: `%${query.search}%` },
+      last_name: { [Op.like]: `%${query.search}%` },
+      email: { [Op.like]: `%${query.search}%` },
+      dni: { [Op.like]: `%${query.search}%` },
+    };
+    //si lo que viene por parametro no se puede pasar a numero isNaN devuelve true y lo remuevo del objeto para que no se rompa
+    if (isNaN(query.search)) {
+      delete where.departament_id;
+      delete where.dni;
+    } else {
+      //si son numeros , para buscarlos en la db tengo que pasar el campo ese a varchar porque es integer o date etc
+      where = {
+        [Op.and]: [
+          sequelize.where(conn.cast(conn.col("departament_id"), "varchar"), {
+            [Op.like]: `%${query.search}%`,
+          }),
+          sequelize.where(conn.cast(conn.col("dni"), "varchar"), {
+            [Op.like]: `%${query.search}%`,
+          }),
+        ],
+      };
+    }
+    const { count, rows } = await User.findAndCountAll({
+      where: where,
+      offset: offset,
+      limit: limit,
+      distinct: true, //para que no cuente los includes
+    });
+    const result = {
+      count,
+      rows,
+    };
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("error del server");
+  }
+}
+
 module.exports = {
   createUser,
   updateUser,
@@ -164,4 +241,6 @@ module.exports = {
   getUserById,
   getUsers,
   getDashboard,
+  getUserByFloor,
+  searchFieldsUser,
 };

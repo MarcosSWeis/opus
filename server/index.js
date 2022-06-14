@@ -31,7 +31,7 @@ const { loadSocial } = require("./src/loadData/SocialLoad.js");
 const port = process.env.PORT || 5040;
 
 // Syncing all the models at once.
-conn.sync({ force: false}).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(port, async () => {
     // await loadCondo();
     // await loadTowers();
@@ -41,12 +41,11 @@ conn.sync({ force: false}).then(() => {
     // await loadCarrousel();
     // await defaultAdminAndRoles();
     // await loadBookings();
-    // await loadSocial(); 
+    // await loadSocial();
+    // await defaultAdminAndRoles();
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console
-    
-    // defaultAdminAndRoles();
   });
 });
 
