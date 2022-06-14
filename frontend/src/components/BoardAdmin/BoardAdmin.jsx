@@ -6,6 +6,7 @@ import { logout } from "../../redux/actions";
 import { useDispatch } from "react-redux"; 
 import logo from './imageBoard/logohorizontal.svg';
 import usuario from './imageBoard/usuario.svg';
+import {Dashboard} from "../dashboard/Dashboard";
 
 
 
@@ -48,25 +49,25 @@ export default function BoardAdmin() {
             <div className="col">
               <button
                 className="butond">
-            <Link to='user' style={{ color: "white" , textDecoration:'none'}}>
-               Panel
+            <Link to={'dashboard'} style={{ color: "white" , textDecoration:'none'}}>
+               Dashboard
                 </Link>
               </button>
             </div>
 
             <p className="pd">
-              <Link to="profile" style={{ color: "white" , textDecoration:'none'}}>
-                Perfil
+              <Link to="user" style={{ color: "white" , textDecoration:'none'}}>
+                Usuarios
               </Link>
             </p>
-            <p className="pd"><Link to ='user'style={{ color: "white" , textDecoration:'none'}}> Mantenimiento </Link></p>
+            <p className="pd"><Link to ='maintenance'style={{ color: "white" , textDecoration:'none'}}> Mantenimiento </Link></p>
             <p className="pd">Pagos</p>
-            <a href="/" className="pd" onClick={logOut}>
+            <a href="/" className="pd" /* onClick={logOut} */>
               Salir
             </a>
           </aside>
         </div>
-        <div className="col align-self-center">
+        <div className="col">
           <Outlet />
         </div>
       </div>

@@ -42,11 +42,12 @@ conn.sync({ force: false}).then(() => {
     // await defaultAdminAndRoles();
     // await loadBookings();
     // await loadSocial(); 
+    // await defaultAdminAndRoles();
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     console.log("o|O_O|o robot Σωκράτης listening at 5040");
     // eslint-disable-line no-console
     
-    // defaultAdminAndRoles();
+    
   });
 });
 
