@@ -7,6 +7,8 @@ import Filter from "./Filter";
 import Paginate from "./Paginate/Paginate";
 import TemplateShowDepartaments from "./TemplateShowDepartaments";
 import $ from "jquery";
+import { getObjectParam } from "../helpers/getQueryParams";
+import { Link, Outlet } from "react-router-dom";
 
 const initialFilter = {
   toilets: null,
@@ -20,14 +22,15 @@ const initialFilter = {
 export default function Departaments() {
   const [inputsFilter, setInputsFilter] = useState(initialFilter);
   const [page, setPage] = useState(1);
+  const [queryParams, setQueryParams] = useState({});
+
   const dispatch = useDispatch();
   const formFilter = $("formFilter");
-  console.log(formFilter, "btnSubmit");
   //recupero la informacion del estado que lo modifico la accion
   const responseFilter = useSelector((state) => {
     return state.departFilter;
   });
-  console.log(inputsFilter, "inputsFilter");
+
   function handlerChange(event) {
     setInputsFilter({
       ...inputsFilter,
@@ -60,6 +63,7 @@ export default function Departaments() {
     getDataDb();
   }
   console.log(responseFilter);
+
   return (
     <div>
       <Filter
@@ -67,6 +71,7 @@ export default function Departaments() {
         handlerChange={handlerChange}
         setPage={setPage}
       />
+
       {responseFilter.data && responseFilter.data.length !== 0 ? (
         responseFilter.data.map((depto) => (
           <TemplateShowDepartaments
@@ -75,12 +80,12 @@ export default function Departaments() {
             images={depto.image}
             description={depto.description}
             measure={depto.measure}
+            id={depto.id}
           />
         ))
       ) : (
         <Skeleton />
       )}
-
       <Paginate
         setPage={setPage}
         formFilter={formFilter}

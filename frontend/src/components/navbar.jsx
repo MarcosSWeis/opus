@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Logo from "../imgNavBar/logoH.svg";
 import Usuario from "../imgNavBar/usuario.svg";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { clearMessage } from "../redux/actions";
 import { logout } from "../redux/actions";
+import { Link, Outlet } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -41,8 +40,8 @@ const logOut = () => {
         
             <Link to='/'>
             <img src={Logo} alt="Logo de la empresa" />
-            </Link>
-{/*           <button
+          </Link>
+          <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -52,7 +51,7 @@ const logOut = () => {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button> */}
+          </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
               <li className="nav-item">
@@ -101,6 +100,7 @@ const logOut = () => {
             </div>}
           </div>
         </div>
+        <Outlet />
       </nav>
     </>
   );

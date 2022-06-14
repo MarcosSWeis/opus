@@ -1,5 +1,4 @@
 import React from "react";
-
 import Carrusel from "./carrusel";
 import Body from "./body";
 

@@ -1,10 +1,19 @@
-import { GET_APARTAMENTS_ONSALE, GET_IMAGE_CARROUSEL , GET_IMAGE_BODY,REGISTER_USER } from "./actions";
 import {
+  REGISTER_USER,
   SET_MESSAGE,
   CLEAR_MESSGE,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  GET_APARTAMENTS_ONSALE,
+  GET_IMAGE_CARROUSEL,
+  GET_BOOKINGS_FOR_THIS_DAY,
+  GET_SOCIAL_SPACES,
+  GET_IMAGE_BODY,
+  GET_DEPARTAMENT_ID,
+  GET_HABITANTSFLOOR,
+  GET_SOCIAL,
+  UPDATE_SOCIAL,
 } from "./actions";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -15,8 +24,13 @@ export const initialState = {
     : { isLoggedIn: false, user: null },
   imgCarrusel: [],
   departFilter: [],
+  bookingDate: {},
+  socialsSpace: {},
   imgBody: [],
-  register_user: null
+  register_user: null,
+  departamentDetail: null,
+  habitantsFloor: [],
+  social: {},
 };
 
 export function rootReducer(state = initialState, action) {
@@ -32,8 +46,6 @@ export function rootReducer(state = initialState, action) {
 ...state,
 register_user: action.payload
       };
-      
-    case GET_IMAGE_CARROUSEL:  
     case GET_IMAGE_CARROUSEL:
       return {
         ...state,
@@ -73,6 +85,26 @@ register_user: action.payload
         ...state,
         isLoggedIn: false,
         user: null,
+      };
+    case GET_DEPARTAMENT_ID:
+      return {
+        ...state,
+        departamentDetail: action.payload,
+      };
+    case GET_HABITANTSFLOOR:
+      return {
+        ...state,
+        habitantsFloor: action.payload,
+      };
+    case GET_SOCIAL:
+      return {
+        ...state,
+        social: action.payload,
+      };
+    case UPDATE_SOCIAL:
+      return {
+        ...state,
+        social: action.payload,
       };
 
     default:

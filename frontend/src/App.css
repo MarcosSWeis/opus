@@ -8,6 +8,7 @@ body {
   font-weight: 400;
   color: #666666;
   background: #ffffff;
+  min-width: 533px;
 }
 
 .wrapper {
@@ -19,6 +20,9 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.email{
+  cursor: pointer;
 }
 
 .contenedor {
