@@ -34,7 +34,7 @@ export const initialState = {
 };
 
 export function rootReducer(state = initialState, action) {
-  switch ((action.type, action.payload)) {
+  switch (action.type) {
     case GET_APARTAMENTS_ONSALE:
       return {
         ...state,

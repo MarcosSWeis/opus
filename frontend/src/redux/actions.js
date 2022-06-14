@@ -77,6 +77,7 @@ export const getImageBody = (payload) => {
   try {
     return async function (dispatch) {
       const image = await axios.get("http://localhost:5040/carrousel/body");
+      console.log (image.data);
       dispatch({
         type: GET_IMAGE_BODY,
         payload: image.data,
