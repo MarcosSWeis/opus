@@ -161,6 +161,7 @@ async function getDashboard(req, res) {
 async function getUserByFloor(req, res) {
   try {
     const { query } = req; //la funcion tiene que recibir las querys (page,floor)
+    console.log(query);
     const limit = 10;
     const page = query.page - 1;
     const offset = page * limit;
@@ -168,10 +169,17 @@ async function getUserByFloor(req, res) {
       where: {
         floor: query.floor,
       },
-      include: {
-        model: User,
-        as: "user",
-      },
+      include: [
+        {
+          model: User,
+          as: "user",
+        },
+        {
+          model: Tower,
+          as: "tower",
+        },
+      ],
+
       offset: offset,
       limit: limit,
       distinct: true, //para que no cuente los includes
@@ -189,21 +197,21 @@ async function getUserByFloor(req, res) {
 
 async function searchFieldsUser(req, res) {
   try {
-    const { query } = req; //la funcion tiene que recibir las querys (page,search)
+    const { query } = req;
+    console.log(query);
     const limit = 10;
     const page = query.page - 1;
     const offset = page * limit;
-    let where = {
-      departament_id: { [Op.like]: `%${query.search}%` },
-      first_name: { [Op.like]: `%${query.search}%` },
-      last_name: { [Op.like]: `%${query.search}%` },
-      email: { [Op.like]: `%${query.search}%` },
-      dni: { [Op.like]: `%${query.search}%` },
-    };
+    let where;
     //si lo que viene por parametro no se puede pasar a numero isNaN devuelve true y lo remuevo del objeto para que no se rompa
     if (isNaN(query.search)) {
-      delete where.departament_id;
-      delete where.dni;
+      where = {
+        [Op.or]: [
+          { first_name: { [Op.like]: `%${query.search}%` } },
+          { last_name: { [Op.like]: `%${query.search}%` } },
+          { email: { [Op.like]: `%${query.search}%` } },
+        ],
+      };
     } else {
       //si son numeros , para buscarlos en la db tengo que pasar el campo ese a varchar porque es integer o date etc
       where = {
@@ -219,6 +227,19 @@ async function searchFieldsUser(req, res) {
     }
     const { count, rows } = await User.findAndCountAll({
       where: where,
+      include: [
+        {
+          model: Department,
+          as: "departments",
+          include: [
+            {
+              model: Tower,
+              as: "tower",
+            },
+          ],
+        },
+      ],
+
       offset: offset,
       limit: limit,
       distinct: true, //para que no cuente los includes

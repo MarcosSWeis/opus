@@ -14,6 +14,8 @@ import {
   GET_HABITANTSFLOOR,
   GET_SOCIAL,
   UPDATE_SOCIAL,
+  GET_USERS_BY_FLOOR,
+  GET_SEARCH,
 } from "./actions";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -31,6 +33,8 @@ export const initialState = {
   departamentDetail: null,
   habitantsFloor: [],
   social: {},
+  usersByFloor: {},
+  search: {},
 };
 
 export function rootReducer(state = initialState, action) {
@@ -40,11 +44,21 @@ export function rootReducer(state = initialState, action) {
         ...state,
         departFilter: action.payload,
       };
-      
-      case REGISTER_USER: 
-      return{
-...state,
-register_user: action.payload
+    case GET_USERS_BY_FLOOR:
+      return {
+        ...state,
+        usersByFloor: action.payload,
+      };
+    case GET_SEARCH:
+      return {
+        ...state,
+        search: action.payload,
+      };
+
+    case REGISTER_USER:
+      return {
+        ...state,
+        register_user: action.payload,
       };
     case GET_IMAGE_CARROUSEL:
       return {

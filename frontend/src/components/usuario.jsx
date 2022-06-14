@@ -1,129 +1,195 @@
 import React from "react";
-import usuarioIcono  from "../imagenesUsuarios/icono_usuarios.svg"
-import iconoUsuario from "../imagenesUsuarios/icono_usuario.svg"
-import agregar from "../imagenesUsuarios/icono_de_más.svg"
-import ajustes from "../imagenesUsuarios/icono_configuración.svg"
-import copy from "../imagenesUsuarios/icono_copiar.svg"
-import pdf from "../imagenesUsuarios/pdf_icono.svg"
-import excel from "../imagenesUsuarios/Excel_download.svg"
-import ver from "../imagenesUsuarios/icono_ojo.svg"
-import editar from "../imagenesUsuarios/icono_lapiz.svg"
-import eliminar from "../imagenesUsuarios/icono_tacho.svg"
+import usuarioIcono from "../imagenesUsuarios/icono_usuarios.svg";
+import iconoUsuario from "../imagenesUsuarios/icono_usuario.svg";
+import agregar from "../imagenesUsuarios/icono_de_más.svg";
+import ajustes from "../imagenesUsuarios/icono_configuración.svg";
+import $, { get } from "jquery";
 import { Link } from "react-router-dom";
-import usuario from  "../styles/usuario.css"
-const Usuario = ( ) =>{
+import usuario from "../styles/usuario.css";
+import { useState } from "react";
+import RowsUsers from "./User/RowsUsers";
+import MethodExportsFiles from "./User/MethodExportsFiles";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSearch, getUserByFloor } from "../redux/actions";
+import Paginate from "./Paginate/Paginate";
 
+const Usuario = () => {
+  const floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [page, setPage] = useState(1);
 
-        return (  
-        <>
+  const [searchByFloor, setSearchByFloor] = useState(null);
+  const [search, setSearch] = useState(null);
 
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2 ">
-                                <button class="btn  btn-light " type="button"><img src={ajustes} /></button>
-                                <button class="btn btn-light" type="button"><img src={iconoUsuario}/></button>
-                </div>
+  const [paginateMaxRowsByFloor, setPaginateMaxRowsByFloor] = useState(false);
+  const [paginateMaxRowsSearch, setPaginateMaxRowsSearch] = useState(false);
 
+  let dataUsersByFloor = useSelector((state) => state.usersByFloor);
+  let dataSearch = useSelector((state) => state.search);
+  console.log(dataSearch);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatch(getUserByFloor({ ...searchByFloor, page }));
+  }, [searchByFloor, page, search]);
+  function handlerSearchByFloor(event) {
+    setPage(1);
+    setSearchByFloor({
+      ...searchByFloor,
+      [event.target.name]: event.target.value,
+    });
+    console.log(event.target.name, event.target.value);
+  }
 
-                <div class="d-grid gap-2 d-md-flex justify-md-start mb-3">
-                                <button class="btn btn-danger" type="button"><img src={usuarioIcono} /> USUARIO</button>
-                                <button class="btn btn-danger" type="button"><img src={agregar}/><div><h5>Nuevo</h5></div> </button>
-                </div>
+  function handlerSearchInput(event) {
+    setPage(1);
+    setSearch({
+      ...search,
+      [event.target.name]: event.target.value,
+    });
 
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2">
-                                <div class="input-group mb-3 buscar">
-                                        <input type="text" class="form-control " placeholder="Buscar Usuario" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                                        <button class="btn btn-danger" type="button" id="button-addon2">Buscar</button>
-                                </div> 
-                </div>
+    console.log(event.target.name, event.target.value);
+  }
+  function handlerSubmitSearch(event) {
+    event.preventDefault();
+    console.log("ejecuto el submit en el paginado");
+    dispatch(getSearch({ ...search, page }));
+  }
+  let formSearch = $("#formSearch");
 
-                <div className="iconos select2 ">
-                                <img src="https://cdn-icons-png.flaticon.com/512/916/916771.png" className="edif" alt=""/ >
-                                <h5 className="mx-3">PISO</h5>
+  return (
+    <div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2 ">
+        <button class="btn  btn-light " type="button">
+          <img src={ajustes} />
+        </button>
+        <button class="btn btn-light" type="button">
+          <img src={iconoUsuario} />
+        </button>
+      </div>
 
-                                <div className="mb-5 size">
-                                        <select class="form-select selectPa" aria-label="Default select example">
-                                                        <option selected className="text-center">1</option>
-                                                        <option value="2" className="text-center">2</option>
-                                                        <option value="3"className="text-center">3</option>
-                                                        <option value="4"className="text-center">4</option>
-                                                        <option value="5" className="text-center">5</option>
-                                                        <option value="6"className="text-center">6</option>
-                                                        <option value="7"className="text-center">7</option>
-                                                        <option value="8"className="text-center">8</option>
-                                                        <option value="9"className="text-center">9</option>
-                                                        <option value="10"className="text-center">10</option>
-                                        </select>
-                                </div>
-                </div>
+      <div class="d-grid gap-2 d-md-flex justify-md-start mb-3">
+        <button class="btn btn-danger" type="button">
+          <img src={usuarioIcono} /> USUARIO
+        </button>
+        <button class="btn btn-danger" type="button">
+          <img src={agregar} />
+          <div>
+            <h5>Nuevo</h5>
+          </div>{" "}
+        </button>
+      </div>
 
-                        <div className="iconos select mt-5">
-                        <button type="button" class="btn btn-danger"> <img src={copy}/>COPIAR</button>
-                        <button type="button" class="btn btn-danger mx-3"><img src={pdf}/>PDF</button>
-                        <button type="button" class="btn btn-danger"><img src={excel}/>EXCEL</button>
-                        </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2">
+        <div class="input-group mb-3 buscar">
+          <form action="" onSubmit={handlerSubmitSearch} id="formSearch">
+            <input
+              type="text"
+              class="form-control "
+              placeholder="Buscar Usuario"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              id="search"
+              name="search"
+              onChange={handlerSearchInput}
+            />
+            <button class="btn btn-danger" type="submit" id="button-addon2">
+              Buscar
+            </button>
+          </form>
+        </div>
+      </div>
 
-                <table class="table ">
-                        <thead>
-                                <tr>
-                                <th scope="col">n°</th>
-                                <th scope="col">Departamento</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Acciones</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                        <th scope="row">1</th>
-                                        <td>502</td>
-                                        <td>Luis</td>
-                                        <td>Otto</td>
-                                        <td>lukas@gmail.com</td>
-                                        <td>44426898</td>
-                                        <td>
-                                        <div>
-                                        <button type="button" class="btn btn-danger" > <img src={ver} className="acciones" /></button>
-                                        <button type="button" class="btn btn-danger mx-3"><img src={editar} className="acciones"/></button>
-                                        <button type="button" class="btn btn-danger"><img src={eliminar} className="acciones"/></button>
-                                        </div>                            
-                                </td>
-                                </tr>
-                                <tr>
-                                        <th scope="row">2</th>
-                                        <td>450</td>
-                                        <td>Nicolas</td>
-                                        <td>Webber</td>
-                                        <td>webber_N@gmail.com</td>
-                                        <td>2613026895</td>
-                                        <td>
-                                        <div>
-                                                <button type="button" class="btn btn-danger "><img src={ver} className="acciones" /></button>
-                                                <button type="button" class="btn btn-danger mx-3"><img src={editar} className="acciones"/></button>
-                                                <button type="button" class="btn btn-danger"><img src={eliminar} className="acciones"/></button>
-                                        </div> 
-                                        </td>
-                                </tr>
-                                <tr>
-                                <th scope="row">2</th>
-                                        <td>Marcos</td>
-                                        <td>Muñoz</td>
-                                        <td>muños_marcos@gmail.com</td>
-                                        <td>2636523458</td>
-                                        <td>260</td>
-                                        <td>
-                                                <div>
-                                                <button type="button" class="btn btn-danger"><img src={ver} className="acciones" /></button>
-                                                <button type="button" class="btn btn-danger mx-3"><img src={editar} className="acciones"/></button>
-                                                <button type="button" class="btn btn-danger"><img src={eliminar} className="acciones"/></button>
-                                                </div> 
-                                        </td>
-                        </tr>
-                </tbody>
-        </table>
+      <div className="iconos select2 ">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/916/916771.png"
+          className="edif"
+          alt=""
+        />
+        <h5 className="mx-3">PISO</h5>
 
-        </>
-);
-}
+        <div className="mb-5 size">
+          <select
+            class="form-select selectPa"
+            aria-label="Default select example"
+            name="floor"
+            onChange={handlerSearchByFloor}
+            id="selectFloor"
+          >
+            <option selected className="text-center" value={0}>
+              Buscar por Piso
+            </option>
+            {floors.map((floor) => (
+              <option value={floor} className="text-center" key={floor}>
+                {floor}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
-export default Usuario
+      <MethodExportsFiles />
+
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">Torre</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Dni</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        {Object.keys(dataUsersByFloor).length > 0
+          ? dataUsersByFloor.rows.map(({ user, tower }) => (
+              <RowsUsers
+                tower={tower.tower_name}
+                departament_id={user[0].departament_id}
+                first_name={user[0].first_name}
+                last_name={user[0].last_name}
+                email={user[0].email}
+                dni={user[0].dni}
+              />
+            ))
+          : ""}
+
+        {Object.keys(dataSearch).length > 0
+          ? dataSearch.rows.map(
+              ({
+                departament_id,
+                first_name,
+                last_name,
+                email,
+                dni,
+                departments,
+              }) => (
+                <RowsUsers
+                  tower={departments.tower.tower_name}
+                  departament_id={departament_id}
+                  first_name={first_name}
+                  last_name={last_name}
+                  email={email}
+                  dni={dni}
+                />
+              )
+            )
+          : ""}
+      </table>
+      <Paginate
+        setPage={setPage}
+        page={page}
+        formFilter={formSearch}
+        totalRowsBd={
+          Object.keys(dataUsersByFloor).length > 0
+            ? dataUsersByFloor.count
+            : Object.keys(dataSearch).length > 0
+            ? dataSearch.count
+            : ""
+        }
+      />
+    </div>
+  );
+};
+
+export default Usuario;
