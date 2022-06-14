@@ -1,7 +1,8 @@
-const { User, Roles} = require("../db");
+const { User, ROLES} = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
+const {SECRET} = process.env
 
 
 const signIn = (req,res,next) => {
@@ -9,7 +10,9 @@ const signIn = (req,res,next) => {
 
 User.findOne({
 
-    where:{email:req.body.email}
+    where:{
+        email:req.body.email
+    }
 })
 .then(async user => {
 
@@ -25,19 +28,15 @@ User.findOne({
 
    }
 
-   const token = jwt.sign({id:user.id},process.env.SECRET,{
+   const token = jwt.sign({id:user.id},SECRET,{
        expiresIn:86400 //24 horas))
 
 });
-const authorities =[];
-user.getRoles().then(roles => {
-
-for(let i = 0; i< roles.length; i++){
-
-authorities.push('ROLE_' + roles[i].name.toUpperCase());
-
-}
-
+  let authorities = [];
+      user.getRoles().then((roles) => {
+        for (let i = 0; i < roles.length; i++) {
+          authorities.push("ROLE_" + roles[i].name.toUpperCase());
+        }
 res.status(200).send({
 id:user.id,
 firtsname:user.first_name,
@@ -56,7 +55,7 @@ accessToken:token
 
 
 })
-.catch(err => {
+.catch((err) => {
 
     res.status(500).send({message:err.message})
 });
