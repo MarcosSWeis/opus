@@ -33,6 +33,7 @@ async function defaultAdminAndRoles() {
           email: "admin@gmail.com",
           dni:12345678,
           cel:123456,
+          isAdmin: true,
           password: bcrypt.hashSync("123456789", 8),
          
         });
