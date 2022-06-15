@@ -6,7 +6,8 @@ import { logout } from "../../redux/actions";
 import { useDispatch } from "react-redux"; 
 import logo from './imageBoard/logohorizontal.svg';
 import usuario from './imageBoard/usuario.svg';
-import {Dashboard} from "../dashboard/Dashboard";
+
+
 
 
 
@@ -23,9 +24,12 @@ export default function BoardAdmin() {
 
   return (
     <>
+  
+
+
       <div className="row ">
-        <div className="col">
-          <aside>
+        <div className="col-3">
+          <aside className='ocultar'>
 
 
             <div className="col">
@@ -62,21 +66,29 @@ export default function BoardAdmin() {
             </p>
             <p className="pd"><Link to ='maintenance'style={{ color: "white" , textDecoration:'none'}}> Mantenimiento </Link></p>
             <p className="pd">Pagos</p>
-            <a href="/" className="pd" /* onClick={logOut} */>
-              Salir
+            <a href="/" className="pd" onClick={logOut} >
+             Logout
             </a>
           </aside>
         </div>
-        <div className="col">
+
+      
+     <div className='col-9'>
+    
           <Outlet />
-        </div>
-      </div>
+        
+         </div>
+          </div>
+      
+    
+   
+     
 
 
 
 
 
-
+   
     </>
   );
 }
