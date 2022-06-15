@@ -13,10 +13,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearch, getUserByFloor } from "../redux/actions";
 import Paginate from "./Paginate/Paginate";
+import ModalNewUser from "./modalNewUser/ModalNewUser";
 
 const Usuario = () => {
   const floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [page, setPage] = useState(1);
+  const [modal, setModal] = useState(false);
 
   const [searchByFloor, setSearchByFloor] = useState(null);
   const [search, setSearch] = useState(null);
@@ -56,6 +58,11 @@ const Usuario = () => {
   }
   let formSearch = $("#formSearch");
 
+  let handlerModal = () => {
+    setModal(true);
+  }
+  
+
   return (
     <div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2 ">
@@ -71,12 +78,20 @@ const Usuario = () => {
         <button class="btn btn-danger" type="button">
           <img src={usuarioIcono} /> USUARIO
         </button>
-        <button class="btn btn-danger" type="button">
+        <button class="btn btn-danger" type="button" onClick={handlerModal}>
           <img src={agregar} />
           <div>
             <h5>Nuevo</h5>
           </div>{" "}
         </button>
+        <ModalNewUser
+        show={modal}  
+        onHide={() => setModal(false)}
+        scrollable={true}
+        animation={true}
+        backdrop={'static'}
+        centered={true}
+        />
       </div>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2">

@@ -1,5 +1,6 @@
 import axios from "axios";
 import authServices from "../services/auth.services";
+import authHeader from "../services/auth-header";
 
 //actions
 export const GET_APARTAMENTS_ONSALE = "GET_APARTAMENTS_ONSALE";
@@ -25,6 +26,8 @@ export const GET_SOCIAL = "GET_SOCIAL";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_USERS_BY_FLOOR = "GET_USERS_BY_FLOOR";
 export const GET_SEARCH = "GET_SEARCH";
+
+export const POST_CLIENT = "POST_CLIENT";
 
 export const getSearch = (payload) => {
   try {
@@ -284,4 +287,13 @@ export function updateSocial(data) {
       payload: data,
     });
   };
+}
+
+export function postClient (data){
+  return async function (dispatch) {
+    const client = await axios.post(`http://localhost:5040/users/create`, data, {
+      headers: authHeader ().Authorization
+  });
+    console.log (client.data)
+  }
 }

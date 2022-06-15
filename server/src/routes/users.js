@@ -20,7 +20,7 @@ router.put("/update/:id", [verifyToken], updateUser);
 router.post(
   "/create",
   [verifyToken, isAdmin, checkDuplicateEmailOrDni],
-  createUser
+  createUser 
 );
 router.get("/get/:id", [verifyToken, isAdmin], getUserById);
 router.delete("/delete/:id", [verifyToken, isAdmin], deleteUser);

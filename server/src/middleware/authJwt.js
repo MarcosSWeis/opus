@@ -5,7 +5,8 @@ const {SECRET} = process.env
 
 
 const verifyToken = (req, res, next) => {
-  let token = req.headers["x-access-token"];
+  console.log ("verifyToken");
+  let token = req.headers;
 
   if (!token) {
     return res.status(401).send({ message: "No se Recibio Token" });

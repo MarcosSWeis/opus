@@ -29,6 +29,7 @@ export default function ChangePhotosSpaces() {
     data.append("file", files[0]);
     data.append("upload_preset", "No-Conuntry-Opus");
     setLoading({ load: true, space: space });
+    console.log (data);
     const res = await axios.post(
       "https://api.cloudinary.com/v1_1/jair1020/image/upload",
       data
