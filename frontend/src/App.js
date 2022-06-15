@@ -45,11 +45,11 @@ function App() {
           <Route path="usuario" element={<>  <Navbar /> <Usuario /> <Footer /> </>} />
           <Route path="/infoDeparts" element={<>  <Navbar /> <Dashboard /> <Footer /> </>} />
           <Route path="*" element={<>  <Navbar /><NoMatch /> <Footer /> </>} />
-          <Route path="dashboard" element={<Protected isLoggedIn={currentUser.isLoggedIn}> <BoardAdmin /> </Protected>}>
+          <Route path="panel" element={<Protected isLoggedIn={currentUser.isLoggedIn}> <BoardAdmin /> </Protected>}>
             <Route path="profile" element={<Profile />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="user" element={<Usuario />} />
-            <Route path="maintenance" element={<Mantenimiento/>} />
+            <Route path="dashboard" element={<>  <Navbar />  <Dashboard /> </>} />
+            <Route path="user" element={<>  <Navbar /><Usuario /> </>} />
+            <Route path="maintenance" element={ <>  <Navbar /><Mantenimiento/> </>} />
             <Route path="*" element={<NoMatch />} />
 
           </Route>

@@ -35,18 +35,18 @@ const LoginForm = (props) => {
     dispatch(login(email, password))
 
     .then(() => {
-      navigate("/dashboard");
+      navigate("/panel/dashboard");
       window.location.reload();
     })
     .catch((error) => {
       setLoading(false);
       alert(error.message);
-      
+      window.location.reload();
     
     });
     
     if (isLoggedIn) {
-     navigate("/dashboard");
+     navigate("/panel/dashboard");
     }
   }
 
