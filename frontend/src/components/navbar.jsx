@@ -80,11 +80,17 @@ const logOut = () => {
 
               </ul>
    {currentUser.isLoggedIn ? <div>
-              < button className="btn btn-outline-danger botonLogin   mx-5" >
-              <a href="/"  onClick={logOut}>
-                  LogOut
-                </a>
-              </ button>
+     
+              <div class="dropdown btn btn-outline-danger botonLogin   mx-5">
+  <span>{currentUser.firtsname} </span>
+  <div class="dropdown-content">
+    <p><Link to='/panel/dashboard'>Dashboard </Link> </p>
+    <p> <Link to='/'> Home </Link></p>
+    <p><a href="/"  onClick={logOut}>LogOut</a> </p>
+  </div>
+</div>
+
+              
               </div>
         
             
