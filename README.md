@@ -46,7 +46,7 @@ Fue un gusto para nosotros trabajar en este proyecto, compartir nuestros conocim
 It was a pleasure for us to work on this project, share our knowledge and above all learn technologies
 
 ### Linkedin 
-![Luis](https://www.linkedin.com/in/luis-stoller-0ab08a226/)
+-[Luis](https://www.linkedin.com/in/luis-stoller-0ab08a226/)
 
 
 
