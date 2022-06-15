@@ -25,10 +25,10 @@ router.post(
 router.get("/get/:id", [verifyToken, isAdmin], getUserById);
 router.delete("/delete/:id", [verifyToken, isAdmin], deleteUser);
 router.post("/signin", signIn);
-router.get("/dashboard_habitants", [verifyToken, isAdmin], getDashboard);
+router.get("/dashboard_habitants", getDashboard);
 //devuelvo los usuarios de cada piso
-router.get("/users_by_floor", [verifyToken, isAdmin], getUserByFloor);
+router.get("/users_by_floor", getUserByFloor);
 //barra de busqueda dashboard/user
-router.get("/search", [verifyToken, isAdmin], searchFieldsUser);
+router.get("/search", searchFieldsUser);
 
 module.exports = router;

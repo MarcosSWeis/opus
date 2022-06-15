@@ -5,7 +5,7 @@ import authServices from "../services/auth.services";
 export const GET_APARTAMENTS_ONSALE = "GET_APARTAMENTS_ONSALE";
 export const GET_IMAGE_CARROUSEL = "GET_IMAGE_CARROUSEL";
 export const GET_IMAGE_BODY = "GET_IMAGE_BODY";
-export const  REGISTER_USER= 'REGISTER_USER '
+export const REGISTER_USER = "REGISTER_USER ";
 
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
@@ -15,15 +15,53 @@ export const LOGOUT = "LOGOUT";
 export const SET_MESSAGE = "SET_MESSGE";
 export const CLEAR_MESSGE = "CLEAR_MESSGE";
 
-
 export const GET_BOOKINGS_FOR_THIS_DAY = "GET_BOOKINGS_FOR_THIS_DAY";
 export const GET_SOCIAL_SPACES = "GET_SOCIAL_SPACES";
-export const PUT_IMAGES_CARROUSEL= "PUT_IMAGES_CARROUSEL";
+export const PUT_IMAGES_CARROUSEL = "PUT_IMAGES_CARROUSEL";
 export const GET_DEPARTAMENT_ID = "GET_DEPARTAMENT_ID";
 export const GET_HABITANTSFLOOR = "GET_HABITANTSFLOOR";
 export const PUT_IMAGES_CARROUSEL_BODY = "PUT_IMAGES_CARROUSEL_BODY";
 export const GET_SOCIAL = "GET_SOCIAL";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
+export const GET_USERS_BY_FLOOR = "GET_USERS_BY_FLOOR";
+export const GET_SEARCH = "GET_SEARCH";
+
+export const getSearch = (payload) => {
+  try {
+    console.log(payload);
+    return async function (dispatch) {
+      const search = await axios.get("http://localhost:5040/users/search", {
+        params: payload,
+      });
+      dispatch({
+        type: GET_SEARCH,
+        payload: search.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getUserByFloor = (payload) => {
+  try {
+    // console.log(payload);
+    return async function (dispatch) {
+      const usersByFloor = await axios.get(
+        "http://localhost:5040/users/users_by_floor",
+        {
+          params: payload,
+        }
+      );
+      dispatch({
+        type: GET_USERS_BY_FLOOR,
+        payload: usersByFloor.data,
+      });
+    };
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const getApartament = (payload) => {
   try {
@@ -77,7 +115,7 @@ export const getImageBody = (payload) => {
   try {
     return async function (dispatch) {
       const image = await axios.get("http://localhost:5040/carrousel/body");
-      console.log (image.data);
+      console.log(image.data);
       dispatch({
         type: GET_IMAGE_BODY,
         payload: image.data,
@@ -188,14 +226,16 @@ export const getSocialSpaces = (payload) => {
 export const putImagesCarrousel = (payload) => {
   try {
     return async function (dispatch) {
-      console.log (payload)
-      const image = await axios.put("http://localhost:5040/carrousel", {images:payload});
-      console.log (image.data[1])
+      console.log(payload);
+      const image = await axios.put("http://localhost:5040/carrousel", {
+        images: payload,
+      });
+      console.log(image.data[1]);
     };
   } catch (err) {
     console.log(err);
   }
-}
+};
 export const getHabitantsPerFloor = (payload) => {
   try {
     return async function (dispatch) {
@@ -215,13 +255,16 @@ export const getHabitantsPerFloor = (payload) => {
 export const putImagesCarrouselBody = (payload) => {
   try {
     return async function (dispatch) {
-      const image = await axios.put("http://localhost:5040/carrousel/body", payload);
-      console.log (image.data[1])
+      const image = await axios.put(
+        "http://localhost:5040/carrousel/body",
+        payload
+      );
+      console.log(image.data[1]);
     };
   } catch (err) {
     console.log(err);
   }
-}  
+};
 
 export function getSocial() {
   return async function (dispatch) {

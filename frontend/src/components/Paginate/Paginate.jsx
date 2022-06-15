@@ -2,9 +2,7 @@ import React from "react";
 export default function Paginate({ setPage, page, totalRowsBd, formFilter }) {
   const limit = 10;
   const selectNumberPage = [1, 2, 2];
-  
-  
-  
+
   function handlerPreviousPage() {
     //si la pagina en la que estoy es mayor que uno, entonces si puedo volver hacia atrás
     if (page > 1) {
@@ -36,18 +34,19 @@ export default function Paginate({ setPage, page, totalRowsBd, formFilter }) {
   }
   console.log(totalRowsBd, "totalRowsBd");
   console.log(page, "page*limit");
+  console.log(!(totalRowsBd > limit * page), " !(totalRowsBd > limit * page) ");
   return (
     <div className="w-100 mt-5 ">
       <nav aria-label="...">
         <ul className="pagination justify-content-center">
-          
-          
-          <li 
-         
-          className={`page-item  ${page === 1 ? "disabled" : ""}`}>
+          <li className={`page-item  ${page === 1 ? "disabled" : ""}`}>
             <button
-              style={{color:'white', backgroundColor:'#00bcd4', border:'none', borderRadius:'50px', 
-             }}
+              style={{
+                color: "white",
+                backgroundColor: "#00bcd4",
+                border: "none",
+                borderRadius: "50px",
+              }}
               className="page-link"
               tabindex="-1"
               onClick={handlerPreviousPage}
@@ -56,24 +55,33 @@ export default function Paginate({ setPage, page, totalRowsBd, formFilter }) {
             </button>
           </li>
           <li className="page-item active">
-            <button 
-            style={{backgroundColor:'#f83c4a', border:'none', borderRadius:'50px'}}
-            className="page-link" onClick={handlerOnePage}>
+            <button
+              style={{
+                backgroundColor: "#f83c4a",
+                border: "none",
+                borderRadius: "50px",
+              }}
+              className="page-link"
+              onClick={handlerOnePage}
+            >
               1
             </button>
           </li>
-          <li 
-          className="page-item ">
-            <button 
-            style={{borderRadius:'50px'}}
-            className="page-link" onClick={handlerTwoPage}>
+          <li className="page-item ">
+            <button
+              style={{ borderRadius: "50px" }}
+              className="page-link"
+              onClick={handlerTwoPage}
+            >
               2
             </button>
           </li>
           <li className="page-item">
-            <button 
-              style={{borderRadius:'50px'}}
-            className="page-link" onClick={handlerThreePage}>
+            <button
+              style={{ borderRadius: "50px" }}
+              className="page-link"
+              onClick={handlerThreePage}
+            >
               3
             </button>
           </li>
@@ -83,9 +91,15 @@ export default function Paginate({ setPage, page, totalRowsBd, formFilter }) {
               !(totalRowsBd > limit * page) ? "disabled" : ""
             }`}
           >
-            <button 
-            style={{backgroundColor:'#00bcd4', color:'white', borderRadius:'50px'}}
-            className="page-link" onClick={handlerNextPage}>
+            <button
+              style={{
+                backgroundColor: "#00bcd4",
+                color: "white",
+                borderRadius: "50px",
+              }}
+              className="page-link"
+              onClick={handlerNextPage}
+            >
               Next
             </button>
           </li>
