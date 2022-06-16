@@ -6,7 +6,7 @@ const {SECRET} = process.env
 
 const verifyToken = (req, res, next) => {
   console.log ("verifyToken");
-  let token = req.headers;
+  let token = req.headers['x-access-token'];
 
   if (!token) {
     return res.status(401).send({ message: "No se Recibio Token" });
@@ -16,14 +16,15 @@ const verifyToken = (req, res, next) => {
     if (err) {
       res.status(403).send({ message: "No Autorizado" });
     }
-    req.userId = decoded.id;
+    req.user = decoded.id;
 
     next();
+
   });
 };
 
 const isAdmin = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
+  User.findByPk(req.user).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "admin") {
@@ -42,7 +43,7 @@ const isAdmin = (req, res, next) => {
     
 
 const isUser = (req, res, next) => {
-  User.findByPk(req.userId).then((user) => {
+  User.findByPk(req.user).then((user) => {
     user.getRoles().then((roles) => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "user") {
