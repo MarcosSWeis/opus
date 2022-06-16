@@ -11,6 +11,9 @@ body {
   min-width: 533px;
 }
 
+.how:hover{
+  background-color: #f83c4a;
+}
 .wrapper {
   margin: 0 auto;
   width: 100%;
