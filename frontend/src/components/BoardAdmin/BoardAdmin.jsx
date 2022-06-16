@@ -6,7 +6,10 @@ import { logout } from "../../redux/actions";
 import { useDispatch } from "react-redux"; 
 import logo from './imageBoard/logohorizontal.svg';
 import usuario from './imageBoard/usuario.svg';
-
+import pago from './imageBoard/iconoDepago.svg';
+import dashboard from './imageBoard/iconodashboard.svg'
+import usuarios from './imageBoard/iconousuarios.svg'
+import mantenimiento from './imageBoard/iconoubicacion.svg'
 
 
 
@@ -51,26 +54,29 @@ export default function BoardAdmin() {
             </div>
             <hr style={{height:'10px',width:'100%', backgroundColor:'white', borderTop:'1px solid', opacity:'inherit' }} />
             <div className="col">
-              <button
-                className="butond">
+              <p
+                className="pd">
             <Link to={'dashboard'} style={{ color: "white" , textDecoration:'none'}}>
-               Dashboard
+            <img src={dashboard} alt='icono pago'/>  Dashboard
                 </Link>
-              </button>
+              </p>
             </div>
 
             <p className="pd">
               <Link to="user" style={{ color: "white" , textDecoration:'none'}}>
-                Usuarios
+              <img src={usuarios} alt='usuarios'/>    Usuarios
               </Link>
             </p>
-            <p className="pd"><Link to ='maintenance'style={{ color: "white" , textDecoration:'none'}}> Mantenimiento </Link></p>
-            <p className="pd">Pagos</p>
+            <p className="pd">
+              <Link to ='maintenance'
+              style={{ color: "white" , textDecoration:'none'}}> <img src={dashboard} alt='usuarios'/> Mantenimiento </Link></p>
+            
+            <p className="pd" ><img src={pago} alt='pagos'/> Pagos</p>
             <a href="/" className="pd" onClick={logOut} >
              Logout
             </a>
           </aside>
-        </div>
+        </div>  
 
       
      <div className='col-9'>
