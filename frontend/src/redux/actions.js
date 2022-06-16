@@ -291,8 +291,8 @@ export function updateSocial(data) {
 
 export function postClient (data){
   return async function (dispatch) {
-    const client = await axios.post(`http://localhost:5040/users/create`, data, {
-      headers: authHeader ().Authorization
+    const client = await axios.post(`http://localhost:5040/users/create `, data, {
+      headers: authHeader()
   });
     console.log (client.data)
   }
