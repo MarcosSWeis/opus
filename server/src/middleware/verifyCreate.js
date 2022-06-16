@@ -12,12 +12,14 @@ const checkDuplicateEmailOrDni = (req, res, next) => {
   //email
   User.findOne({ where: { email: req.body.email } }).then((user) => {
     if (user) {
+      console.log ("email ya existe");
       res.status(400).send({ message: "Email ya existe" });
       return;
     }
 
     User.findOne({ where: { dni: req.body.dni } }).then((user) => {
       if (user) {
+        console.log ("Dni ya existe");
         res.status(400).send({ message: "Dni ya existe" });
         return;
       }

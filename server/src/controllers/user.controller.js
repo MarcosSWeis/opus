@@ -6,7 +6,6 @@ const { where } = require("sequelize");
 const Op = sequelize.Op;
 
 async function createUser(req, res, next) {
-  console.log("entramos a crear usuario");
   async function departamento(TowerName, floor, numDeApartamento) {
     const towerId = await Tower.findOne({
       where: {
@@ -16,7 +15,6 @@ async function createUser(req, res, next) {
       raw: true,
     });
 
-    console.log(towerId, "hola");
     const departamentId = await Department.findOne({
       where: {
         floor: floor,

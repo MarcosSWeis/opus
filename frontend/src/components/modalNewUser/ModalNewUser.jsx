@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { postClient } from "../../redux/actions";
 
 export default function ModalNewUser(props) {
+
   const [input, setInput] = useState({
     first_name: "",
     last_name: "",
@@ -15,7 +16,7 @@ export default function ModalNewUser(props) {
     numDeApartamento: "",
     dni: "",
     cel: "",
-    roles:[]
+    roles:["user"],
   });
   const dispatch = useDispatch();
 
@@ -72,11 +73,11 @@ export default function ModalNewUser(props) {
               onChange={onChange}
               name="dni"
               placeholder="Dni" />
-                <input type="text"
+                {/* <input type="text"
               value={input.roles}
               onChange={onChange}
               name="roles"
-              placeholder="Roles" />
+              placeholder="Roles" /> */}
             </div>
 
             <div className={s.containerRight}>
