@@ -15,6 +15,7 @@ export default function ModalNewUser(props) {
     numDeApartamento: "",
     dni: "",
     cel: "",
+    roles:[]
   });
   const dispatch = useDispatch();
 
@@ -71,7 +72,13 @@ export default function ModalNewUser(props) {
               onChange={onChange}
               name="dni"
               placeholder="Dni" />
+                <input type="text"
+              value={input.roles}
+              onChange={onChange}
+              name="roles"
+              placeholder="Roles" />
             </div>
+
             <div className={s.containerRight}>
               <input type="text" 
               value={input.numDeApartamento}
