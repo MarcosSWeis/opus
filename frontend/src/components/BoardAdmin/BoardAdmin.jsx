@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet,useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Dashboard.css";
 import { logout } from "../../redux/actions";
@@ -9,13 +9,13 @@ import usuario from './imageBoard/usuario.svg';
 import pago from './imageBoard/iconoDepago.svg';
 import dashboard from './imageBoard/iconodashboard.svg'
 import usuarios from './imageBoard/iconousuarios.svg'
-import mantenimiento from './imageBoard/iconoubicacion.svg'
+
 
 
 
 
 export default function BoardAdmin() {
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const { user: currentUser } = useSelector((state) => state);
 
@@ -53,7 +53,9 @@ export default function BoardAdmin() {
               </div>
             </div>
             <hr style={{height:'10px',width:'100%', backgroundColor:'white', borderTop:'1px solid', opacity:'inherit' }} />
-            <div className="col">
+            
+            
+       { currentUser.roles[0] === 'ROLE_ADMIN' ? <div> <div className="col">
               <p
                 className="pd">
             <Link to={'dashboard'} style={{ color: "white" , textDecoration:'none'}}>
@@ -75,6 +77,18 @@ export default function BoardAdmin() {
             <a href="/" className="pd" onClick={logOut} >
              Logout
             </a>
+            </div>
+             :<div><p className="pd">
+            <Link to ='Profile'
+            style={{ color: "white" , textDecoration:'none'}}> <img src={usuarios} alt='usuarios'/> perfil</Link></p>
+            <p className="pd">
+            <Link to ='usuario'
+            style={{ color: "white" , textDecoration:'none'}}> <img src={dashboard} alt='usuarios'/> usuario</Link></p>
+              <a href="/" className="pd" onClick={logOut} >
+             Logout
+            </a> 
+             </div>}
+
           </aside>
         </div>  
 
