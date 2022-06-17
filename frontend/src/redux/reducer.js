@@ -16,6 +16,7 @@ import {
   UPDATE_SOCIAL,
   GET_USERS_BY_FLOOR,
   GET_SEARCH,
+  GET_TOWERS,
 } from "./actions";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -35,6 +36,7 @@ export const initialState = {
   social: {},
   usersByFloor: {},
   search: {},
+  towers: {},
 };
 
 export function rootReducer(state = initialState, action) {
@@ -119,6 +121,11 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         social: action.payload,
+      };
+      case GET_TOWERS:
+      return {
+        ...state,
+        towers: action.payload,
       };
 
     default:

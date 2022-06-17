@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import s from "./modalNewUser.module.css";
 import img from "../../imagenesUsuarios/avatarNewUsuario.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postClient } from "../../redux/actions";
+import { getTowers } from "../../redux/actions";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function ModalNewUser(props) {
-
   const [input, setInput] = useState({
     first_name: "",
     last_name: "",
@@ -18,19 +19,31 @@ export default function ModalNewUser(props) {
     cel: "",
     roles:["user"],
   });
+  let Towers= useSelector ((state) => state.towers);
+  useEffect (() => {
+    dispatch (getTowers()) 
+  },[])
   const dispatch = useDispatch();
 
   const onChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   }
-
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
-    dispatch(postClient(input));
-    props.onHide();
+
+    dispatch(postClient (input)).then ((client) => {
+      console.log(client);
+      if (client.status===200){ 
+        toast.success("Usuario creado correctamente");
+        props.onHide();
+      }else {
+        toast.error(client.data.message);
+      }
+    });
+
+
     
   }
-
 
 
   return (
@@ -53,11 +66,19 @@ export default function ModalNewUser(props) {
           </div> 
           <div className={s.container2}>
             <div className={s.containerLeft}>
-              <input type="text"
+              <select onChange={onChange}name="TowerName" id="">
+                <option  className={s.opt1} >Seleccione una torre</option>
+                {Towers.length?Towers.map((tower) => (
+                  <option key={tower.id} value={tower.tower_name}>
+                    {tower.tower_name}
+                  </option>
+                )):null}
+              </select>
+              {/* <input type="text"
               value={input.TowerName}
               onChange={onChange}
               name="TowerName"
-              placeholder="Torre" />
+              placeholder="Torre" /> */}
               <input type="text" 
               value={input.first_name}
               onChange={onChange}
@@ -110,6 +131,7 @@ export default function ModalNewUser(props) {
         </div>
        </form> 
       </Modal.Body>
+      <Toaster position="bottom-center" />
     </Modal>
   );
 }

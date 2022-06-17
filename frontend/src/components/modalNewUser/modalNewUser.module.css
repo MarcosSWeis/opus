@@ -49,6 +49,13 @@
   border: none;
 }
 
+.container2 select {
+  border-radius: 10px;
+  padding-left: 5px;
+  border: none;
+  width: 100%;
+}
+
 .buttons{
   display: flex;
   flex-direction: row;
@@ -73,6 +80,7 @@
   color: white;
 
 }
+
 .img {
   text-align: center;
   padding: 10px;
