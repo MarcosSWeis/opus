@@ -22,13 +22,15 @@ import Bookings from "./components/reservas/Bookings";
 import Mantenimiento from "./components/mantenimiento/Mantenimiento";
 import DetailDepartament from "./components/detail-departament/DetailDepartement";
 import Dashboard from "./components/dashboard/Dashboard";
+import IsRoleProtect from "./components/Protected/isRoleProtect";
+
+
 
 function App() {
 
 
   const { user: currentUser } = useSelector((state) => state);
-
-
+  
 
   return (
     <BrowserRouter>
@@ -46,10 +48,11 @@ function App() {
           <Route path="/infoDeparts" element={<>  <Navbar /> <Dashboard /> <Footer /> </>} />
           <Route path="*" element={<>  <Navbar /><NoMatch /> <Footer /> </>} />
           <Route path="panel" element={<Protected isLoggedIn={currentUser.isLoggedIn}> <BoardAdmin /> </Protected>}>
-            <Route path="profile" element={<Profile />} />
-            <Route path="dashboard" element={<>  <Navbar />  <Dashboard /> </>} />
-            <Route path="user" element={<>  <Navbar /><Usuario /> </>} />
-            <Route path="maintenance" element={ <>  <Navbar /><Mantenimiento/> </>} />
+            <Route path="profile" element={<>  <Navbar /> <Profile /> </>} />
+            <Route path='usuario' element={<>  <Navbar /><BoardUser /> </>} />
+            <Route path="dashboard" element={<>  <Navbar /> <IsRoleProtect  > <Dashboard /></IsRoleProtect> </>} />
+            <Route path="user" element={<>  <Navbar /> <IsRoleProtect  > <Usuario /> </IsRoleProtect></>} />
+            <Route path="maintenance" element={ <>  <Navbar /><IsRoleProtect  ><Mantenimiento/></IsRoleProtect> </>} />
             <Route path="*" element={<NoMatch />} />
 
           </Route>
