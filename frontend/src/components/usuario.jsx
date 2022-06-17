@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSearch, getUserByFloor } from "../redux/actions";
 import Paginate from "./Paginate/Paginate";
 import ModalNewUser from "./modalNewUser/ModalNewUser";
+import { Toaster, toast } from "react-hot-toast";
 
 const Usuario = () => {
   const floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -59,10 +60,10 @@ const Usuario = () => {
   let formSearch = $("#formSearch");
 
   let handlerModal = () => {
-    setModal(true);
+    setModal(!modal);
+    modal && toast.success("Usuario creado correctamente");
   }
   
-
   return (
     <div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2 ">
@@ -91,6 +92,7 @@ const Usuario = () => {
         animation={true}
         backdrop={'static'}
         centered={true}
+        handlerModal={handlerModal}
         />
       </div>
 
@@ -165,6 +167,7 @@ const Usuario = () => {
                 last_name={user[0].last_name}
                 email={user[0].email}
                 dni={user[0].dni}
+                cel= {user[0].cel}
               />
             ))
           : ""}
@@ -178,14 +181,18 @@ const Usuario = () => {
                 email,
                 dni,
                 departments,
+                cel,
+                id
               }) => (
                 <RowsUsers
                   tower={departments.tower.tower_name}
-                  departament_id={departament_id}
+                  departament={departments}
                   first_name={first_name}
                   last_name={last_name}
                   email={email}
                   dni={dni}
+                  cel={cel}
+                  id={id}
                 />
               )
             )
@@ -203,6 +210,7 @@ const Usuario = () => {
             : ""
         }
       />
+      <Toaster position="bottom-center"/>
     </div>
   );
 };

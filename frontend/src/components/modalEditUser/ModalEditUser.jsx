@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import s from "./modalNewUser.module.css";
+import s from "./modalEditUser.module.css";
 import img from "../../imagenesUsuarios/avatarNewUsuario.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { postClient } from "../../redux/actions";
 import { getTowers } from "../../redux/actions";
 import { Toaster, toast } from "react-hot-toast";
-import { validate } from "./validaciones";
+import { validate } from "../modalEditUser/validaciones";
 
-export default function ModalNewUser(props) {
+export default function ModalEditUser(props) {
   const [errors, setErrors] = useState({});
-  const [input, setInput] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "",
-    TowerName: "",
-    numDeApartamento: "",
-    dni: "",
-    cel: "",
-    roles: ["user"],
-  });
+  const [input, setInput] = useState({});
+  useEffect(() => {
+    setInput ({first_name: props.first_name,
+      last_name: props.last_name,
+      email: props.email,
+      TowerName: props.tower,
+      numDeApartamento:props.departament.Number,
+      floor: props.departament.floor,
+      dni: props.dni,
+      cel: props.cel,
+      id: props.id})
+  }, [])
+
+  console.log(input);
   let Towers = useSelector((state) => state.towers);
   useEffect(() => {
     dispatch(getTowers());
@@ -57,7 +60,7 @@ export default function ModalNewUser(props) {
     >
       <Modal.Header closeButton className={s.h}>
         <Modal.Title id="contained-modal-title-vcenter" className={s.header}>
-          Nuevo Usuario
+          Editar Usuario
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className={s.b}>
@@ -135,15 +138,15 @@ export default function ModalNewUser(props) {
                 />
                 <input
                   type="text"
-                  value={input.password}
+                  value={input.floor}
                   onChange={onChange}
-                  name="password"
-                  placeholder="Contraseña"
+                  name="floor"
+                  placeholder="Piso"
                 />
               </div>
             </div>
             <div className={s.buttons}>
-              <button type="submit">Guardar</button>
+              <button type="submit">Editar</button>
               <button type="button" onClick={props.onHide} >Cerrar</button>
             </div>
           </div>

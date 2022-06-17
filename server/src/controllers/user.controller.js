@@ -16,6 +16,7 @@ async function createUser(req, res, next) {
       raw: true,
     });
 
+
     const departamentId = await Department.findOne({
       where: {
         floor: floor,
@@ -26,11 +27,18 @@ async function createUser(req, res, next) {
     });
     return departamentId.id;
   }
+  if (req.body.numDeApartamento.length > 3) {
+    var floor = req.body.numDeApartamento[0] + req.body.numDeApartamento[1]
+    var apto = req.body.numDeApartamento[3]
 
+  } else {
+    var floor = req.body.numDeApartamento[0]
+    var apto = req.body.numDeApartamento[2]
+  }
   const apartamentID = await departamento(
     req.body.TowerName,
-    req.body.numDeApartamento[0],
-    req.body.numDeApartamento[2],
+    floor,
+    apto,
   );
 
   User.create({
@@ -73,6 +81,7 @@ async function createUser(req, res, next) {
 }
 
 async function updateUser(req, res, next) {
+  console.log("entramos a actualizar usuario");
   try {
     let data = await User.findByPk(req.params.id);
 
