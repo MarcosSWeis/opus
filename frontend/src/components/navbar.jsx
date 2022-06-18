@@ -63,7 +63,7 @@ const logOut = () => {
               </li>
 
               </ul>
-   {currentUser.isLoggedIn ? <div>
+   {currentUser.isLoggedIn && currentUser.roles[0] === 'ROLE_ADMIN' ? <div>
      
               <div className="dropdown btn btn-outline-danger botonLogin   mx-5">
   <span>{currentUser.firtsname} </span>
@@ -79,15 +79,27 @@ const logOut = () => {
         
             
             :<div>
-              <Link to={"/login"}>
+
+<div className="dropdown btn btn-outline-danger botonLogin   mx-5">
+  <span>{currentUser.firtsname} </span>
+  <div class="dropdown-content">
+    <p><Link to='/panel/perfil' className=" btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}>Perfil</Link> </p>
+    <p> <Link to='/panel/usuarios' className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}> Usuario</Link></p>
+    
+    <p> <Link to='/' className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}> Home </Link></p>
+    <p><a href="/" className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}} onClick={logOut}>LogOut</a> </p>
+  </div>
+</div>
+           </div>}
+{ currentUser.isLoggedIn === false ?
+           <Link to={"/login"}>
                 <button
                   className="btn btn-outline-danger botonLogin    mx-5"
                   type="submit"
                 >
                   <img src={Usuario} alt=" Imagen del login" />
                 </button>
-              </Link>
-            </div>}
+              </Link>:null}
           </div>
         </div>
         <Outlet />
