@@ -68,11 +68,11 @@ const logOut = () => {
               <div className="dropdown btn btn-outline-danger botonLogin   mx-5">
   <span>{currentUser.firtsname} </span>
   <div class="dropdown-content">
-    <p><Link to='/panel/dashboard' className=" btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}>Dashboard </Link> </p>
-    <p> <Link to='/panel/user' className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}> Usuarios</Link></p>
-    <p> <Link to='/panel/maintenance' className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}> Mantenimiento</Link></p>
-    <p> <Link to='/' className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}}> Home </Link></p>
-    <p><a href="/" className="btn btn-outline-danger botonLoginr" style={{ color: "grey" , textDecoration:'none'}} onClick={logOut}>LogOut</a> </p>
+    <p><Link to='/panel/dashboard' className=" btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}>Dashboard </Link> </p>
+    <p> <Link to='/panel/user' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Usuarios</Link></p>
+    <p> <Link to='/panel/maintenance' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Mantenimiento</Link></p>
+    <p> <Link to='/' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Home </Link></p>
+    <p><a href="/" className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}} onClick={logOut}>LogOut</a> </p>
   </div>
 </div>
               </div>
