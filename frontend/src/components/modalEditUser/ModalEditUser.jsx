@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import s from "./modalEditUser.module.css";
 import img from "../../imagenesUsuarios/avatarNewUsuario.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { postClient } from "../../redux/actions";
+import { EditUser } from "../../redux/actions";
 import { getTowers } from "../../redux/actions";
 import { Toaster, toast } from "react-hot-toast";
 import { validate } from "../modalEditUser/validaciones";
@@ -39,7 +39,7 @@ export default function ModalEditUser(props) {
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      dispatch(postClient(input)).then((client) => {
+      dispatch(EditUser(input)).then((client) => {
         if (client.message) {     
           props.handlerModal (true);
         } else {

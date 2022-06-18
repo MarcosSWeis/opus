@@ -292,7 +292,7 @@ export function updateSocial(data) {
 export function postClient (data){
   return async function (dispatch) {
     try{
-      const client = await axios.put(`http://localhost:5040/users/update/${data.id} `, data, {
+      const client = await axios.post(`http://localhost:5040/users/create`, data, {
         headers: authHeader()
         
     });
@@ -314,8 +314,16 @@ export function getTowers (){
   }
 }
 
-export function EditUser (){
+export function EditUser (data){
   return async function (dispatch) {
-    const user = await axios.get(`http://localhost:5040/users/edit`);;
+    try{
+      const client = await axios.put(`http://localhost:5040/users/update/${data.id} `, data, {
+        headers: authHeader()
+        
+    });
+    return client.data;
+    }catch (err){
+      return err.response;
+    }
   }
 }

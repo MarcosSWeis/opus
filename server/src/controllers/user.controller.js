@@ -81,7 +81,7 @@ async function createUser(req, res, next) {
 }
 
 async function updateUser(req, res, next) {
-  console.log("entramos a actualizar usuario");
+  console.log(req.body);
   try {
     let data = await User.findByPk(req.params.id);
 
