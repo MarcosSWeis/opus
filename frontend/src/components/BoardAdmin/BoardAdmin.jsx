@@ -1,13 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import "./Dashboard.css";
-import { logout } from "../../redux/actions";
-import { useDispatch } from "react-redux";
-import logo from "./imageBoard/logohorizontal.svg";
-import usuario from "./imageBoard/usuario.svg";
-=======
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Dashboard.css";
@@ -18,11 +9,6 @@ import usuario from './imageBoard/usuario.svg';
 import pago from './imageBoard/iconoDepago.svg';
 import dashboard from './imageBoard/iconodashboard.svg'
 import usuarios from './imageBoard/iconousuarios.svg'
-
-
-
-
->>>>>>> aa38c2475a0e36951de9e46ecfaad20b32e9c51e
 
 export default function BoardAdmin() {
 
