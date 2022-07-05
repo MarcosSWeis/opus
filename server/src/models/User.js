@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("user", {
     departament_id: {
-      type: DataTypes.INTEGER,      
+      type: DataTypes.INTEGER,
     },
     first_name: {
       type: DataTypes.STRING,
@@ -22,28 +22,26 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    cel:{
+    cel: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
     dni: {
       type: DataTypes.BIGINT,
+      allowNull: false,
     },
-    image:{
+    image: {
       type: DataTypes.TEXT,
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    resetToken: {
+      type: DataTypes.STRING,
+    },
+    resetTokenExpires: { type: DataTypes.DATE },
 
-
-    resetToken:{
-      type:DataTypes.STRING
-   },
-   resetTokenExpires: { type: DataTypes.DATE },
-
-
-   passwordReset: { type: DataTypes.DATE },
+    passwordReset: { type: DataTypes.DATE },
   });
 };

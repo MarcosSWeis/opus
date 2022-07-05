@@ -5,9 +5,7 @@
   box-shadow: 0px 0px 10px rgb(100, 100, 100, 1);
   border-radius: 5px;
 }
-.bgcRoomServices {
-  background: #f83c4a;
-}
+
 @media (min-width: 860px) {
   .templeteDesktop {
     display: flex;

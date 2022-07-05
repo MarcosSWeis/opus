@@ -9,7 +9,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
   {
-    logging: false, // set to console.log to see the raw SQL queries
+    logging: false, //console.log, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
@@ -81,6 +81,7 @@ const {
   Response,
   Roles,
   Carrousel,
+  Social_network,
 } = sequelize.models;
 
 //aqui irian las tablas con sus relaciones y asociaciones esta esa como ejemplo
@@ -197,16 +198,18 @@ Response.belongsToMany(Comment, {
   through: "comments_responses",
 });
 
-// Roles.belongsToMany(User, {
-//   through: "user_Roles",
-//   forenKey: "role_id",
-//   otherKey: "userId"});
-// User.belongsToMany(Roles, {
-//   through: "user_Roles",
-//   forenKey: "user_id",
-//   otherKey: "roleId"});
+Roles.belongsToMany(User, {
+  through: "user_Roles",
+  forenKey: "role_id",
+  otherKey: "userId",
+});
+User.belongsToMany(Roles, {
+  through: "user_Roles",
+  forenKey: "user_id",
+  otherKey: "roleId",
+});
 
-//ROLES = ["user", "admin"];
+ROLES = ["user", "admin"];
 
 module.exports = {
   ...sequelize.models,

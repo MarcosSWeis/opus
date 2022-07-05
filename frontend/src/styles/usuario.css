@@ -1,0 +1,68 @@
+.size{
+    width: 5%;
+    flex-direction: row;
+    
+}
+
+.edif{
+    width: 3rem;
+    height: 3rem;
+}
+
+.iconos{
+    display:flex ;
+    
+}
+
+.select{
+    margin-bottom: 3rem;
+}
+
+.select2{
+    margin-bottom: 7rem;
+}
+
+.formulario{
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	@media (max-width: 800px){
+		grid-template-columns: 1fr;
+	}
+}
+
+.formularioSize{
+margin: auto; 
+background: #1E1E1E;
+margin-top: 30px;
+border-radius: 20px;
+/* width: 788px;
+height: 676px;
+bottom: 50px;
+border-radius: 10px;
+padding: 20px;
+*/
+}
+
+.buscar{
+    width: 15%
+}
+
+.selectPa{
+    margin-bottom: 50px;
+}
+
+.acciones{
+    width: 30px;
+    height: 20px;
+}
+
+.acciones2{
+border-radius: 50%;
+}
+
+.title_usuario{
+background-color: red;
+color:whitesmoke;
+padding: 5px;
+}

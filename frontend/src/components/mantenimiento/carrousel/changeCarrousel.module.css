@@ -1,0 +1,88 @@
+.contImages{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 200px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.contImages img {
+  width: 100%;
+  margin-left: 50px;
+}
+
+.contImages button{
+  background-color: #F83C4A !important ;
+}
+.input{
+  display: none;
+}
+
+.label{
+  display: block;
+  /* border: 1px solid #000; */
+  cursor:pointer;
+  background:#F83C4A;
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s ease;
+  min-width: 100px;
+  font-size:10px;
+  color: black;
+}
+.img{
+  border-radius: 50%;
+}
+
+.profilepicture {
+  width: 30vw;
+  min-width: 100px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.profilepicture div {
+  width: 20vw;
+  height: 15vw;
+  min-width: 150px;
+  min-height: 150px;
+  border: 1px solid gray;
+  border-radius: 5%;
+  background-color: white;
+  overflow: hidden;
+}
+.profilepicture div img {
+  width: 100%;
+  height: 100%;
+}
+.img1{
+  opacity: 70%;
+  width: 70% !important;
+  
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+
+}
+.cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.agregar{
+  background-color: #F83C4A !important;
+}
+.butdisabled{
+  background-color: gray !important ;
+  opacity: 50%;
+  cursor:default !important;
+}

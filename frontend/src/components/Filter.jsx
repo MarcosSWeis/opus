@@ -1,4 +1,5 @@
 import stylesFilter from "./filter.module.css";
+import React from "react";
 export default function Filter({ handlerSubmit, handlerChange, setPage }) {
   const floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

@@ -1,0 +1,20 @@
+.containerInfoBookings {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: auto;
+  max-width: 360px;
+  width: 100%;
+}
+
+.subContainerInfoBookings {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgb(0 0 0 / 30%);
+  height: 501px;
+  perspective: 1000;
+  transition: 0.9s;
+  transform-style: preserve-3d;
+  width: 100%;
+}
