@@ -1,4 +1,3 @@
-const URL_API = `${process.env.API_SERVER}/departs/filter`;
 module.exports = {
 
     structureApiRestFindAll: (arrayData, errorStatusText, errorStatusCode) => {

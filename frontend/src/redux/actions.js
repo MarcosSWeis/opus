@@ -28,12 +28,12 @@ export const GET_USERS_BY_FLOOR = "GET_USERS_BY_FLOOR";
 export const GET_SEARCH = "GET_SEARCH";
 export const GET_TOWERS = "GET_TOWERS";
 export const POST_CLIENT = "POST_CLIENT";
-export const API_SERVER = process.env.API_SERVER
+const API_SERVER = process.env.REACT_APP_API_SERVER
 export const getSearch = (payload) => {
     try {
         console.log(payload);
         return async function (dispatch) {
-            const search = await axios.get(`${API_SERVER}users/search`, {
+            const search = await axios.get(`${API_SERVER}/users/search`, {
                 params: payload,
             });
             dispatch({
@@ -51,7 +51,7 @@ export const getUserByFloor = (payload) => {
         // console.log(payload);
         return async function (dispatch) {
             const usersByFloor = await axios.get(
-                `${API_SERVER}users/users_by_floor`,
+                `${API_SERVER}/users/users_by_floor`,
                 {
                     params: payload,
                 }
@@ -70,7 +70,7 @@ export const getApartament = (payload) => {
     try {
         // console.log(payload);
         return async function (dispatch) {
-            const departa = await axios.get(`${API_SERVER}departs/filter`, {
+            const departa = await axios.get(`${API_SERVER}/departs/filter`, {
                 params: payload,
             });
             dispatch({
@@ -87,7 +87,7 @@ export const register = (payload) => {
     try {
         // console.log(payload);
         return async function (dispatch) {
-            const user = await axios.get(`${API_SERVER}users/create_user`, {
+            const user = await axios.get(`${API_SERVER}/users/create_user`, {
                 params: payload,
             });
             dispatch({
@@ -103,7 +103,7 @@ export const register = (payload) => {
 export const getImageCarrusel = (payload) => {
     try {
         return async function (dispatch) {
-            const image = await axios.get(`${API_SERVER}carrousel`);
+            const image = await axios.get(`${API_SERVER}/carrousel`);
             dispatch({
                 type: GET_IMAGE_CARROUSEL,
                 payload: image.data,
@@ -117,7 +117,7 @@ export const getImageCarrusel = (payload) => {
 export const getImageBody = (payload) => {
     try {
         return async function (dispatch) {
-            const image = await axios.get(`${API_SERVER}carrousel/body`);
+            const image = await axios.get(`${API_SERVER}/carrousel/body`);
             console.log(image.data);
             dispatch({
                 type: GET_IMAGE_BODY,
@@ -180,7 +180,7 @@ export const logout = () => (dispatch) => {
 export const getBookingForThisDay = (payload) => {
     try {
         return async function (dispatch) {
-            const bookingsDate = await axios.get(`${API_SERVER}bookings`, {
+            const bookingsDate = await axios.get(`${API_SERVER}/bookings`, {
                 params: payload,
             });
             dispatch({
@@ -196,7 +196,7 @@ export const getDepartamentId = (payload) => {
     try {
         return async function (dispatch) {
             const departament = await axios.get(
-                `${API_SERVER}departs/detail_departament`,
+                `${API_SERVER}/departs/detail_departament`,
                 {
                     params: payload,
                 }
@@ -214,7 +214,7 @@ export const getSocialSpaces = (payload) => {
     try {
         return async function (dispatch) {
             const socialSpace = await axios.get(
-                `${API_SERVER}bookings/social_space`
+                `${API_SERVER}/bookings/social_space`
             );
             dispatch({
                 type: GET_SOCIAL_SPACES,
@@ -230,7 +230,7 @@ export const putImagesCarrousel = (payload) => {
     try {
         return async function (dispatch) {
             console.log(payload);
-            const image = await axios.put(`${API_SERVER}carrousel`, {
+            const image = await axios.put(`${API_SERVER}/carrousel`, {
                 images: payload,
             });
             console.log(image.data[1]);
@@ -243,7 +243,7 @@ export const getHabitantsPerFloor = (payload) => {
     try {
         return async function (dispatch) {
             const habitantsFloor = await axios.get(
-                `${API_SERVER}users/dashboard_habitants`
+                `${API_SERVER}/users/dashboard_habitants`
             );
             dispatch({
                 type: GET_HABITANTSFLOOR,
@@ -259,7 +259,7 @@ export const putImagesCarrouselBody = (payload) => {
     try {
         return async function (dispatch) {
             const image = await axios.put(
-                `${API_SERVER}carrousel/body`,
+                `${API_SERVER}/carrousel/body`,
                 payload
             );
             console.log(image.data[1]);
