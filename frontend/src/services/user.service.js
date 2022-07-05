@@ -1,22 +1,24 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const URL_API = 'http://localhost:5040/';
+const URL_API = process.env.API_SERVER;
 
-const getUserBoard  = async () => {
+const getUserBoard = async () => {
 
-return await axios.get(URL_API + 'users',{
+    return await axios.get(URL_API + 'users', {
 
-headers:authHeader()
+        headers: authHeader()
 
-})}
+    })
+}
 
 const getAdminBoard = async () => {
 
-return await axios.get(URL_API + 'admin',{
-    headers:authHeader()
-    
-})}
+    return await axios.get(URL_API + 'admin', {
+        headers: authHeader()
+
+    })
+}
 
 
 export default {
