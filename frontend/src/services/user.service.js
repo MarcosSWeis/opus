@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const URL_API = process.env.API_SERVER;
+const URL_API = process.env.REACT_APP_API_SERVER;
 
 const getUserBoard = async () => {
 
