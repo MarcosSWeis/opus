@@ -43,7 +43,9 @@ firtsname:user.first_name,
 lastname:user.last_name,
 email:user.email,
 roles:authorities,
-accessToken:token
+dni:user.dni,
+accessToken:token,
+cel:user.cel
 
 
 

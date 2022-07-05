@@ -26,7 +26,7 @@ export const GET_SOCIAL = "GET_SOCIAL";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_USERS_BY_FLOOR = "GET_USERS_BY_FLOOR";
 export const GET_SEARCH = "GET_SEARCH";
-
+export const GET_TOWERS = "GET_TOWERS";
 export const POST_CLIENT = "POST_CLIENT";
 
 export const getSearch = (payload) => {
@@ -291,9 +291,39 @@ export function updateSocial(data) {
 
 export function postClient (data){
   return async function (dispatch) {
-    const client = await axios.post(`http://localhost:5040/users/create`, data, {
-      headers: authHeader ().Authorization
-  });
-    console.log (client.data)
+    try{
+      const client = await axios.post(`http://localhost:5040/users/create`, data, {
+        headers: authHeader()
+        
+    });
+    return client.data;
+    }catch (err){
+      return err.response;
+    }
+  }
+}
+
+
+export function getTowers (){
+  return async function (dispatch) {
+    const towers = await axios.get(`http://localhost:5040/departs/towers`);
+    dispatch({
+      type: GET_TOWERS,
+      payload: towers.data,
+    });
+  }
+}
+
+export function EditUser (data){
+  return async function (dispatch) {
+    try{
+      const client = await axios.put(`http://localhost:5040/users/update/${data.id} `, data, {
+        headers: authHeader()
+        
+    });
+    return client.data;
+    }catch (err){
+      return err.response;
+    }
   }
 }

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../imgNavBar/logoH.svg";
 import Usuario from "../imgNavBar/usuario.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { clearMessage } from "../redux/actions";
+
 import { logout } from "../redux/actions";
 import { Link, Outlet } from "react-router-dom";
 
@@ -11,23 +11,7 @@ const Navbar = () => {
 const {user:currentUser} = useSelector((state) => state);
 const dispatch = useDispatch();
 
-/* useEffect(() => {
-  history.listen((location) => {
-    dispatch(clearMessage()); // clear message when changing location
-  });
-}, [dispatch]); */
 
-/* useEffect(() => {
-  if (currentUser) {
-    setAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
-    setUserBoard(currentUser.roles.includes("ROLE_USER"));
-  }
-}, [currentUser]);
-const logOut = () => {
-  dispatch(logout());
-};
-
- */
 
 const logOut = () => {
   dispatch(logout())
@@ -79,31 +63,43 @@ const logOut = () => {
               </li>
 
               </ul>
-   {currentUser.isLoggedIn ? <div>
+   {currentUser.isLoggedIn && currentUser.roles[0] === 'ROLE_ADMIN' ? <div>
      
-              <div class="dropdown btn btn-outline-danger botonLogin   mx-5">
+              <div className="dropdown btn btn-outline-danger botonLogin   mx-5">
   <span>{currentUser.firtsname} </span>
   <div class="dropdown-content">
-    <p><Link to='/panel/dashboard'>Dashboard </Link> </p>
-    <p> <Link to='/'> Home </Link></p>
-    <p><a href="/"  onClick={logOut}>LogOut</a> </p>
+    <p><Link to='/panel/dashboard' className=" btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}>Dashboard </Link> </p>
+    <p> <Link to='/panel/user' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Usuarios</Link></p>
+    <p> <Link to='/panel/maintenance' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Mantenimiento</Link></p>
+    <p> <Link to='/' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Home </Link></p>
+    <p><a href="/" className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}} onClick={logOut}>LogOut</a> </p>
   </div>
 </div>
-
-              
               </div>
         
             
             :<div>
-              <Link to={"/login"}>
+
+<div className="dropdown btn btn-outline-danger botonLogin   mx-5">
+  <span>{currentUser.firtsname} </span>
+  <div class="dropdown-content">
+    <p><Link to='/panel/profile' className=" btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}>Perfil</Link> </p>
+    <p> <Link to='/panel/usuario' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Usuario</Link></p>
+    
+    <p> <Link to='/' className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}}> Home </Link></p>
+    <p><a href="/" className="btn btn-outline-danger botonLoginr" style={{ color: "white" , textDecoration:'none'}} onClick={logOut}>LogOut</a> </p>
+  </div>
+</div>
+           </div>}
+{ currentUser.isLoggedIn === false ?
+           <Link to={"/login"}>
                 <button
-                  className="btn btn-outline-danger botonLogin   mx-5"
+                  className="btn btn-outline-danger botonLogin    mx-5"
                   type="submit"
                 >
                   <img src={Usuario} alt=" Imagen del login" />
                 </button>
-              </Link>
-            </div>}
+              </Link>:null}
           </div>
         </div>
         <Outlet />

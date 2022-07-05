@@ -105,4 +105,16 @@ router.get("/filter", async (req, res) => {
   }
 });
 
+router.get ( "/towers" , async (req,res)=>{
+  try{
+    let towers= await Tower.findAll({
+      attributes: ["tower_name"]
+    })
+    res.status(200).json(towers)
+
+  }catch (err){
+    console.log(err);
+    res.send(400).json({err});
+  }
+})
 module.exports = router;
