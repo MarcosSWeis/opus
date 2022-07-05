@@ -31,7 +31,7 @@ const Usuario = () => {
   console.log(dataSearch);
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getUserByFloor({ ...searchByFloor, page }));
+    dispatch(getUserByFloor({ ...searchByFloor, page }));
   }, [searchByFloor, page, search]);
   function handlerSearchByFloor(event) {
     setPage(1);
@@ -60,8 +60,7 @@ const Usuario = () => {
 
   let handlerModal = () => {
     setModal(true);
-  }
-  
+  };
 
   return (
     <div>
@@ -85,12 +84,12 @@ const Usuario = () => {
           </div>{" "}
         </button>
         <ModalNewUser
-        show={modal}  
-        onHide={() => setModal(false)}
-        scrollable={true}
-        animation={true}
-        backdrop={'static'}
-        centered={true}
+          show={modal}
+          onHide={() => setModal(false)}
+          scrollable={true}
+          animation={true}
+          backdrop={"static"}
+          centered={true}
         />
       </div>
 
@@ -191,18 +190,23 @@ const Usuario = () => {
             )
           : ""}
       </table>
-      <Paginate
-        setPage={setPage}
-        page={page}
-        formFilter={formSearch}
-        totalRowsBd={
-          Object.keys(dataUsersByFloor).length > 0
-            ? dataUsersByFloor.count
-            : Object.keys(dataSearch).length > 0
-            ? dataSearch.count
-            : ""
-        }
-      />
+      {Object.keys(dataUsersByFloor).length > 0 ||
+      Object.keys(dataSearch).length > 0 ? (
+        <Paginate
+          setPage={setPage}
+          page={page}
+          formFilter={formSearch}
+          totalRowsBd={
+            Object.keys(dataUsersByFloor).length > 0
+              ? dataUsersByFloor.count
+              : Object.keys(dataSearch).length > 0
+              ? dataSearch.count
+              : ""
+          }
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
