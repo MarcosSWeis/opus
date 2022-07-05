@@ -90,7 +90,7 @@ router.get("/filter", async (req, res) => {
                 status: status,
                 statusText: statusText,
                 total: count,
-                url: `${process.env.API_SERVER}/departs/filter`,
+
             },
             data: rows,
         };
