@@ -36,8 +36,6 @@ The project presented is a web page for the administration of a condominium. Whe
 - React
 - Clouidinary 
 
-### Capa de datos (Modelo entidad relacion)
-![Modelo entidad relacion](https://i.imgur.com/X163eaT.jpeg)
 
 ## Despedida
 
@@ -47,6 +45,8 @@ It was a pleasure for us to work on this project, share our knowledge and above 
 
 ### Linkedin 
 -[Luis](https://www.linkedin.com/in/luis-stoller-0ab08a226/)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Marcos_Weis-2a9d8f?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=101010)](https://www.linkedin.com/in/marcos-weis-53702122a)
 
 
 
